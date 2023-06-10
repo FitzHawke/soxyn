@@ -1,44 +1,46 @@
 {
-  description = "Your new nix config";
+  description = "FitzHawke NixOS Configuration";
 
   inputs = {
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hardware.url = "github:nixos/nixos-hardware";
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
-  };
-
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      # FIXME replace with your hostname
-      your-hostname = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-        # > Our main nixos configuration file <
-        modules = [ ./nixos/configuration.nix ];
-      };
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      # FIXME replace with your username@hostname
-      "your-username@your-hostname" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-        # > Our main home-manager configuration file <
-        modules = [ ./home-manager/home.nix ];
-      };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-}
+
+  outputs = { nixpkgs, home-manager, ... }@inputs:
+    let
+      mkNixos = modules: nixpkgs.lib.nixosSystem {
+        inherit modules;
+        specialArgs = { inherit inputs; };
+      };
+      mkHome = modules: pkgs: home-manager.lib.homeManagerConfiguration {
+        inherit modules pkgs;
+        extraSpecialArgs = { inherit inputs; };
+      };
+    in
+    {
+      nixosConfigurations = {
+        farosh = mkNixos [ ./hosts/farosh ];
+        dinraal = mkNixos [ ./hosts/dinraal ];
+
+        naydra = mkNixos [ ./hosts/naydra ];
+
+        gleeok = mkNixos [ ./hosts/gleeok ];
+        valoo = mkNixos [ ./hosts/valoo ];
+      };
+      homeConfigurations =
+        {
+          "fitz@farosh" = mkHome [ ./home/fitz/farosh.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "fitz@dinraal" = mkHome [ ./home/fitz/dinraal.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "fitz@naydra" = mkHome [ ./home/fitz/naydra.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "fitz@gleeok" = mkHome [ ./home/fitz/gleeok.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "fitz@valoo" = mkHome [ ./home/fitz/valoo.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "fitz@generic" = mkHome [ ./home/fitz/generic.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        };
+    };
+} 
