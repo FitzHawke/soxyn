@@ -4,8 +4,7 @@ keys:
   - &user2 7088C7421873E0DB97FF17C2245CAB70B4C224E9 #
   # Hosts
   - &dinraal age1hm5lf4qk84r4wh00atn6hpts7mpdx80adq26wht2e5qh9ewvhyaszfv32d #
-  - &farosh age1709qfrwglm75v5x8lpuhryt83k6p6c90npplzzec6a5w8ct93ejscpapc3
-    #
+  - &farosh age1u2sp6r7gyjddkvx397n3rmaylx7a8ckk33zmvpn6j56g23edketqgnzzg9
     # - &gleeok age1j9ld6ey62hqd33xkyd2fg9362k6xhm5gavsrpsfalwpcs8smxfdqpk82a2
     # - &naydra age1dn7pkareh83k8el2yt4dmdfdzn7f45fuc785cnnxgzf3h4r5gqhqd4l23h
     # - &valoo age1uxvuygmvwpfjrd9d3ulg6ln8dgvaw4l2c90mw0tr72qg3n8vd9ns6dm501

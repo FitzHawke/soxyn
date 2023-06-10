@@ -11,8 +11,20 @@
 
     ./hardware-configuration.nix
 
-    # IMPORTS FOR DAYS
-
+    ../common/core/bluetooth.nix
+    ../common/core/efi-boot.nix
+    ../common/core/fish.nix
+    ../common/core/greetd.nix
+    ../common/core/laptop.nix
+    ../common/core/locale.nix
+    ../common/core/nix.nix
+    ../common/core/openssh.nix
+    ../common/core/physical.nix
+    ../common/core/pipewire.nix
+    ../common/core/sops.nix
+    ../common/core/steam-hardware.nix
+    ../common/core/systemd-initrd.nix
+    ../common/core/wireless.nix
   ];
 
   networking =

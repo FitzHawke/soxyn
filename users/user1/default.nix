@@ -1,9 +1,10 @@
 { pkgs, config, ... }:
-let ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+let
+  ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
   users.mutableUsers = true;
-  users.users.fitz = {
+  users.users.${config.sops.secrets.user1-name} = {
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [ "wheel" "video" "audio" ] ++ ifExists [ "network" "i2c" "docker" "podman" "git" "libvirtd" ];
@@ -13,12 +14,14 @@ in
     packages = [ pkgs.home-manager ];
   };
 
-  sops.secrets.user1-password = {
+  sops.secrets = {
     sopsFile = ../../secrets.yaml;
     neededForUsers = true;
+    user1-name = { };
+    user1-password = { };
   };
 
-  home-manager.users.misterio = import ../../../../home/misterio/${config.networking.hostName}.nix;
+  home-manager.users.${config.sops.secrets.user1-name} = import ../../../../home/${config.sops.secrets.user1-name}/${config.networking.hostName}.nix;
 
   services.geoclue2.enable = true;
   security.pam.services = { swaylock = { }; };

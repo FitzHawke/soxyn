@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
-  sops.secrets.user1name = { sopsFile = ../../../users/secrets.yaml; };
-  user = config.sops.secrets.user1name.path;
+  sops.secrets.user1-name = { sopsFile = ../../../users/secrets.yaml; };
+  user = "$__file{${config.sops.secrets.user1-name.path}}";
 
   greetd = "${pkgs.greetd.greetd}/bin/greetd";
   gtkgreet = "${pkgs.greetd.gtkgreet}/bin/gtkgreet";

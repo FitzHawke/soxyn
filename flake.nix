@@ -32,7 +32,7 @@
         extraSpecialArgs = { inherit inputs; };
       };
       sops.secrets.user1name = { sopsFile = ./users/secrets.yaml; };
-      user1 = config.sops.secrets.user1name.path;
+      user1 = "$__file{${config.sops.secrets.user1-name.path}}";
     in
     {
       homeManagerModules = import ./modules/home-manager;
