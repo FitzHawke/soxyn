@@ -16,7 +16,10 @@
   ];
 
   networking =
-    { hostName = "dinraal"; };
+    {
+      hostName = "dinraal";
+      useDHCP = true;
+    };
 
   xdg.portal = { enable = true; wlr.enable = true; };
   hardware =
