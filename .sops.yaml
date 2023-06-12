@@ -1,24 +1,23 @@
 keys:
   # Users
   - &user1 A46FA202C57484D61B5B644457FEA671DEEEEA14
-  - &user2 7088C7421873E0DB97FF17C2245CAB70B4C224E9 #
   # Hosts
   - &farosh age1u2sp6r7gyjddkvx397n3rmaylx7a8ckk33zmvpn6j56g23edketqgnzzg9
 
 creation_rules:
-  - path_regex: hosts/dinraal/secrets.ya?ml$
-    key_groups:
-      pgp:
-        - *user1
+  # - path_regex: hosts/dinraal/secrets.ya?ml$
+  #   key_groups:
+  #     pgp:
+  #       - *user1
   - path_regex: hosts/farosh/secrets.ya?ml$
     key_groups:
+      - pgp:
+          - *user1
       - age:
           - *farosh
-        pgp:
-          - *user1
   - path_regex: users/secrets.ya?ml$
     key_groups:
       - age:
           - *farosh
-        pgp:
+      - pgp:
           - *user1

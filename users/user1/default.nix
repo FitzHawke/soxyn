@@ -9,16 +9,15 @@ in
     shell = pkgs.fish;
     extraGroups = [ "wheel" "video" "audio" ] ++ ifExists [ "network" "i2c" "docker" "podman" "git" "libvirtd" ];
 
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../../../home/fitz/ssh.pub) ];
+    openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/ssh.pub) ];
     passwordFile = config.sops.secrets.user1-password.path;
     packages = [ pkgs.home-manager ];
   };
 
   sops.secrets = {
     sopsFile = ../../secrets.yaml;
-    neededForUsers = true;
-    user1-name = { };
-    user1-password = { };
+    user1-name = { neededForUsers = true; };
+    user1-password = { neededForUsers = true; };
   };
 
   home-manager.users.${config.sops.secrets.user1-name} = import ../../../../home/${config.sops.secrets.user1-name}/${config.networking.hostName}.nix;
