@@ -15,6 +15,7 @@
     ../common/core/efi-boot.nix
     ../common/core/fish.nix
     ../common/core/greetd.nix
+    ../common/core/hyprland.nix
     ../common/core/laptop.nix
     ../common/core/locale.nix
     ../common/core/nix.nix
@@ -24,7 +25,6 @@
     ../common/core/sops.nix
     ../common/core/steam-hardware.nix
     ../common/core/systemd-initrd.nix
-    ../common/core/wireless.nix
   ];
 
   networking =

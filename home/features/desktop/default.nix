@@ -2,9 +2,11 @@
 {
   imports = [
     ./discord.nix
+    ./element.nix
     ./firefox.nix
     ./font.nix
     ./gtk.nix
+    ./keepassxc.nix
     ./pavucontrol.nix
     ./rnnoise.nix
   ];

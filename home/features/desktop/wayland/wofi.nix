@@ -5,14 +5,9 @@ let
       ./wofi-run-shell.patch # Fix for https://todo.sr.ht/~scoopta/wofi/174
     ];
   });
-
-  pass = config.programs.password-store.package;
-  passEnabled = config.programs.password-store.enable;
-  pass-wofi = pkgs.pass-wofi.override { inherit pass; };
 in
 {
-  home.packages = [ wofi ] ++
-    (lib.optional passEnabled pass-wofi);
+  home.packages = [ wofi ];
 
   xdg.configFile."wofi/config".text = ''
     image_size=48
