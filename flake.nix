@@ -20,7 +20,7 @@
     flake-utils.url = github:numtide/flake-utils;
   };
 
-  outputs = { self, nixpkgs, home-manager, config, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       forEachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
@@ -47,13 +47,13 @@
 
       nixosConfigurations =
         {
-          farosh = mkNixos [ ./hosts/farosh ];
-          dinraal = mkNixos [ ./hosts/dinraal ];
+          farosh = mkNixos [ ./hosts/farosh/configuration.nix ];
+          dinraal = mkNixos [ ./hosts/dinraal/configuration.nix ];
 
-          naydra = mkNixos [ ./hosts/naydra ];
+          naydra = mkNixos [ ./hosts/naydra/configuration.nix ];
 
-          gleeok = mkNixos [ ./hosts/gleeok ];
-          valoo = mkNixos [ ./hosts/valoo ];
+          gleeok = mkNixos [ ./hosts/gleeok/configuration.nix ];
+          valoo = mkNixos [ ./hosts/valoo/configuration.nix ];
         };
       homeConfigurations =
         {

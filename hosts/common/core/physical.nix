@@ -1,5 +1,18 @@
 # Configuration for actual physical machines
-{ config, ... }: {
+{ inputs, outputs, config, ... }: {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ] ++ (builtins.attrValues outputs.nixosModules);
+
+  home-manager.extraSpecialArgs = { inherit inputs outputs; };
+
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   hardware = {
     enableRedistributableFirmware = true;
     enableAllFirmware = true;

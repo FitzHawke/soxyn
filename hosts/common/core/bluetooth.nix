@@ -1,6 +1,4 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ bluetooth ];
-
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluezFull;

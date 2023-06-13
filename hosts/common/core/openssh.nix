@@ -37,7 +37,6 @@ in
     '';
     settings = {
       X11Forwarding = false;
-      kbdInteractiveAuthentication = false;
       # Harden
       PasswordAuthentication = false;
       PermitRootLogin = "no";
