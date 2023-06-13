@@ -35,8 +35,7 @@
         inherit modules pkgs;
         extraSpecialArgs = { inherit inputs outputs; };
       };
-      sops.secrets.user1name = { sopsFile = ./users/secrets.yaml; };
-      user1 = "$__file{${config.sops.secrets.user1-name.path}}";
+      user1 = "will";
     in
     {
       nixosModules = import ./modules/nixos;
@@ -58,12 +57,12 @@
         };
       homeConfigurations =
         {
-          "${user1}@farosh" = mkHome [ ./home/farosh.nix ] nixpkgs.legacyPackages."x86_64-linux";
-          "${user1}@dinraal" = mkHome [ ./home/dinraal.nix ] nixpkgs.legacyPackages."x86_64-linux";
-          "${user1}@naydra" = mkHome [ ./home/naydra.nix ] nixpkgs.legacyPackages."x86_64-linux";
-          "${user1}@gleeok" = mkHome [ ./home/gleeok.nix ] nixpkgs.legacyPackages."x86_64-linux";
-          "${user1}@valoo" = mkHome [ ./home/valoo.nix ] nixpkgs.legacyPackages."x86_64-linux";
-          "${user1}@generic" = mkHome [ ./home/generic.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "will@farosh" = mkHome [ ./home/farosh.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "will@dinraal" = mkHome [ ./home/dinraal.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "will@naydra" = mkHome [ ./home/naydra.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "will@gleeok" = mkHome [ ./home/gleeok.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "will@valoo" = mkHome [ ./home/valoo.nix ] nixpkgs.legacyPackages."x86_64-linux";
+          "will@generic" = mkHome [ ./home/generic.nix ] nixpkgs.legacyPackages."x86_64-linux";
         };
     };
 } 

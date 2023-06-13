@@ -4,7 +4,7 @@ let
 in
 {
   users.mutableUsers = true;
-  users.users.${config.sops.secrets.user1-name} = {
+  users.users.will = {
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [ "wheel" "video" "audio" ] ++ ifExists [ "network" "i2c" "docker" "podman" "git" "libvirtd" ];
@@ -16,11 +16,10 @@ in
 
   sops.secrets = {
     sopsFile = ../../secrets.yaml;
-    user1-name = { neededForUsers = true; };
     user1-password = { neededForUsers = true; };
   };
 
-  home-manager.users.${config.sops.secrets.user1-name} = import ../../../../home/${config.sops.secrets.user1-name}/${config.networking.hostName}.nix;
+  home-manager.users.will = import ../../../../home/will/${config.networking.hostName}.nix;
 
   services.geoclue2.enable = true;
   security.pam.services = { swaylock = { }; };
