@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github.com:hyprwm/hyprland";
+    hyprland.url = "github:hyprwm/hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
     sops-nix.url = "github:mic92/sops-nix";
     nix-colors.url = "github:misterio77/nix-colors";
