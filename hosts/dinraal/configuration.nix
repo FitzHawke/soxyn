@@ -8,30 +8,25 @@
     inputs.hardware.nixosModules.common-gpu-intel
     inputs.hardware.nixosModules.common-pc-laptop
     inputs.hardware.nixosModules.common-pc-laptop-ssd
+    inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
-
-    ../common/core/bluetooth.nix
-    ../common/core/efi-boot.nix
-    ../common/core/fish.nix
-    ../common/core/greetd.nix
-    ../common/core/hyprland.nix
-    ../common/core/laptop.nix
-    ../common/core/locale.nix
-    ../common/core/nix.nix
-    ../common/core/openssh.nix
-    ../common/core/physical.nix
-    ../common/core/pipewire.nix
-    ../common/core/sops.nix
-    ../common/core/steam-hardware.nix
-    ../common/core/systemd-initrd.nix
+    ../common
+    ../../users/user1
   ];
+
+  services.greetd.settings.default_session.user = "will";
 
   networking =
     {
       hostName = "dinraal";
       useDHCP = true;
     };
+
+  programs = {
+    adb.enable = true;
+    dconf.enable = true;
+  };
 
   xdg.portal = { enable = true; };
   hardware =

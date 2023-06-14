@@ -5,10 +5,6 @@ in
 {
   home.packages = with pkgs; [ discord discocss ];
 
-  home.persistence = {
-    "/persist/home/misterio".directories = [ ".config/discord" ];
-  };
-
   xdg.configFile."discocss/custom.css".text = ''
     .theme-dark {
         --header-primary: #${colors.base05};

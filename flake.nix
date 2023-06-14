@@ -4,8 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
-    nur.url = "github:nix-community/NUR";
-
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +14,7 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
     sops-nix.url = "github:mic92/sops-nix";
     nix-colors.url = "github:misterio77/nix-colors";
+    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
 
     templates.url = github:NixOS/templates;
     flake-utils.url = github:numtide/flake-utils;

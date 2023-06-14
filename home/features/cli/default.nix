@@ -8,6 +8,7 @@
     ./git.nix
     ./gpg.nix
     ./nix-index.nix
+    ./nvim.nix
     ./pfetch.nix
     ./shellcolor.nix
     ./ssh.nix
@@ -26,7 +27,6 @@
     httpie # Better curl
     diffsitter # Better diff
     jq # JSON pretty printer and manipulator
-    trekscii # Cute startrek cli printer
 
     nil # Nix LSP
     nixfmt # Nix formatter

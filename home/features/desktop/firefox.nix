@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, config, lib, inputs, ... }:
 
 let
   addons = inputs.firefox-addons.packages.${pkgs.system};
@@ -6,9 +6,9 @@ in
 {
   programs.firefox = {
     enable = true;
-    profiles.misterio = {
+    profiles.will = {
       bookmarks = { };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions = with addons; [
         augmented-steam
         darkreader
         keepassxc-browser
@@ -16,7 +16,6 @@ in
         reddit-enhancement-suite
         steam-database
         ublock-origin
-        video-downloadhelper
       ];
       bookmarks = { };
       settings = {

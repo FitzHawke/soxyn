@@ -8,11 +8,13 @@
     ./gtk.nix
     ./keepassxc.nix
     ./pavucontrol.nix
+    ./playerctl.nix
+    ./qt.nix
     ./rnnoise.nix
   ];
 
   xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
-    xdg-utils-spawn-terminal
+    xdg-utils
   ];
 }

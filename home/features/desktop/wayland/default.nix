@@ -22,7 +22,6 @@
     wf-recorder
     wl-clipboard
     wl-mirror
-    wl-mirror-pick
     ydotool
   ];
 

@@ -11,10 +11,7 @@ in
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
+    config.allowUnfree = true;
   };
 
   nix = {
