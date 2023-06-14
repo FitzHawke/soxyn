@@ -6,9 +6,9 @@
     ./features/games
   ];
 
-  wallpaper = outputs.wallpapers.aenami-lunar;
-  colorscheme = inputs.nix-colors.colorSchemes.atelier-heath;
- 
+  wallpaper = outputs.wallpapers.cthulhu;
+  colorscheme = inputs.nix-colors.colorSchemes.tokyo-city-terminal-dark;
+
   monitors = [{
     name = "eDP-1";
     width = 1920;

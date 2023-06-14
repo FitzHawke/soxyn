@@ -4,9 +4,9 @@ let
 in
 ''
   general {
-    gaps_in=15
-    gaps_out=20
-    border_size=2.7
+    gaps_in=5
+    gaps_out=10
+    border_size=2
     col.active_border=0xff${colorscheme.colors.base0C}
     col.inactive_border=0xff${colorscheme.colors.base02}
     col.group_border_active=0xff${colorscheme.colors.base0B}
@@ -61,24 +61,64 @@ in
   }
 
   misc {
-    vfr=on
+    enable_swallow=true
+    swallow_regex=kitty|thunar
   }
 
   input {
     kb_layout=us
     kb_options=caps:escape_shifted_capslock
+    accel_profile=flat
+    follow_mouse=1
     touchpad {
       disable_while_typing=false
+      natural_scroll=true
     }
   }
 
-  # Passthrough mode (e.g. for VNC)
-  bind=SUPER,P,submap,passthrough
-  submap=passthrough
-  bind=SUPER,P,submap,reset
-  submap=reset
+  windowrulev2 = workspace special silent, title:^(Firefox — Sharing Indicator)$
+  windowrulev2 = workspace special silent, title:^(.*is sharing (your screen|a window)\.)$
+  windowrulev2 = float, title:^(MetaMask Notification)$
+  windowrulev2 = center, title:^(MetaMask Notification)$
+  windowrulev2 = idleinhibit focus, class:^(mpv|.+exe)$
+  windowrulev2 = idleinhibit focus, class:^(firefox|brave)$, title:^(.*YouTube.*)$
+  windowrulev2 = idleinhibit fullscreen, class:^(firefox|brave)$
 
+  windowrulev2 = rounding 0, xwayland:1, floating:1
+  windowrulev2 = center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$
+  windowrulev2 = size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$
 
+  layerrule = blur, ^(gtk-layer-shell)$
+  layerrule = ignorezero, ^(gtk-layer-shell)$
+  layerrule = blur, notifications
+  layerrule = ignorezero, notifications
+  layerrule = blur, ^(gtk-layer-shell|wofi)$
+  layerrule = ignorezero, ^(gtk-layer-shell|wofi)$
+
+  windowrule=tile,title:Spotify
+  windowrule=float,*.exe
+  windowrule=fullscreen,wlogout
+  windowrule=float,title:wlogout
+  windowrule=float,udiskie
+  windowrule=fullscreen,title:wlogout
+  windowrule=float,pavucontrol-qt
+  windowrule=float,qalculate-gtk
+  windowrulev2 = opacity 0.7 override 0.7 override,class:^(qualculate-gtk)$
+  windowrule=float,qalculate-qt
+  windowrule=nofullscreenrequest,class:firefox
+  windowrule=idleinhibit focus,mpv
+  windowrule=idleinhibit fullscreen,firefox
+
+  windowrule=float,title:^(Media viewer)$
+  windowrule=float,title:^(Transmission)$
+  windowrule=float,title:^(Volume Control)$
+  windowrule=float,title:^(Picture-in-Picture)$
+  windowrule=float,title:^(Firefox — Sharing Indicator)$
+  windowrule=move 0 0,title:^(Firefox — Sharing Indicator)$
+
+  windowrule=size 800 600,title:^(Volume Control)$
+  windowrule=move 75 44%,title:^(Volume Control)$
+  
   # Startup
   exec-once=waybar
   exec=swaybg -i ${wallpaper} --mode fill
@@ -88,7 +128,9 @@ in
   # Mouse binding
   bindm=SUPER,mouse:272,movewindow
   bindm=SUPER,mouse:273,resizewindow
-
+  bind=SUPER,mouse_down,workspace,e+1
+  bind=SUPER,mouse_up,workspace,e-1
+  
   # Program bindings
   bind=SUPER,Return,exec,${TERMINAL}
   bind=SUPER,w,exec,makoctl dismiss
