@@ -32,7 +32,7 @@ in
 {
   services.mako = {
     enable = true;
-    iconPath = self.packages.${pkgs.system}.catppuccin-folders;
+    iconPath = pkgs.catppuccin-papirus-folders;
     font = "Lexend 12";
     padding = "10,20";
     anchor = "top-center";

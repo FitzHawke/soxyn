@@ -20,7 +20,7 @@ in
       name = config.fontProfiles.monospace.family;
       size = 12;
     };
-    theme = "Catppuccin-Frappe";
+    theme = "Catppuccin-Mocha";
     settings = {
       scrollback_lines = 4000;
       scrollback_pager_history_size = 2048;

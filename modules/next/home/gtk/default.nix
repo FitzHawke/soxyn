@@ -8,16 +8,16 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Frappe-Compact-Pink-Dark";
+      name = "Catppuccin-Mocha-Compact-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "pink" ];
         size = "compact";
-        variant = "frappe";
+        variant = "mocha";
       };
     };
     iconTheme = {
       package = pkgs.catppuccin-papirus-folders;
-      name = "Catpuccin-Papirus";
+      name = "Catppuccin-Papirus";
     };
     font = {
       name = "Lexend";
@@ -39,8 +39,8 @@
 
   # cursor theme
   home.pointerCursor = {
-    package = pkgs.catppuccin-cursors.frappeDark;
-    name = "Catppuccin-Frappe-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    name = "Catppuccin-Mocha-Dark-Cursors";
     gtk.enable = true;
     x11.enable = true;
   };

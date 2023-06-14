@@ -47,14 +47,14 @@ let
   '';
 in
 {
-  home.packages = [ ocrScript texlive pkgs.pandoc pandoc-watch ];
+  home.packages = [ texlive pkgs.pandoc pandoc-watch ];
   services = {
     udiskie.enable = true;
     gpg-agent = {
       enable = true;
       pinentryFlavor = "gnome3";
       enableSshSupport = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
     };
   };
   programs = {
@@ -80,12 +80,12 @@ in
       enable = true;
       config = {
         pager = "less -FR";
-        theme = "Catppuccin-frappe";
+        theme = "Catppuccin-mocha";
       };
       themes = {
         Catppuccin-mocha = builtins.readFile (pkgs.fetchurl {
-          url = "https://github.com/catppuccin/bat/blob/ba4d16880d63e656acced2b7d4e034e4a93f74b1/Catppuccin-frappe.tmTheme";
-          hash = "sha256-v8dycvuCdw/zl4LMpa0pMiNVBuk3CMmSCH8vWS+RIVs=";
+          url = "https://github.com/catppuccin/bat/blob/ba4d16880d63e656acced2b7d4e034e4a93f74b1/Catppuccin-mocha.tmTheme";
+          hash = "sha256-qMQNJGZImmjrqzy7IiEkY5IhvPAMZpq0W6skLLsng/w=";
         });
       };
     };

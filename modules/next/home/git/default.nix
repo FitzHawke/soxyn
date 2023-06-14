@@ -77,15 +77,15 @@
   programs.lazygit = {
     enable = true;
     settings.gui.theme = {
-      # https://github.com/catppuccin/lazygit/blob/main/themes/frappe.yml
+      # https://github.com/catppuccin/lazygit/blob/main/themes/mocha.yml
       lightTheme = false;
-      activeBorderColor = [ "#A6D189" "bold" ];
-      inactiveBorderColor = [ "#8CAAEE" ];
-      optionsTextColor = [ "#C6D0F5" ];
-      selectedLineBgColor = [ "#414559" ];
-      selectedRangeBgColor = [ "#414559" ];
-      cherryPickedCommitBgColor = [ "#81C8BE" ];
-      cherryPickedCommitFgColor = [ "#8CAAEE" ];
+      activeBorderColor = [ "#A6E3A1" "bold" ];
+      inactiveBorderColor = [ "#89B4FA" ];
+      optionsTextColor = [ "#CDD6F4" ];
+      selectedLineBgColor = [ "#313244" ];
+      selectedRangeBgColor = [ "#313244" ];
+      cherryPickedCommitBgColor = [ "#94E2D5" ];
+      cherryPickedCommitFgColor = [ "#89B4FA" ];
       unstagedChangesColor = [ "red" ];
     };
   };
