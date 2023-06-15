@@ -1,4 +1,4 @@
-{ config, lib, pkgs, self, ... }:
+{ lib, pkgs, ... }:
 let
   volume =
     let

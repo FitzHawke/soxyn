@@ -1,8 +1,4 @@
-{ self
-, pkgs
-, lib
-, config
-, inputs
+{ pkgs
 , ...
 }: {
   gtk = {
@@ -17,7 +13,7 @@
     };
     iconTheme = {
       package = pkgs.catppuccin-papirus-folders;
-      name = "Catppuccin-Papirus";
+      name = "cat-mocha-pink";
     };
     font = {
       name = "Lexend";

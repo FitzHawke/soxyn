@@ -1,6 +1,4 @@
-{ inputs
-, pkgs
-, config
+{ pkgs
 , ...
 }: {
   nixpkgs.config.allowUnfree = false;

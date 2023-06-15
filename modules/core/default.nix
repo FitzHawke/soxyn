@@ -1,7 +1,4 @@
-{ config
-, pkgs
-,...
-}: {
+{ ... }: {
   imports = [
     # ./adblock.nix
     ./cron.nix

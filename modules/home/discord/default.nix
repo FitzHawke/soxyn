@@ -1,6 +1,4 @@
-{ config
-, pkgs
-, inputs
+{ pkgs
 , ...
 }: {
   home.packages = [

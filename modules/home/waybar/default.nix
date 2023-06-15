@@ -1,5 +1,4 @@
 { pkgs
-, lib
 , config
 , ...
 }:
@@ -49,7 +48,7 @@ in
           "custom/weather"
           "clock"
         ];
-        modules-right = [ "pulseaudio" "cpu" "custom/vpn" "network" "custom/power" ];
+        modules-right = [ "pulseaudio" "cpu" "network" "custom/power" ];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -59,7 +58,7 @@ in
             active = " 󰮯";
           };
         };
-        "custom/search" = with pkgs; {
+        "custom/search" = {
           format = " ";
           tooltip = false;
           on-click = "killall rofi || rofi -show drun";
