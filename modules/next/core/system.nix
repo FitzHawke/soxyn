@@ -76,7 +76,7 @@
       libsecret
       # graphical
       freetype
-      libglvnd
+      mesa
       libnotify
       SDL2
       vulkan-loader

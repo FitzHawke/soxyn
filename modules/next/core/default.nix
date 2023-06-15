@@ -4,7 +4,6 @@
 }: {
   imports = [
     ./adblock.nix
-    ./bootloader.nix
     ./cron.nix
     ./network.nix
     ./nix.nix

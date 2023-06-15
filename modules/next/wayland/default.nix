@@ -33,7 +33,6 @@
       XDG_SESSION_TYPE = "wayland";
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
-      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     };
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
@@ -48,8 +47,7 @@
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
+        intel-media-driver
       ];
     };
     pulseaudio.support32Bit = true;

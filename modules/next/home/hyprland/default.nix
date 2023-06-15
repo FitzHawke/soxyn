@@ -36,10 +36,16 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    # extraConfig = builtins.readFile ./hyprland.conf;
+    extraConfig =
+      (import ./moniters.nix {
+        inherit lib;
+        inherit (config) monitors;
+      }) +
+      (import ./config.nix {
+        inherit (config) pkgs;
+      });
   };
-
-  services.wlsunset = {
+  services. wlsunset = {
     enable = true;
     latitude = "43.95";
     longitude = "-81.22";
