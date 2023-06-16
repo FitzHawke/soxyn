@@ -14,7 +14,7 @@
   # on ssd systems, and volatile! Because it's wiped on reboot.
   boot.tmp.useTmpfs = lib.mkDefault true;
   # Firefox cache on tmpfs
-  fileSystems."/home/sioodmy/.cache/mozilla/firefox" = {
+  fileSystems."/home/will/.cache/mozilla/firefox" = {
     device = "tmpfs";
     fsType = "tmpfs";
     noCheck = true;

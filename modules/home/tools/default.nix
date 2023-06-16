@@ -83,8 +83,8 @@ in
       };
       themes = {
         Catppuccin-mocha = builtins.readFile (pkgs.fetchurl {
-          url = "https://github.com/catppuccin/bat/blob/ba4d16880d63e656acced2b7d4e034e4a93f74b1/Catppuccin-mocha.tmTheme";
-          hash = "sha256-x+9Is8VYUK+V/pgPDP6AaoqfGDVQHhGXPvA9iwfPtzI=";
+          url = "https://raw.githubusercontent.com/catppuccin/bat/ba4d16880d63e656acced2b7d4e034e4a93f74b1/Catppuccin-mocha.tmTheme";
+          hash = "sha256-qMQNJGZImmjrqzy7IiEkY5IhvPAMZpq0W6skLLsng/w=";
         });
       };
     };

@@ -168,7 +168,7 @@ monitor=eDP-1,1920x1080@60,0x0,1
   windowrule=move 75 44%,title:^(Volume Control)$
 
   # example binds
-  bind=SUPER,RETURN,exec,run-as-service footclient
+  bind=SUPER,RETURN,exec,kitty
   bind=SUPER,C,killactive,
   bind=SUPER,G,changegroupactive,
   bind=SUPER,T,togglegroup,

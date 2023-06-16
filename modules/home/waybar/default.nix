@@ -48,7 +48,7 @@ in
           "custom/weather"
           "clock"
         ];
-        modules-right = [ "pulseaudio" "cpu" "network" "custom/power" ];
+        modules-right = [ "wireplumber" "cpu" "network" "custom/power" ];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -61,13 +61,13 @@ in
         "custom/search" = {
           format = " ";
           tooltip = false;
-          on-click = "killall rofi || rofi -show drun";
+          on-click = "killall anyrun || anyrun";
         };
 
         "custom/weather" = {
           format = "{}";
           tooltip = true;
-          interval = 30;
+          interval = 300;
           exec = "${waybar-wttr}/bin/waybar-wttr";
           return-type = "json";
         };
@@ -134,7 +134,7 @@ in
           format-disconnected = "󰤭";
           tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
         };
-        pulseaudio = {
+        wireplumber = {
           scroll-step = 5;
           tooltip = false;
           format = "{icon} {volume}%";
