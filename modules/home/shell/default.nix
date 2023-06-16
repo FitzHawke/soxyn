@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: 
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
     ${lib.optionalString (config.home.sessionPath != []) ''
       export PATH=${builtins.concatStringsSep ":" config.home.sessionPath}:$PATH
@@ -22,7 +26,7 @@ let
       bash -lc "exec ${apply-hm-env} $@"
   '';
 in {
-  home.packages = with pkgs; [ run-as-service comma ripgrep ];
+  home.packages = with pkgs; [run-as-service comma ripgrep];
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
 
   programs = {
@@ -59,7 +63,7 @@ in {
           vicmd_symbol = "[󰊠](bold yellow)";
           format = "$symbol [|](bold bright-black) ";
         };
-        git_commit = { commit_hash_length = 4; };
+        git_commit = {commit_hash_length = 4;};
         line_break.disabled = false;
         lua.symbol = "[](blue) ";
         python.symbol = "[](blue) ";
@@ -73,7 +77,7 @@ in {
 
     fish = {
       enable = true;
-      shellAbbrs = with pkgs; 
+      shellAbbrs = with pkgs;
       with lib; {
         jqless = "jq -C | less -r";
 
@@ -114,7 +118,7 @@ in {
         media = "/run/media/$USER";
       };
       shellAliases = with pkgs;
-        with lib; {
+      with lib; {
         # Clear screen and scrollback
         clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
         rebuild = "doas nix-store --verify; pushd ~/dev/dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
@@ -130,13 +134,12 @@ in {
         nvimrg = "nvim -q (rg --vimgrep $argv | psub)";
       };
       interactiveShellInit = ''
-          fish_vi_key_bindings
-          set fish_cursor_default     block      blink
-          set fish_cursor_insert      line       blink
-          set fish_cursor_replace_one underscore blink
-          set fish_cursor_visual      block
-          '';
+        fish_vi_key_bindings
+        set fish_cursor_default     block      blink
+        set fish_cursor_insert      line       blink
+        set fish_cursor_replace_one underscore blink
+        set fish_cursor_visual      block
+      '';
     };
   };
 }
-

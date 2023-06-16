@@ -1,9 +1,9 @@
-{ pkgs
-, config
-, ...
-}:
-let
-  browser = [ "firefox.desktop" ];
+{
+  pkgs,
+  config,
+  ...
+}: let
+  browser = ["firefox.desktop"];
 
   associations = {
     "text/html" = browser;
@@ -19,13 +19,13 @@ let
     "application/x-extension-xhtml" = browser;
     "application/x-extension-xht" = browser;
 
-    "audio/*" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.dekstop" ];
-    "image/*" = [ "imv.desktop" ];
+    "audio/*" = ["mpv.desktop"];
+    "video/*" = ["mpv.dekstop"];
+    "image/*" = ["imv.desktop"];
     "application/json" = browser;
-    "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
-    "x-scheme-handler/spotify" = [ "spotify.desktop" ];
-    "x-scheme-handler/discord" = [ "WebCord.desktop" ];
+    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
+    "x-scheme-handler/spotify" = ["spotify.desktop"];
+    "x-scheme-handler/discord" = ["WebCord.desktop"];
   };
 
   texlive = pkgs.texlive.combine {
@@ -44,9 +44,8 @@ let
     #!/bin/sh
     while inotifywait -e close_write $1; do pandoc $@; done
   '';
-in
-{
-  home.packages = [ texlive pkgs.pandoc pandoc-watch ];
+in {
+  home.packages = [texlive pkgs.pandoc pandoc-watch];
   services = {
     udiskie.enable = true;
     gpg-agent = {
@@ -103,8 +102,6 @@ in
       templates = "${config.home.homeDirectory}/other";
     };
     mimeApps.enable = true;
-    mimeApps.associations.added = associations;
     mimeApps.defaultApplications = associations;
   };
 }
-

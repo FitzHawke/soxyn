@@ -8,6 +8,7 @@ Extremely rough WIP nix configuration repository.
 
 - [ ] add secret support
 - [ ] setup farosh host
+- [ ] reformat all nix files
 - [ ] fix theming on remaining apps
 - [ ] clean up for public release
 - [ ] build out an actual readme :)

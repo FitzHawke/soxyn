@@ -10,11 +10,8 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:nix-community/NUR";
+
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,14 +33,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, ... } @ inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    in
-    {
-      nixosConfigurations = import ./hosts inputs ;
+  outputs = {self, ...} @ inputs: let
+    system = "x86_64-linux";
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+  in {
+    nixosConfigurations = import ./hosts inputs;
 
-      formatter.${system} = pkgs.alejandra;
-    };
+    formatter.${system} = pkgs.alejandra;
+  };
 }

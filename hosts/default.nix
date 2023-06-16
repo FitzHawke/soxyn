@@ -1,9 +1,8 @@
-{ nixpkgs
-, self
-, nur
-, ...
-}:
-let
+{
+  nixpkgs,
+  self,
+  ...
+}: let
   inherit (self) inputs;
   bootloader = ../modules/core/bootloader.nix;
   core = ../modules/core;
@@ -12,7 +11,7 @@ let
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
-  shared = [ core bootloader wayland physical];
+  shared = [core bootloader wayland physical];
 
   home-manager = {
     useUserPackages = true;
@@ -23,11 +22,7 @@ let
     };
     users.will = ../modules/home;
   };
-  nixpkgs.overlays = [
-    nur.overlay
-  ];
-in
-{
+in {
   # all my hosts are named after zelda creatures btw
 
   # laptop
@@ -35,15 +30,15 @@ in
     system = "x86_64-linux";
     modules =
       [
-        { networking.hostName = "dinraal"; }
+        {networking.hostName = "dinraal";}
         ./dinraal/hardware-configuration.nix
         hw.common-cpu-intel
         hw.common-pc-laptop
         hmModule
-        { inherit home-manager; }
+        {inherit home-manager;}
       ]
       ++ shared;
-    specialArgs = { inherit inputs; };
+    specialArgs = {inherit inputs;};
   };
 
   # main desktop
@@ -52,17 +47,17 @@ in
     system = "x86_64-linux";
     modules =
       [
-        { networking.hostName = "farosh"; }
+        {networking.hostName = "farosh";}
         ./farosh/hardware-configuration.nix
         bootloader
         hw.common-cpu-amd
         hw.common-gpu-amd
         hw.common-pc-ssd
         hmModule
-        { inherit home-manager; }
+        {inherit home-manager;}
       ]
       ++ shared;
-    specialArgs = { inherit inputs; };
+    specialArgs = {inherit inputs;};
   };
 
   # gleeok naydra and valoo are future projects :)

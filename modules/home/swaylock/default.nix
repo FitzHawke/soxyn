@@ -1,38 +1,40 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }: {
   programs.swaylock = {
+    enable = true;
     package = pkgs.swaylock-effects;
     settings = {
       clock = true;
-      color = "1e1e2e";
+      color = "#1e1e2e";
       font = "Work Sans";
       show-failed-attempts = false;
       indicator = true;
       indicator-radius = 200;
       indicator-thickness = 20;
-      line-color = "1e1e2e";
-      ring-color = "585b70";
-      inside-color = "1e1e2e";
-      key-hl-color = "f2cdcd";
-      separator-color = "00000000";
-      text-color = "cdd6f4";
+      line-color = "#1e1e2e";
+      ring-color = "#585b70";
+      inside-color = "#1e1e2e";
+      key-hl-color = "#f2cdcd";
+      separator-color = "#00000000";
+      text-color = "#cdd6f4";
       text-caps-lock-color = "";
-      line-ver-color = "f2cdcd";
-      ring-ver-color = "f2cdcd";
-      inside-ver-color = "1e1e2e";
-      text-ver-color = "cdd6f4";
-      ring-wrong-color = "f38ba8";
-      text-wrong-color = "eba0ac";
-      inside-wrong-color = "1e1e2e";
-      inside-clear-color = "1e1e2e";
-      text-clear-color = "cdd6f4";
-      ring-clear-color = "a6e3a1";
-      line-clear-color = "1e1e2e";
-      line-wrong-color = "1e1e2e";
-      bs-hl-color = "f38ba8";
+      line-ver-color = "#f2cdcd";
+      ring-ver-color = "#f2cdcd";
+      inside-ver-color = "#1e1e2e";
+      text-ver-color = "#cdd6f4";
+      ring-wrong-color = "#f38ba8";
+      text-wrong-color = "#eba0ac";
+      inside-wrong-color = "#1e1e2e";
+      inside-clear-color = "#1e1e2e";
+      text-clear-color = "#cdd6f4";
+      ring-clear-color = "#a6e3a1";
+      line-clear-color = "#1e1e2e";
+      line-wrong-color = "#1e1e2e";
+      bs-hl-color = "#f38ba8";
       line-uses-ring = false;
       grace = 2;
       grace-no-mouse = true;
@@ -68,5 +70,5 @@
     ];
   };
 
-  systemd.user.services.swayidle.Install.WantedBy = lib.mkForce [ "hyprland-session.target" ];
+  systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 }

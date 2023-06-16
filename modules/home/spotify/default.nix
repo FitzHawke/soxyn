@@ -1,24 +1,22 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
   # themable spotify
-  programs.spicetify =
-    let
-      spicePkgs = inputs.spicetify-nix.packages.${pkgs.hostPlatform.system}.default;
-    in
-    {
-      enable = true;
+  programs.spicetify = let
+    spicePkgs = inputs.spicetify-nix.packages.${pkgs.hostPlatform.system}.default;
+  in {
+    enable = true;
 
+    theme = spicePkgs.themes.catppuccin-mocha;
 
-      theme = spicePkgs.themes.catppuccin-mocha;
+    colorScheme = "mauve";
 
-      colorScheme = "mauve";
-
-      enabledExtensions = with spicePkgs.extensions; [
-        fullAppDisplay
-        hidePodcasts
-        shuffle
-      ];
-    };
+    enabledExtensions = with spicePkgs.extensions; [
+      fullAppDisplay
+      hidePodcasts
+      shuffle
+    ];
+  };
 }

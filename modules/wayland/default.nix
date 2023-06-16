@@ -1,8 +1,9 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
-  imports = [ ./fonts.nix ./services.nix ./pipewire.nix ];
+  imports = [./fonts.nix ./services.nix ./pipewire.nix];
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';
@@ -22,7 +23,6 @@
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_STYLE_OVERRIDE = "kvantum";
       MOZ_ENABLE_WAYLAND = "1";
       WLR_BACKEND = "vulkan";
@@ -32,13 +32,6 @@
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
     };
-    loginShellInit = ''
-      if test (tty) = "/dev/tty1"
-        dbus-update-activation-environment --systemd DISPLAY
-        eval $(gnome-keyring-daemon --start --components=ssh)
-        eval $(ssh-agent)
-      end
-    '';
   };
 
   hardware = {
@@ -50,7 +43,6 @@
         intel-media-driver
       ];
     };
-    pulseaudio.support32Bit = true;
   };
 
   xdg.portal = {

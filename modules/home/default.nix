@@ -1,10 +1,8 @@
-{ inputs
-, ...
-}:
+{inputs, ...}:
 # glue all configs together
 {
   config.home.stateVersion = "23.05";
-  config.home.extraOutputsToInstall = [ "doc" "devdoc" ];
+  config.home.extraOutputsToInstall = ["doc" "devdoc"];
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-db.hmModules.nix-index
@@ -16,6 +14,7 @@
     ./anyrun
     ./bottom
     ./discord
+    ./firefox
     ./git
     ./gtk
     ./hyprland
