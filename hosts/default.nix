@@ -1,5 +1,6 @@
 { nixpkgs
 , self
+, nur
 , ...
 }:
 let
@@ -22,6 +23,9 @@ let
     };
     users.will = ../modules/home;
   };
+  nixpkgs.overlays = [
+    nur.overlay
+  ];
 in
 {
   # all my hosts are named after zelda creatures btw
@@ -34,9 +38,7 @@ in
         { networking.hostName = "dinraal"; }
         ./dinraal/hardware-configuration.nix
         hw.common-cpu-intel
-        hw.common-gpu-intel
         hw.common-pc-laptop
-        hw.common-pc-laptop-ssd
         hmModule
         { inherit home-manager; }
       ]

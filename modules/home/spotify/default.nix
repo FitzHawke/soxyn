@@ -13,7 +13,7 @@
 
       theme = spicePkgs.themes.catppuccin-mocha;
 
-      colorScheme = "flamingo";
+      colorScheme = "mauve";
 
       enabledExtensions = with spicePkgs.extensions; [
         fullAppDisplay

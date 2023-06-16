@@ -95,7 +95,7 @@ in
               		${notify-send} "Hyprland" "Turned on swallowing"
               fi
             '';
-          format = "";
+          format = "󰊰 ";
         };
         "custom/power" = {
           tooltip = false;
@@ -122,14 +122,14 @@ in
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = "";
-          format-plugged = "";
+          format-charging = "󰂄";
+          format-plugged = "󰂄";
           format-alt = "{icon} {capacity}%";
-          format-icons = [ "" "" "" "" "" "" "" "" "" "" "" "" ];
+          format-icons = [ "󱉞" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         };
         network = {
           format-wifi = "󰤨 {essid} {signalStrength}%";
-          format-ethernet = "󰤨 {bandwidthTotalBytes}";
+          format-ethernet = "󰌗 {bandwidthTotalBytes}";
           format-alt = "󰤨 {ipaddr}/{ifname}";
           format-disconnected = "󰤭";
           tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
@@ -138,7 +138,7 @@ in
           scroll-step = 5;
           tooltip = false;
           format = "{icon} {volume}%";
-          format-icons = { default = [ "" "" "墳" ]; };
+          format-icons = { default = [ "󰕿" "󰖀" "󰕾" ]; };
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
         };
       };

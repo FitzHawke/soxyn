@@ -3,7 +3,6 @@
 , ...
 }: {
   imports = [ ./fonts.nix ./services.nix ./pipewire.nix ];
-  # nixpkgs.overlays = with inputs; [nixpkgs-wayland.overlay];
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';
@@ -34,9 +33,11 @@
       CLUTTER_BACKEND = "wayland";
     };
     loginShellInit = ''
-      dbus-update-activation-environment --systemd DISPLAY
-      eval $(gnome-keyring-daemon --start --components=ssh)
-      eval $(ssh-agent)
+      if test (tty) = "/dev/tty1"
+        dbus-update-activation-environment --systemd DISPLAY
+        eval $(gnome-keyring-daemon --start --components=ssh)
+        eval $(ssh-agent)
+      end
     '';
   };
 

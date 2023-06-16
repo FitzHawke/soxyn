@@ -1,32 +1,30 @@
 { pkgs
 , ...
 }: {
-  nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
+    bandwhich
+    bc
     catimg
     cached-nix-shell
-    firefox
     chromium
+    dconf
     element
-    quodlibet
-    todo
-    yt-dlp
-    hyperfine
-    glow
-    nmap
-    unzip
-    rsync
+    fd
     ffmpeg
     gimp
-    imagemagick
-    bc
-    bandwhich
+    glow
     grex
-    fd
-    xh
+    hyperfine
+    imagemagick
     jq
-    lm_sensors
     keepassxc
-    dconf
+    lm_sensors
+    nmap
+    quodlibet
+    rsync
+    todo
+    unzip
+    xh
+    yt-dlp
   ];
 }
