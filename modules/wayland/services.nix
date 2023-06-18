@@ -1,9 +1,9 @@
-{config, ...}: {
+{config, lib,...}: {
   services = {
     greetd = {
       enable = true;
       settings.default_session = {
-        command = "${config.programs.hyprland.package}/bin/Hyperland";
+        command = "${lib.getExe config.programs.hyprland.package}/bin/Hyperland";
         user = "will";
       };
     };

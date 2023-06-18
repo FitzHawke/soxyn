@@ -22,7 +22,6 @@
     rsync
     todo
     unzip
-    vscode-fhs
     xh
     yt-dlp
   ];
