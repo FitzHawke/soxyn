@@ -35,7 +35,7 @@
     ./swaylock
     ./syncthing
     ./tools
-    ./waybar
+    # ./waybar
     ./vscode
     ./zathura
   ];

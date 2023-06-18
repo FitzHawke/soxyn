@@ -45,6 +45,19 @@ in {
       night = 3750;
     };
   };
+
+  programs.eww-hyprland = {
+    enable = true;
+    package = inputs.eww.packages.${pkgs.hostPlatform.system}.eww-wayland.overrideAttrs (prev: {
+      src = fetchFromGithub {
+        owner = "ralismark";
+        repo = "eww";
+        rev = "5f69d75f75e47597d4ccb4d0fb1d0fc4f1440370";
+        hash = "something";
+      };
+    });
+  };
+
   # fake a tray to let apps start
   # https://github.com/nix-community/home-manager/issues/2064
   systemd.user.targets.tray = {
