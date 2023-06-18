@@ -27,6 +27,7 @@ in {
         "docker"
         "podman"
         "git"
+        "syncthing"
         "libvirtd"
         "i2c"
         "systemd-journal"

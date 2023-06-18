@@ -1,11 +1,11 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    anki-bin
     bandwhich
     bc
     catimg
     cached-nix-shell
     chromium
-    dconf
     element-desktop-wayland
     fd
     ffmpeg
@@ -14,10 +14,12 @@
     grex
     hyperfine
     imagemagick
+    jellyfin-media-player
     jq
     keepassxc
     lm_sensors
     nmap
+    obsidian
     quodlibet
     rsync
     todo

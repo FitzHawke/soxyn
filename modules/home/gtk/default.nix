@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+
+  imports = [ ./gnomeapps ];
+
   gtk = {
     enable = true;
     theme = {
@@ -41,6 +44,8 @@
 
   home.sessionVariables = {
     XCURSOR_SIZE = "16";
+    # Seem to need for GTK4
+    GTK_THEME = "Catppuccin-Mocha-Compact-Mauve-Dark";
   };
 
   # catppuccin theme for qt-apps

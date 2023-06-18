@@ -20,7 +20,7 @@ in {
     inputs.hyprwm-contrib.packages.${system}.grimblast
     libnotify
     wf-recorder
-    brightnessctl
+    brillo
     pamixer
     python39Packages.requests
     slurp

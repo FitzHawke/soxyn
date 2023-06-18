@@ -1,4 +1,7 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  ...
+}: let
   propaganda = pkgs.writeTextFile {
     name = "propaganda";
     text = ''
@@ -223,8 +226,8 @@ in {
       bind=SUPER,mouse_down,workspace,e+1
       bind=SUPER,mouse_up,workspace,e-1
 
-      bind=,XF86MonBrightnessUp,exec,brightnessctl set +5%
-      bind=,XF86MonBrightnessDown,exec,brightnessctl set 5%-
+      bindle = , XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5
+      bindle = , XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5
 
       binde = SUPERALT, L, resizeactive, 80 0
       binde = SUPERALT, H, resizeactive, -80 0
@@ -232,8 +235,8 @@ in {
       bindm=SUPER,mouse:273,resizewindow
 
       # Volume keys
-      binde=, XF86AudioRaiseVolume, exec, volume -i 5
-      bindl=, XF86AudioLowerVolume, exec, volume -d 5
+      bindle=, XF86AudioRaiseVolume, exec, volume -i 5
+      bindle=, XF86AudioLowerVolume, exec, volume -d 5
       bindl=, XF86AudioMute, exec, volume -t
 
       exec-once = mako

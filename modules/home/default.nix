@@ -17,7 +17,7 @@
 
     ./packages.nix
     ./games.nix
-
+    
     ./anyrun
     ./bottom
     ./discord
@@ -33,8 +33,10 @@
     ./shell
     ./spotify
     ./swaylock
+    ./syncthing
     ./tools
     ./waybar
+    ./vscode
     ./zathura
   ];
 }
