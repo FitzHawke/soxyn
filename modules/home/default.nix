@@ -33,7 +33,6 @@
     ./shell
     ./spotify
     ./swaylock
-    ./syncthing
     ./tools
     # ./waybar
     ./vscode

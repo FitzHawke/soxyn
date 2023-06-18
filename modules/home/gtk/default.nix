@@ -1,7 +1,5 @@
 {pkgs, ...}: {
 
-  imports = [ ./gnomeapps ];
-
   gtk = {
     enable = true;
     theme = {
@@ -50,6 +48,10 @@
 
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [
+    evolution
+    gnome.gnome-calculator
+    gnome.gnome-calendar
+    gnome.nautilus
     libsForQt5.qtstyleplugin-kvantum
     (catppuccin-kvantum.override {
       accent = "Mauve";

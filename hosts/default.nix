@@ -60,7 +60,5 @@ in {
     specialArgs = {inherit inputs;};
   };
   
-  homeManagerModules.eww-hyprland = import ../modules/home/eww;
-
   # gleeok naydra and valoo are future projects :)
 }

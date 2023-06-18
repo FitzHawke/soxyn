@@ -17,6 +17,7 @@
   };
 
   programs = {
+    dconf.enable= true;
     bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
   };
 

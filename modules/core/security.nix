@@ -88,49 +88,4 @@
     };
     sudo.enable = false;
   };
-
-  # Security
-  boot.blacklistedKernelModules = [
-    # Obscure network protocols
-    "ax25"
-    "netrom"
-    "rose"
-    # Old or rare or insufficiently audited filesystems
-    "adfs"
-    "affs"
-    "bfs"
-    "befs"
-    "cramfs"
-    "efs"
-    "erofs"
-    "exofs"
-    "freevxfs"
-    "f2fs"
-    "vivid"
-    "gfs2"
-    "ksmbd"
-    "nfsv4"
-    "nfsv3"
-    "cifs"
-    "nfs"
-    "cramfs"
-    "freevxfs"
-    "jffs2"
-    "hfs"
-    "hfsplus"
-    "squashfs"
-    "udf"
-    "bluetooth"
-    "btusb"
-    "uvcvideo" # thats why your webcam not worky
-    "hpfs"
-    "jfs"
-    "minix"
-    "nilfs2"
-    "omfs"
-    "uvcvideo"
-    "qnx4"
-    "qnx6"
-    "sysv"
-  ];
 }

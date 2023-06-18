@@ -15,7 +15,7 @@ with lib; let
     hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | swappy -f -; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
 in {
-  imports = [./config.nix];
+  imports = [./config.nix ../eww];
   home.packages = with pkgs; [
     inputs.hyprwm-contrib.packages.${system}.grimblast
     libnotify
@@ -44,18 +44,6 @@ in {
       day = 6200;
       night = 3750;
     };
-  };
-
-  programs.eww-hyprland = {
-    enable = true;
-    package = inputs.eww.packages.${pkgs.hostPlatform.system}.eww-wayland.overrideAttrs (prev: {
-      src = fetchFromGithub {
-        owner = "ralismark";
-        repo = "eww";
-        rev = "5f69d75f75e47597d4ccb4d0fb1d0fc4f1440370";
-        hash = "something";
-      };
-    });
   };
 
   # fake a tray to let apps start

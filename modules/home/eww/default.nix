@@ -6,13 +6,13 @@
 }: let
   dependencies = with pkgs; [
     config.wayland.windowManager.hyprland.package
-    cfg.package
     bash
     blueberry
     bluez
     brillo
     coreutils
     dbus
+    eww-wayland
     findutils
     gawk
     gnome.gnome-control-center
@@ -36,38 +36,48 @@
     wlogout
   ];
 in {
-    home.packages = [ pkgs.eww-wayland ];
+  home.packages = [
+    # (pkgs.eww-wayland.overrideAttrs
+    #   (old: {
+    #     src = pkgs.fetchFromGitHub {
+    #       owner = "ralismark";
+    #       repo = "eww";
+    #       rev = "5f69d75f75e47597d4ccb4d0fb1d0fc4f1440370";
+    #       hash = "sha256-o38cXPG296Ojyg7QN4SyVg4HqdO1s8Y1Pei4N5PcMGo=";
+    #     };
+    #   }))
+    pkgs.eww-wayland
+  ];
 
-    # remove nix files
-    xdg.configFile."eww" = {
-      source = lib.cleanSourceWith {
-        filter = name: _type: let
-          baseName = baseNameOf (toString name);
-        in
-          !(lib.hasSuffix ".nix" baseName) && (baseName != "_colors.scss");
-        src = lib.cleanSource ./.;
-      };
-
-      # links each file individually, which lets us insert the colors file separately
-      recursive = true;
+  # remove nix files
+  xdg.configFile."eww" = {
+    source = lib.cleanSourceWith {
+      filter = name: _type: let
+        baseName = baseNameOf (toString name);
+      in
+        !(lib.hasSuffix ".nix" baseName) && (baseName != "_colors.scss");
+      src = lib.cleanSource ./.;
     };
 
-    # colors file
-    xdg.configFile."eww/css/_colors.scss".text = (builtins.readFile ./css/_colors.scss);
+    # links each file individually, which lets us insert the colors file separately
+    recursive = true;
+  };
 
-    systemd.user.services.eww = {
-      Unit = {
-        Description = "Eww Daemon";
-        # not yet implemented
-        # PartOf = ["tray.target"];
-        PartOf = ["graphical-session.target"];
-      };
-      Service = {
-        Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
-        ExecStart = "${config.programs.eww-wayland.package}/bin/eww daemon --no-daemonize";
-        Restart = "on-failure";
-      };
-      Install.WantedBy = ["graphical-session.target"];
+  # colors file
+  xdg.configFile."eww/css/_colors.scss".text = builtins.readFile ./css/_colors.scss;
+
+  systemd.user.services.eww = {
+    Unit = {
+      Description = "Eww Daemon";
+      # not yet implemented
+      # PartOf = ["tray.target"];
+      PartOf = ["graphical-session.target"];
     };
-  
+    Service = {
+      Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
+      ExecStart = "${lib.getExe pkgs.eww-wayland} daemon --no-daemonize";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = ["graphical-session.target"];
+  };
 }

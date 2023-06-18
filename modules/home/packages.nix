@@ -3,6 +3,7 @@
     anki-bin
     bandwhich
     bc
+    blueberry
     catimg
     cached-nix-shell
     chromium

@@ -79,7 +79,7 @@ in {
         disable_hyprland_logo=true
         disable_splash_rendering=true
         enable_swallow=true
-        swallow_regex=foot|thunar
+        swallow_regex=kitty|thunar
       }
 
       decoration {
@@ -240,6 +240,6 @@ in {
       bindl=, XF86AudioMute, exec, volume -t
 
       exec-once = mako
-      exec-once = run-as-service waybar
+      exec-once = eww open bar
     '';
 }
