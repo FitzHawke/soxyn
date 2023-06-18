@@ -1,10 +1,12 @@
-{ lib, pkgs, ... }:
-let
-  volume =
-    let
-      pamixer = lib.getExe pkgs.pamixer;
-      notify-send = pkgs.libnotify + "/bin/notify-send";
-    in
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  volume = let
+    pamixer = lib.getExe pkgs.pamixer;
+    notify-send = pkgs.libnotify + "/bin/notify-send";
+  in
     pkgs.writeShellScriptBin "volume" ''
       #!/bin/sh
 
@@ -28,8 +30,7 @@ let
               -u low
       fi
     '';
-in
-{
+in {
   home.packages = [volume];
   services.mako = {
     enable = true;

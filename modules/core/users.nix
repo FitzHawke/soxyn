@@ -1,11 +1,10 @@
-{ config
-, pkgs
-, ...
-}:
-let
-  ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in {
   users.users.root.initialPassword = "changeme";
   programs.fish = {
     enable = true;
@@ -18,28 +17,30 @@ in
 
   users.users.will = {
     isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-    ] ++ ifExists [
-      "docker"
-      "podman"
-      "git"
-      "libvirtd"
-      "i2c"
-      "systemd-journal"
-      "plugdev"
-      "wireshark"
-      "input"
-      "lp"
-      "networkmanager"
-      "power"
-      "nix"
-    ];
+    extraGroups =
+      [
+        "wheel"
+        "video"
+        "audio"
+      ]
+      ++ ifExists [
+        "docker"
+        "podman"
+        "git"
+        "libvirtd"
+        "i2c"
+        "systemd-journal"
+        "plugdev"
+        "wireshark"
+        "input"
+        "lp"
+        "networkmanager"
+        "power"
+        "nix"
+      ];
     uid = 1000;
     shell = pkgs.fish;
     initialPassword = "changeme";
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../secrets/ssh.pub) ];
+    openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/ssh.pub)];
   };
 }

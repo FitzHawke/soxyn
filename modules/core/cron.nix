@@ -1,6 +1,4 @@
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   services.cron = {
     enable = true;
     systemCronJobs = with pkgs; [

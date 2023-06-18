@@ -1,6 +1,4 @@
-{ lib
-, ...
-}: {
+{lib, ...}: {
   services.openssh = {
     enable = true;
 
@@ -12,7 +10,7 @@
       KbdInteractiveAuthentication = false;
     };
     openFirewall = true;
-    ports = [ 22 ];
+    ports = [22];
     banner = ''
       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⠖⢶⣦⣄⡀⠀⢀⣴⣶⠟⠓⣶⣦⣄⡀⠀⠀⠀⠀⠀⣀⣤⣤⣀⡀⠀⠀⢠⣤⣤⣄⡀⠀⠀⠀⠀⠀
       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡿⣿⡄⠀⣿⠈⢻⣤⣾⠏⠀⠀⠀⠈⢷⡈⠻⣦⡀⠀⣠⣾⠟⠋⠀⠙⣿⣶⣴⠏⢠⣿⠋⠉⣷⡄⠀⠀⠀

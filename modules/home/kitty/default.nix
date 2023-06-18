@@ -1,18 +1,18 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   kitty-xterm = pkgs.writeShellScriptBin "xterm" ''
     ${config.programs.kitty.package}/bin/kitty -1 "$@"
   '';
-in
-{
+in {
   home = {
-    packages = [ kitty-xterm ];
+    packages = [kitty-xterm];
     sessionVariables = {
       TERMINAL = "kitty -1";
     };
   };
-
 
   programs.kitty = {
     enable = true;

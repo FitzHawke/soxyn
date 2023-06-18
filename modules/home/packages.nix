@@ -6,7 +6,7 @@
     cached-nix-shell
     chromium
     dconf
-    element
+    element-desktop-wayland
     fd
     ffmpeg
     gimp
@@ -22,6 +22,7 @@
     rsync
     todo
     unzip
+    vscode-fhs
     xh
     yt-dlp
   ];

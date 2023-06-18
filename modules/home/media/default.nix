@@ -1,18 +1,16 @@
-{ pkgs
-, ...
-}: {
-  home.packages = with pkgs; [ mpc_cli playerctl pavucontrol pulsemixer imv ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [mpc_cli playerctl pavucontrol pulsemixer imv];
   programs = {
     mpv = {
       enable = true;
-      defaultProfiles = [ "gpu-hq" ];
+      defaultProfiles = ["gpu-hq"];
       config.osc = false;
-      scripts = with pkgs.mpvScripts; [ mpris thumbnail sponsorblock ];
+      scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock];
     };
 
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
+      plugins = with pkgs.obs-studio-plugins; [wlrobs];
     };
   };
   services.mpd = {
@@ -106,11 +104,11 @@
       }
       {
         key = "J";
-        command = [ "select_item" "scroll_down" ];
+        command = ["select_item" "scroll_down"];
       }
       {
         key = "K";
-        command = [ "select_item" "scroll_up" ];
+        command = ["select_item" "scroll_up"];
       }
     ];
   };

@@ -1,8 +1,9 @@
-{ config
-, pkgs
-, lib
-, inputs
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
 }: {
   environment = {
     # set channels (backwards compatibility)
@@ -11,8 +12,8 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
 
-    systemPackages = with pkgs; [ git deadnix alejandra statix ];
-    defaultPackages = [ ];
+    systemPackages = with pkgs; [git deadnix alejandra statix];
+    defaultPackages = [];
   };
 
   nixpkgs = {
@@ -49,7 +50,7 @@
     daemonIOSchedClass = "idle";
 
     # pin the registry to avoid downloading and evaling a new nixpkgs version every time
-    registry = lib.mapAttrs (_: v: { flake = v; }) inputs;
+    registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
@@ -69,15 +70,15 @@
       # use binary cache, its not gentoo
       builders-use-substitutes = true;
       # allow sudo users to mark the following values as trusted
-      allowed-users = [ "root" "@wheel" ];
+      allowed-users = ["root" "@wheel"];
       # only allow sudo users to manage the nix store
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
       sandbox = true;
       max-jobs = "auto";
       # continue building derivations if one fails
       keep-going = true;
       log-lines = 20;
-      extra-experimental-features = [ "flakes" "nix-command" "recursive-nix" "ca-derivations" ];
+      extra-experimental-features = ["flakes" "nix-command" "recursive-nix" "ca-derivations"];
 
       # use binary cache, its not gentoo
       substituters = [

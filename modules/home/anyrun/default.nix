@@ -1,12 +1,11 @@
-{ inputs
-, pkgs
-, ...
-}:
-let
-  inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
-in
 {
-  home.packages = [ anyrun ];
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
+in {
+  home.packages = [anyrun];
 
   xdg.configFile = {
     "anyrun/config.ron".text = ''

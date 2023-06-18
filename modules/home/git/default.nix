@@ -1,7 +1,5 @@
-{ pkgs
-, ...
-}: {
-  home.packages = with pkgs; [ gitflow ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [gitflow];
   programs.git = {
     enable = true;
     userName = "FitzHawke";
@@ -24,7 +22,7 @@
       "result-*"
     ];
     extraConfig = {
-      init = { defaultBranch = "main"; };
+      init = {defaultBranch = "main";};
       delta = {
         options.map-styles = "bold purple => syntax #ca9ee6, bold cyan => syntax #8caaee";
         line-numbers = true;
@@ -78,14 +76,14 @@
     settings.gui.theme = {
       # https://github.com/catppuccin/lazygit/blob/main/themes/mocha.yml
       lightTheme = false;
-      activeBorderColor = [ "#A6E3A1" "bold" ];
-      inactiveBorderColor = [ "#89B4FA" ];
-      optionsTextColor = [ "#CDD6F4" ];
-      selectedLineBgColor = [ "#313244" ];
-      selectedRangeBgColor = [ "#313244" ];
-      cherryPickedCommitBgColor = [ "#94E2D5" ];
-      cherryPickedCommitFgColor = [ "#89B4FA" ];
-      unstagedChangesColor = [ "red" ];
+      activeBorderColor = ["#A6E3A1" "bold"];
+      inactiveBorderColor = ["#89B4FA"];
+      optionsTextColor = ["#CDD6F4"];
+      selectedLineBgColor = ["#313244"];
+      selectedRangeBgColor = ["#313244"];
+      cherryPickedCommitBgColor = ["#94E2D5"];
+      cherryPickedCommitFgColor = ["#89B4FA"];
+      unstagedChangesColor = ["red"];
     };
   };
 }

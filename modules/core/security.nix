@@ -1,15 +1,11 @@
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }:
 # this makes our system more secure
 # note that it might break some stuff, eg webcam
 {
-  services.tor = {
-    enable = true;
-    client.enable = true;
-    torsocks.enable = true;
-  };
   # tmpfs = /tmp is mounted in ram. Doing so makes temp file management speedy
   # on ssd systems, and volatile! Because it's wiped on reboot.
   boot.tmp.useTmpfs = lib.mkDefault true;
@@ -33,7 +29,7 @@
     apparmor = {
       enable = true;
       killUnconfinedConfinables = true;
-      packages = [ pkgs.apparmor-profiles ];
+      packages = [pkgs.apparmor-profiles];
     };
     pam = {
       loginLimits = [
@@ -64,27 +60,27 @@
       enable = true;
       extraRules = [
         {
-          groups = [ "wheel" ];
+          groups = ["wheel"];
           persist = true;
           keepEnv = false;
         }
         {
-          groups = [ "power" ];
+          groups = ["power"];
           noPass = true;
           cmd = "${pkgs.systemd}/bin/poweroff";
         }
         {
-          groups = [ "power" ];
+          groups = ["power"];
           noPass = true;
           cmd = "${pkgs.systemd}/bin/reboot";
         }
         {
-          groups = [ "nix" ];
+          groups = ["nix"];
           cmd = "nix-collect-garbage";
           noPass = true;
         }
         {
-          groups = [ "nix" ];
+          groups = ["nix"];
           cmd = "nixos-rebuild";
           keepEnv = true;
         }

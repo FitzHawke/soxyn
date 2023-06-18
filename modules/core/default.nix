@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     # ./adblock.nix
     ./cron.nix

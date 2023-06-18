@@ -1,6 +1,4 @@
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   # universal aliases
   home.packages = with pkgs; [
     (writeScriptBin "htop" ''exec btm'')
@@ -18,8 +16,8 @@
         {
           ratio = 2;
           child = [
-            { type = "cpu"; }
-            { type = "mem"; }
+            {type = "cpu";}
+            {type = "mem";}
           ];
         }
         {

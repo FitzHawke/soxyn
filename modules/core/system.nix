@@ -1,13 +1,14 @@
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }: {
   services = {
     dbus = {
-      packages = with pkgs; [ dconf gcr udisks2 ];
+      packages = with pkgs; [dconf gcr udisks2];
       enable = true;
     };
-    udev.packages = with pkgs; [ gnome.gnome-settings-daemon android-udev-rules ledger-udev-rules ];
+    udev.packages = with pkgs; [gnome.gnome-settings-daemon android-udev-rules ledger-udev-rules];
     journald.extraConfig = ''
       SystemMaxUse=50M
       RuntimeMaxUse=10M
@@ -44,16 +45,14 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  console =
-    let
-      variant = "u24n";
-    in
-    {
-      font = "${pkgs.terminus_font}/share/consolefonts/ter-${variant}.psf.gz";
-      keyMap = "us";
-    };
+  console = let
+    variant = "u24n";
+  in {
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-${variant}.psf.gz";
+    keyMap = "us";
+  };
 
-  boot.binfmt.registrations = lib.genAttrs [ "appimage" "AppImage" ] (ext: {
+  boot.binfmt.registrations = lib.genAttrs ["appimage" "AppImage"] (ext: {
     recognitionType = "extension";
     magicOrExtension = ext;
     interpreter = "/run/current-system/sw/bin/appimage-run";
@@ -83,32 +82,30 @@
       xorg.libX11
     ];
   };
-  systemd =
-    let
-      extraConfig = ''
-        DefaultTimeoutStopSec=15s
-      '';
-    in
-    {
-      inherit extraConfig;
-      user = { inherit extraConfig; };
-      services."getty@tty1".enable = false;
-      services."autovt@tty1".enable = false;
-      services."getty@tty7".enable = false;
-      services."autovt@tty7".enable = false;
-      # Systemd OOMd
-      # Fedora enables these options by default. See the 10-oomd-* files here:
-      # https://src.fedoraproject.org/rpms/systemd/tree/acb90c49c42276b06375a66c73673ac3510255
-      oomd = {
-        enableRootSlice = true;
-        enableUserServices = true;
-      };
-
-      # TODO channels-to-flakes
-      tmpfiles.rules = [
-        "D /nix/var/nix/profiles/per-user/root 755 root root - -"
-      ];
+  systemd = let
+    extraConfig = ''
+      DefaultTimeoutStopSec=15s
+    '';
+  in {
+    inherit extraConfig;
+    user = {inherit extraConfig;};
+    services."getty@tty1".enable = false;
+    services."autovt@tty1".enable = false;
+    services."getty@tty7".enable = false;
+    services."autovt@tty7".enable = false;
+    # Systemd OOMd
+    # Fedora enables these options by default. See the 10-oomd-* files here:
+    # https://src.fedoraproject.org/rpms/systemd/tree/acb90c49c42276b06375a66c73673ac3510255
+    oomd = {
+      enableRootSlice = true;
+      enableUserServices = true;
     };
+
+    # TODO channels-to-flakes
+    tmpfiles.rules = [
+      "D /nix/var/nix/profiles/per-user/root 755 root root - -"
+    ];
+  };
 
   programs = {
     # type "fuck" to fix the last command that made you go "fuck"

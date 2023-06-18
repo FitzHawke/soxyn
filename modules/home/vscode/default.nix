@@ -5,7 +5,7 @@
 }: let
   marketplace-extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
     bierner.github-markdown-preview
-    codeium.codeium
+    # codeium.codeium
     mtxr.sqltools
     mtxr.sqltools-driver-pg
     mtxr.sqltools-driver-sqlite
