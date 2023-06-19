@@ -1,18 +1,19 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
-  imports = [./fonts.nix ./services.nix ./pipewire.nix];
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-  '';
+  imports = [
+    ./fonts.nix
+    ./services.nix
+    ./pipewire.nix
+    ../../hosts/${config.hostname}/hardware.nix
+  ];
 
   environment = {
     variables = {
       NIXOS_OZONE_WL = "1";
-      __GL_GSYNC_ALLOWED = "0";
-      __GL_VRR_ALLOWED = "0";
       _JAVA_AWT_WM_NONEREPARENTING = "1";
       SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       DISABLE_QT5_COMPAT = "0";
@@ -34,17 +35,6 @@
     };
   };
 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-      ];
-    };
-  };
-
   xdg.portal = {
     enable = true;
     wlr.enable = false;
@@ -61,8 +51,6 @@
       gnome-keyring.enable = true;
     };
   };
-
-  
 
   sound = {
     enable = true;

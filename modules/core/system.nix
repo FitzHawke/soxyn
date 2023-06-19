@@ -31,6 +31,7 @@
     EDITOR = "nvim";
     BROWSER = "firefox";
   };
+  
   environment.systemPackages = with pkgs; [
     git
     steam-run

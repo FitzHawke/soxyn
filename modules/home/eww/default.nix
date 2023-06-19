@@ -37,7 +37,7 @@
   ];
 in {
   home.packages = [
-    # (pkgs.eww-wayland.overrideAttrs
+    # (inputs.eww.packages.${system}.eww-wayland.overrideAttrs
     #   (old: {
     #     src = pkgs.fetchFromGitHub {
     #       owner = "ralismark";

@@ -18,18 +18,6 @@
       name = "Lexend";
       size = 13;
     };
-    gtk3.extraConfig = {
-      gtk-xft-antialias = 1;
-      gtk-xft-hinting = 1;
-      gtk-xft-hintstyle = "hintslight";
-      gtk-xft-rgba = "rgb";
-    };
-    gtk2.extraConfig = ''
-      gtk-xft-antialias=1
-      gtk-xft-hinting=1
-      gtk-xft-hintstyle="hintslight"
-      gtk-xft-rgba="rgb"
-    '';
   };
 
   # cursor theme
@@ -42,16 +30,16 @@
 
   home.sessionVariables = {
     XCURSOR_SIZE = "16";
-    # Seem to need for GTK4
-    GTK_THEME = "Catppuccin-Mocha-Compact-Mauve-Dark";
   };
 
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [
     evolution
+    gnome.file-roller
     gnome.gnome-calculator
     gnome.gnome-calendar
     gnome.nautilus
+    # gradience <- theme libadwaita once 0.8 is packaged! 
     libsForQt5.qtstyleplugin-kvantum
     (catppuccin-kvantum.override {
       accent = "Mauve";

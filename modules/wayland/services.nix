@@ -1,4 +1,12 @@
-{config, lib,...}: {
+{
+  config,
+  lib,
+  ...
+}: {
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+  '';
+
   services = {
     greetd = {
       enable = true;

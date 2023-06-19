@@ -2,6 +2,7 @@
   fonts = {
     fonts = with pkgs; [
       material-icons
+      material-symbols
       material-design-icons
       roboto
       work-sans
