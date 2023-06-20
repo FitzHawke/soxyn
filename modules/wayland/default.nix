@@ -8,7 +8,6 @@
     ./fonts.nix
     ./services.nix
     ./pipewire.nix
-    ../../hosts/${config.hostname}/hardware.nix
   ];
 
   environment = {

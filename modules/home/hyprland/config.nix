@@ -1,11 +1,11 @@
-{config, ...}: {
+{osConfig, config, ...}: {
   # extraConfig =
   #      (import ./moniters.nix {
   #        inherit lib;
   #        inherit (config) monitors;
   #      }) +
   wayland.windowManager.hyprland.extraConfig =
-    import ../../../hosts/${config.hostname}/hyprland.nix
+    builtins.readFile ../../../hosts/${osConfig.networking.hostName}/hyprland.txt
     + ''
       $mod = SUPER
 

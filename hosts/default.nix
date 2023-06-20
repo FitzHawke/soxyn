@@ -6,12 +6,11 @@
   inherit (self) inputs;
   bootloader = ../modules/core/bootloader.nix;
   core = ../modules/core;
-  physical = ../modules/core/opt/physical.nix;
   wayland = ../modules/wayland;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
-  shared = [core bootloader wayland physical];
+  shared = [core bootloader wayland];
 
   home-manager = {
     useUserPackages = true;
@@ -32,6 +31,7 @@ in {
       [
         {networking.hostName = "dinraal";}
         ./dinraal/hardware-configuration.nix
+        ./dinraal/hardware.nix
         hw.common-cpu-intel
         hw.common-pc-laptop
         hmModule
@@ -49,6 +49,7 @@ in {
       [
         {networking.hostName = "farosh";}
         ./farosh/hardware-configuration.nix
+        ./farosh/hardware.nix
         bootloader
         hw.common-cpu-amd
         hw.common-gpu-amd
