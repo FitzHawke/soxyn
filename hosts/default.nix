@@ -53,7 +53,7 @@ in {
         bootloader
         hw.common-cpu-amd
         hw.common-gpu-amd
-        hw.common-pc-ssd
+        # hw.common-pc-ssd
         hmModule
         {inherit home-manager;}
       ]
