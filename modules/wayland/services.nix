@@ -27,6 +27,5 @@
 
     lorri.enable = true;
     printing.enable = true;
-    fstrim.enable = true;
   };
 }

@@ -22,10 +22,12 @@
     "audio/*" = ["mpv.desktop"];
     "video/*" = ["mpv.dekstop"];
     "image/*" = ["imv.desktop"];
+    "inode/directory" = ["org.gnome.Nautilus.desktop"];
     "application/json" = browser;
-    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
+    "application/pdf" = ["org.pwmt.zathura.desktop"];
     "x-scheme-handler/spotify" = ["spotify.desktop"];
-    "x-scheme-handler/discord" = ["WebCord.desktop"];
+    "x-scheme-handler/discord" = ["webcord.desktop"];
+    "x-scheme-handler/element" = ["element-desktop.desktop"];
   };
 
   texlive = pkgs.texlive.combine {

@@ -11,7 +11,7 @@ with lib; let
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
-  imports = [./config.nix ../eww];
+  imports = [./config.nix ../eww ];
   home.packages = with pkgs; [
     inputs.hyprwm-contrib.packages.${system}.grimblast
     libnotify
@@ -43,12 +43,12 @@ in {
 
   # fake a tray to let apps start
   # https://github.com/nix-community/home-manager/issues/2064
-  systemd.user.targets.tray = {
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = ["graphical-session-pre.target"];
-    };
-  };
+  # systemd.user.targets.tray = {
+  #   Unit = {
+  #     Description = "Home Manager System Tray";
+  #     Requires = ["graphical-session-pre.target"];
+  #   };
+  # };
 
   systemd.user.services = {
     swaybg = mkService {

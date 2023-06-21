@@ -43,4 +43,8 @@
 
     # userSettings = import ./settings.nix
   };
+  home.packages = with pkgs; [
+    alejandra
+    nil
+  ];
 }

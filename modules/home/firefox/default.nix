@@ -26,7 +26,6 @@ in {
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
           "browser.shell.checkDefaultBrowser" = false;
           "browser.shell.defaultBrowserCheckCount" = 1;
-          "browser.startup.homepage" = "https://start.duckduckgo.com";
           "privacy.trackingprotection.enabled" = true;
           "signon.rememberSignons" = false;
         };

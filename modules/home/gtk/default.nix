@@ -11,12 +11,15 @@
       };
     };
     iconTheme = {
-      package = pkgs.catppuccin-papirus-folders;
-      name = "cat-mocha-mauve";
+      package = pkgs.catppuccin-papirus-folders.override {
+        accent = "mauve";
+        flavor = "mocha";
+      };
+      name = "Papirus-Dark";
     };
     font = {
       name = "Lexend";
-      size = 13;
+      size = 10; #13
     };
   };
 
@@ -39,8 +42,8 @@
     gnome.gnome-calculator
     gnome.gnome-calendar
     gnome.nautilus
-    # gradience <- theme libadwaita once 0.8 is packaged! 
     libsForQt5.qtstyleplugin-kvantum
+    qt6Packages.qtstyleplugin-kvantum
     (catppuccin-kvantum.override {
       accent = "Mauve";
       variant = "Mocha";

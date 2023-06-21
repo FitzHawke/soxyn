@@ -1,4 +1,8 @@
-{osConfig, config, ...}: {
+{
+  osConfig,
+  config,
+  ...
+}: {
   # extraConfig =
   #      (import ./moniters.nix {
   #        inherit lib;

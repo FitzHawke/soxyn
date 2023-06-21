@@ -14,6 +14,7 @@
     colorScheme = "mauve";
 
     enabledExtensions = with spicePkgs.extensions; [
+      adblock
       fullAppDisplay
       hidePodcasts
       shuffle
