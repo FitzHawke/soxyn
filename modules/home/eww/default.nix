@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   dependencies = with pkgs; [
@@ -36,16 +37,22 @@
     wlogout
   ];
 in {
-  home.packages = [
+  home.packages = with pkgs; [
     # (inputs.eww.packages.${system}.eww-wayland.overrideAttrs
-    #   (old: {
+    # (eww-wayland.overrideAttrs
+    #   (old: rec {
     #     src = pkgs.fetchFromGitHub {
     #       owner = "ralismark";
     #       repo = "eww";
     #       rev = "5f69d75f75e47597d4ccb4d0fb1d0fc4f1440370";
     #       hash = "sha256-o38cXPG296Ojyg7QN4SyVg4HqdO1s8Y1Pei4N5PcMGo=";
     #     };
+    #     cargoDeps = old.cargoDeps.overrideAttrs (_: {
+    #       inherit src;
+    #       outputHash = "sha256-J87eobuYwLnn5qIp7Djlg7sDHa1oIk/dornzGLhQ/Fo=";
+    #     });
     #   }))
+    # inputs.eww.packages.${system}.eww-wayland
     pkgs.eww-wayland
   ];
 
