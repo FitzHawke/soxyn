@@ -7,7 +7,7 @@
     catimg
     cached-nix-shell
     chromium
-    element-desktop-wayland
+    element-desktop
     fd
     ffmpeg
     gimp
@@ -21,7 +21,7 @@
     lm_sensors
     nmap
     obsidian
-    quodlibet
+    quodlibet-full
     rsync
     todo
     unzip

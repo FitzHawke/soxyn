@@ -12,8 +12,9 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     eww = {
-      url = "github:elkowar/eww";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "github:elkowar/eww";
+      url = "github:i-can-not-program/eww/tray-3";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";

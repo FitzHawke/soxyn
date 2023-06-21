@@ -1,0 +1,6 @@
+(defwidget tray []
+  (box
+    :class "module"
+    :pack-direction "ltr"
+    (systray)))
+

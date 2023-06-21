@@ -38,22 +38,8 @@
   ];
 in {
   home.packages = with pkgs; [
-    # (inputs.eww.packages.${system}.eww-wayland.overrideAttrs
-    # (eww-wayland.overrideAttrs
-    #   (old: rec {
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "ralismark";
-    #       repo = "eww";
-    #       rev = "5f69d75f75e47597d4ccb4d0fb1d0fc4f1440370";
-    #       hash = "sha256-o38cXPG296Ojyg7QN4SyVg4HqdO1s8Y1Pei4N5PcMGo=";
-    #     };
-    #     cargoDeps = old.cargoDeps.overrideAttrs (_: {
-    #       inherit src;
-    #       outputHash = "sha256-J87eobuYwLnn5qIp7Djlg7sDHa1oIk/dornzGLhQ/Fo=";
-    #     });
-    #   }))
-    # inputs.eww.packages.${system}.eww-wayland
-    pkgs.eww-wayland
+    inputs.eww.packages.${system}.eww-wayland
+    # eww-wayland
   ];
 
   # remove nix files
@@ -77,14 +63,14 @@ in {
     Unit = {
       Description = "Eww Daemon";
       # not yet implemented
-      # PartOf = ["tray.target"];
-      PartOf = ["graphical-session.target"];
+      PartOf = ["tray.target"];
+      # PartOf = ["graphical-session.target"];
     };
     Service = {
       Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
       ExecStart = "${lib.getExe pkgs.eww-wayland} daemon --no-daemonize";
       Restart = "on-failure";
     };
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = ["tray.target" "graphical-session.target"];
   };
 }
