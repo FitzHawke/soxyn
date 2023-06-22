@@ -38,6 +38,7 @@
       fsType = "sshfs";
       options = [
         "allow_other"
+        "idmap=user"
         "_netdev"
         "x-systemd.automount"
         "identityFile=/etc/ssh/ssh_host_ed25519_key"

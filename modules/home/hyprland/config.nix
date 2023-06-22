@@ -1,6 +1,8 @@
 {
   osConfig,
   config,
+  lib,
+  inputs,
   ...
 }: {
   # extraConfig =
@@ -14,8 +16,10 @@
       $mod = SUPER
 
       # startup programs alongside hyprland
+      exec-once = dbus-update-activation-environment --systemd --all
+      exec-once = hyprpaper
       exec-once = mako
-      exec-once = eww open bar
+      exec-once = ${lib.getExe inputs.eww.packages."x86_64-linux".eww-wayland} open bar
 
       input {
         kb_layout = us
@@ -104,6 +108,8 @@
       windowrulev2 = idleinhibit focus, class:^(mpv|.+exe)$
       windowrulev2 = idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$
       windowrulev2 = idleinhibit fullscreen, class:^(firefox)$
+      windowrulev2 = idleinhibit focus, class:^(jellyfin)$
+      windowrulev2 = idleinhibit fullscreen, class:^(jellyfin)$
 
       windowrulev2 = dimaround, class:^(gcr-prompter)$
 

@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  osConfig,
   ...
 }:
 with lib; let
@@ -11,9 +12,10 @@ with lib; let
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
-  imports = [./config.nix ../eww ];
+  imports = [./config.nix ../eww ../../../hosts/${osConfig.networking.hostName}/wallpaper.nix ];
   home.packages = with pkgs; [
     inputs.hyprwm-contrib.packages.${system}.grimblast
+    hyprpaper
     libnotify
     wf-recorder
     brillo
@@ -51,13 +53,6 @@ in {
   # };
 
   systemd.user.services = {
-    swaybg = mkService {
-      Unit.Description = "Wallpaper chooser";
-      Service = {
-        ExecStart = "${lib.getExe pkgs.swaybg} -i ${./wall.jpg} -m stretch";
-        Restart = "always";
-      };
-    };
     cliphist = mkService {
       Unit.Description = "Clipboard history";
       Service = {
