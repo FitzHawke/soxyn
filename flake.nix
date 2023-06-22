@@ -13,7 +13,7 @@
     };
     eww = {
       # url = "github:elkowar/eww";
-      url = "github:i-can-not-program/eww/tray-3";
+      url = "github:i-can-not-program/eww?rev=a3226117f33497ed35f58b530153db7ace954731";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {

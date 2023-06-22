@@ -26,6 +26,7 @@
 @import 'css/osd';
 @import 'css/sidebar';
 @import 'css/system';
+@import 'css/tray';
 @import 'css/volume';
 
 .bar {
@@ -96,10 +97,9 @@ scale trough {
   padding: .25rem;
 }
 
-.workspaces { margin-left: 10px; }
+.workspaces { margin-left: 10px; min-width: 11rem;}
 
 .ws {
   border-radius: 2rem;
   margin: .7rem .25rem;
-  min-width: 1rem;
 }

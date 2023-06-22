@@ -13,7 +13,7 @@
     brillo
     coreutils
     dbus
-    eww-wayland
+    inputs.eww.packages.${system}.eww-wayland
     findutils
     gawk
     gnome.gnome-control-center
@@ -68,7 +68,7 @@ in {
     };
     Service = {
       Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
-      ExecStart = "${lib.getExe pkgs.eww-wayland} daemon --no-daemonize";
+      ExecStart = "${lib.getExe inputs.eww.packages.${pkgs.system}.eww-wayland} daemon --no-daemonize";
       Restart = "on-failure";
     };
     Install.WantedBy = ["tray.target" "graphical-session.target"];
