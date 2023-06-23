@@ -17,7 +17,7 @@
   };
 
   programs = {
-    dconf.enable= true;
+    dconf.enable = true;
     bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
   };
 
@@ -31,7 +31,7 @@
     EDITOR = "nvim";
     BROWSER = "firefox";
   };
-  
+
   environment.systemPackages = with pkgs; [
     git
     steam-run
@@ -84,20 +84,7 @@
       xorg.libX11
     ];
   };
-  systemd = let
-    extraConfig = ''
-      DefaultTimeoutStopSec=15s
-    '';
-  in {
-    inherit extraConfig;
-    user = {inherit extraConfig;};
-    services."getty@tty1".enable = false;
-    services."autovt@tty1".enable = false;
-    services."getty@tty7".enable = false;
-    services."autovt@tty7".enable = false;
-    # Systemd OOMd
-    # Fedora enables these options by default. See the 10-oomd-* files here:
-    # https://src.fedoraproject.org/rpms/systemd/tree/acb90c49c42276b06375a66c73673ac3510255
+  systemd = {
     oomd = {
       enableRootSlice = true;
       enableUserServices = true;

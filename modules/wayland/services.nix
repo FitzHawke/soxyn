@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   environment.etc."greetd/environments".text = ''
@@ -10,9 +11,10 @@
   services = {
     greetd = {
       enable = true;
-      settings.default_session = {
-        command = "${lib.getExe config.programs.hyprland.package}";
-        user = "will";
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.greetd}/bin/agreety --cmd Hyprland";
+        };
       };
     };
 
@@ -24,8 +26,9 @@
         HibernateDelaySec=3600
       '';
     };
-
-    lorri.enable = true;
     printing.enable = true;
   };
+
+  # unlock GPG keyring on login
+  security.pam.services.greetd.gnupg.enable = true;
 }
