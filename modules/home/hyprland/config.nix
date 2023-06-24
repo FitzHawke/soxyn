@@ -19,7 +19,7 @@
       exec-once = dbus-update-activation-environment --systemd --all
       exec-once = hyprpaper
       exec-once = mako
-      exec-once = ${lib.getExe inputs.eww.packages."x86_64-linux".eww-wayland} open bar
+      exec-once = eww daemon && eww open bar
 
       input {
         kb_layout = us

@@ -24,15 +24,15 @@
   (box
     :space-evenly false
     :halign "start"
-    (workspaces)
     (tray)
+    (music-module)
     ))
 
 (defwidget center []
   (box
     :space-evenly false
     :halign "center"
-    (music-module)))
+    (workspaces)))
 
 (defwidget right []
   (box

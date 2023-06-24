@@ -1,6 +1,6 @@
-.tray .menu {
+.tray menu {
     @include window;
-    >.menuitem {
+    >menuitem {
       @include rounding;
       background-color: $bg1;
       margin: .3rem;
@@ -9,7 +9,7 @@
         background-color: rgba(255,255,255,0.1);
       }
 
-      .check:checked ~ label {
+      check:checked ~ label {
         color: $mauve;
       }
     }

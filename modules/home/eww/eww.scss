@@ -90,16 +90,16 @@ scale trough {
 }
 
 /* workspaces */
-.focused {
-  background-color: $bg;
-  border-radius: 1rem;
-  margin: .3rem;
-  padding: .25rem;
-}
+.workspaces {
+  .focused {
+    background-color: $bg;
+    border-radius: 1rem;
+    margin: .3rem;
+    padding: .25rem;
+  }
 
-.workspaces { margin-left: 10px; min-width: 11rem;}
-
-.ws {
-  border-radius: 2rem;
-  margin: .7rem .25rem;
+  .ws {
+    border-radius: 2rem;
+    margin: .7rem .25rem;
+  }
 }
