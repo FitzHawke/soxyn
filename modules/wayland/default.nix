@@ -42,7 +42,9 @@
     ];
   };
 
+
   services = {
+    upower.enable = true;
     gvfs.enable = true;
     gnome = {
       evolution-data-server.enable = true;

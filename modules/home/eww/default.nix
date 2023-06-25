@@ -6,7 +6,6 @@
   ...
 }: { 
   home.packages = with pkgs; [
-    config.wayland.windowManager.hyprland.package
     bash
     blueberry
     bluez
