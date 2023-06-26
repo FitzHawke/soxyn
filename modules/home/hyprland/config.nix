@@ -108,8 +108,8 @@
       windowrulev2 = idleinhibit focus, class:^(mpv|.+exe)$
       windowrulev2 = idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$
       windowrulev2 = idleinhibit fullscreen, class:^(firefox)$
-      windowrulev2 = idleinhibit focus, class:^(org.jellyfin.)$
-      windowrulev2 = idleinhibit fullscreen, class:^(org.jellyfin.)$
+      windowrulev2 = idleinhibit focus, class:(jellyfin)
+      windowrulev2 = idleinhibit fullscreen, class:(jellyfin)
 
       windowrulev2 = dimaround, class:^(gcr-prompter)$
 
