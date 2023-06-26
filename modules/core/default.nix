@@ -1,7 +1,5 @@
 {...}: {
   imports = [
-    # ./adblock.nix
-    ./cron.nix
     ./network.nix
     ./nix.nix
     ./openssh.nix

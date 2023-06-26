@@ -12,8 +12,7 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
 
-    systemPackages = with pkgs; [git deadnix alejandra statix];
-    defaultPackages = [];
+    systemPackages = with pkgs; [ git ];
   };
 
   nixpkgs = {
@@ -49,14 +48,6 @@
     # Making legacy nix commands consistent as well, awesome!
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
-    # Free up to 1GiB whenever there is less than 100MiB left.
-    extraOptions = ''
-      keep-outputs = true
-      warn-dirty = false
-      keep-derivations = true
-      min-free = ${toString (100 * 1024 * 1024)}
-      max-free = ${toString (1024 * 1024 * 1024)}
-    '';
     settings = {
       auto-optimise-store = true;
       # use binary cache, its not gentoo
@@ -67,6 +58,11 @@
       trusted-users = ["root" "@wheel"];
       max-jobs = "auto";
       extra-experimental-features = ["flakes" "nix-command"];
+      flake-registry = "/etc/nix/registry.json";
+
+      # for direnv GC roots
+      keep-derivations = true;
+      keep-outputs = true;
 
       # use binary cache, its not gentoo
       substituters = [
@@ -90,6 +86,5 @@
       ];
     };
   };
-  system.autoUpgrade.enable = false;
   system.stateVersion = "23.05"; # DONT TOUCH THIS
 }

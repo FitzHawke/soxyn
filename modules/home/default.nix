@@ -32,10 +32,8 @@
     ./neovim
     ./rnnoise
     ./shell
-    ./spotify
     ./swaylock
     ./tools
-    # ./waybar
     ./vscode
     ./zathura
   ];
