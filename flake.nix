@@ -83,7 +83,6 @@
 
         devShells.default = pkgs.mkShell {
           name = "knicks";
-          # commands = (import ./lib/flake/devShell).shellCommands;
           packages = with pkgs; [
             nix
             home-manager
