@@ -5,7 +5,6 @@
 }: let
   ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  users.users.root.initialPassword = "changeme";
   programs.fish = {
     enable = true;
     vendor = {
@@ -41,7 +40,6 @@ in {
       ];
     uid = 1000;
     shell = pkgs.fish;
-    initialPassword = "changeme";
     openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/ssh.pub)];
   };
 }
