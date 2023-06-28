@@ -11,6 +11,10 @@
       url = "github:Kirottu/anyrun";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     eww = {
       # url = "github:elkowar/eww";
       url = "github:fitzhawke/eww";
@@ -53,12 +57,51 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {self, ...} @ inputs: let
-    system = "x86_64-linux";
-    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-  in {
-    nixosConfigurations = import ./hosts inputs;
+  outputs = {
+    flake-parts,
+    nixpkgs,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+      imports = [];
+      flake = {
+        nixosConfigurations = import ./hosts inputs;
+      };
+      perSystem = {
+        config,
+        system,
+        pkgs,
+        ...
+      }: {
+        legacyPackages = import nixpkgs {
+          config.allowUnfree = true;
+          config.allowUnsupportedSystem = true;
+          inherit system;
+        };
+        imports = [{_module.args.pkgs = config.legacyPackages;}];
 
-    formatter.${system} = pkgs.alejandra;
-  };
+        devShells.default = pkgs.mkShell {
+          name = "knicks";
+          # commands = (import ./lib/flake/devShell).shellCommands;
+          packages = with pkgs; [
+            nix
+            home-manager
+            git
+
+            nil
+            alejandra
+
+            sops
+            ssh-to-age
+            gnupg
+            age
+          ];
+          NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
+          DIRENV_LOG_FORMAT = "";
+        };
+
+        formatter = pkgs.alejandra;
+      };
+    };
 }
