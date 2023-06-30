@@ -13,7 +13,6 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-db.hmModules.nix-index
-    inputs.spicetify-nix.homeManagerModule
     inputs.anyrun.homeManagerModules.default
 
     ./packages.nix
