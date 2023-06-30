@@ -1,5 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  nur-modules = import inputs.nur {
+    nurpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+  };
+in {
   home.packages = with pkgs; [
+    nur-modules.repos.colinsane.pkgs.lemoa
     anki-bin
     bandwhich
     bc
@@ -10,6 +20,7 @@
     element-desktop
     fd
     ffmpeg
+    foliate
     gimp
     glow
     grex
@@ -19,6 +30,7 @@
     jq
     keepassxc
     lm_sensors
+    newsflash
     nmap
     obsidian
     quodlibet-full
