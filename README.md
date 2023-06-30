@@ -1,4 +1,4 @@
-# My Personal NixOS Configurations
+# Soxyn - My NixOS configurations - *Stability Guarenteed or your Money Back*
 
 This repository contains my personal NixOS configurations, built using flakes. It provides a declarative and reproducible way to define and manage my system configuration.
 
@@ -107,4 +107,11 @@ This project is licensed under the [MIT License](./LICENCE.md). Feel free to use
 
 ## Special Thanks
 
-Going back and building a list of everyone who I learned from!
+A list of people whose amazing configs served as a reference while I fumbled my way through building my own. I love you all!
+
+- [Colin (uninsane)](https://git.uninsane.org/colin/nix-files)
+- [n3oney](https://github.com/n3oney/nixus)
+- [fufexan](https://github.com/fufexan/dotfiles)
+- [NotAShelf](https://github.com/NotAShelf/nyx)
+- [sioodmy](https://github.com/sioodmy/dotfiles)
+- [Misterio77](https://github.com/Misterio77/nix-config)
