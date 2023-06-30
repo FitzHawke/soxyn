@@ -32,6 +32,10 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-flake = {
+      url = "github:NotAShelf/neovim-flake?ref=release/v0.4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       # inputs.nixpkgs.follows = "nixpkgs";
@@ -46,10 +50,6 @@
     };
     sops-nix = {
       url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland = {
@@ -82,7 +82,7 @@
         imports = [{_module.args.pkgs = config.legacyPackages;}];
 
         devShells.default = pkgs.mkShell {
-          name = "knicks";
+          name = "soxyn";
           packages = with pkgs; [
             nix
             home-manager
