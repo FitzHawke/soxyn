@@ -48,7 +48,7 @@
         mouse_move_enables_dpms = true
         key_press_enables_dpms = true
         enable_swallow = true
-        swallow_regex=kitty|thunar
+        swallow_regex=(kitty|Nautilus)
       }
 
       decoration {
