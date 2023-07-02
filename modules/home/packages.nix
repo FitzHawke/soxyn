@@ -28,7 +28,6 @@ in {
     imagemagick
     jellyfin-media-player
     jq
-    keepassxc
     lm_sensors
     newsflash
     nmap

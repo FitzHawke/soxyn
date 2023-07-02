@@ -10,6 +10,7 @@ in {
       will = {
         id = 0;
         extensions = with nur-modules.repos.rycee.firefox-addons; [
+          bitwarden
           darkreader
           keepassxc-browser
           reddit-enhancement-suite

@@ -29,6 +29,7 @@
     ./mako
     ./media
     ./neovim
+    ./pass
     ./rnnoise
     ./shell
     ./swaylock
