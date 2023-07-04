@@ -8,9 +8,8 @@
     package = inputs.anyrun.packages.${pkgs.system}.anyrun;
     config = {
       width.fraction = 0.3;
-      position = "top"; # default
-      verticalOffset.absolute = 15;
-      hideIcons = false; # default
+      x.fraction = 0.5;
+      y.absolute = 15;
       ignoreExclusiveZones = false; # default
       layer = "overlay"; # default
       hidePluginInfo = true;
@@ -21,7 +20,6 @@
         shell
         rink
         symbols
-        translate
         kidex
       ];
     };
