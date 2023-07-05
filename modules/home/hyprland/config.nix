@@ -1,8 +1,6 @@
 {
   osConfig,
   config,
-  lib,
-  inputs,
   ...
 }: {
   # extraConfig =
@@ -52,6 +50,9 @@
       }
 
       decoration {
+        active_opacity=0.96
+        inactive_opacity=0.85
+        fullscreen_opacity=1.0
         rounding = 16
         multisample_edges = true
         blur_new_optimizations = true
