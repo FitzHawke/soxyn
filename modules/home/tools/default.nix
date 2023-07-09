@@ -28,6 +28,8 @@
     "x-scheme-handler/spotify" = ["spotify.desktop"];
     "x-scheme-handler/discord" = ["webcord.desktop"];
     "x-scheme-handler/element" = ["element-desktop.desktop"];
+    "x-scheme-handler/anytype" = ["anytype.desktop"];
+    "x-scheme-handler/steam" = ["steam.desktop"];
   };
 
   texlive = pkgs.texlive.combine {
