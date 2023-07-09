@@ -11,6 +11,7 @@ in {
   home.packages = with pkgs; [
     nur-modules.repos.colinsane.pkgs.lemoa
     anki-bin
+    anytype
     bandwhich
     bc
     blueberry
