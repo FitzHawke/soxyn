@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';
@@ -31,7 +26,7 @@
 
   # unlock GPG keyring on login
   security.pam.services.greetd = {
-        gnupg.enable = true;
-        enableGnomeKeyring = true;
-      };
+    gnupg.enable = true;
+    enableGnomeKeyring = true;
+  };
 }
