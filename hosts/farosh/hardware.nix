@@ -17,6 +17,12 @@
     thermald.enable = builtins.elem config.nixpkgs.system ["x86_64-linux"];
   };
 
+  programs.gamemode.settings.gpu = {
+    apply_gpu_optimisations = "accept-responsibility";
+    gpu_device = 0;
+    amd_performance_level = "high";
+  };
+
   system.fsPackages = [pkgs.sshfs];
 
   fileSystems = {

@@ -26,6 +26,7 @@ in {
     settings = {
       general = {
         softrealtime = "auto";
+        inhibit_screensaver = 1;
         renice = 15;
       };
       custom = {
