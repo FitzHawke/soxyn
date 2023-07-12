@@ -1,3 +1,4 @@
+# Currently Unused. Defined directly in 'hyprland.txt'
 {
   monitors = [
     {

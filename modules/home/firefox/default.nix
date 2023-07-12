@@ -12,7 +12,6 @@ in {
         extensions = with nur-modules.repos.rycee.firefox-addons; [
           bitwarden
           darkreader
-          keepassxc-browser
           reddit-enhancement-suite
           ublock-origin
         ];
