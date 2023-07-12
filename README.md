@@ -19,6 +19,8 @@ NixOS is a Linux distribution that provides a purely functional approach to syst
 
 This repository contains my personal NixOS configurations, tailored to my specific needs and preferences. It aims to provide a solid foundation for my development environment, system settings, and installed packages.
 
+My goal is to evolve that configuration to have less manual setup on install (more imperative) and have more things synced between systems (or through the cloud). Basically the dream is to eliminate configuration drift.
+
 ### Features
 
 - Built with flakes for reproducibility and declarative configuration.
@@ -44,7 +46,7 @@ This repository contains my personal NixOS configurations, tailored to my specif
   - Gleeok (VPS currently with mailserver/more containers)
   - rpi - any use for this with nix?
   - router - currently OPNSense. Consider trying nixos-router project
-- impermeance <- wipe the system every reboot and only persist necessary data
+- impermanence <- wipe the system every reboot and only persist necessary data
 - build container images with nixos
 - rewrite build/configuration instructions in README
 - PROPER documentation
