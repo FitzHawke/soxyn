@@ -24,21 +24,21 @@
   (box
     :space-evenly false
     :halign "start"
-    (tray)
-    (music-module)
+    (workspaces)
     ))
 
 (defwidget center []
   (box
     :space-evenly false
     :halign "center"
-    (workspaces)))
+    (music-module)))
 
 (defwidget right []
   (box
     :space-evenly false
     :halign "end"
     (indicators)
+    (tray)
     (bright)
     (volume-module)
     (bluetooth)
