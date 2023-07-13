@@ -127,11 +127,6 @@ in {
 
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [
-    evolution
-    gnome.file-roller
-    gnome.gnome-calculator
-    gnome.gnome-calendar
-    gnome.nautilus
     libsForQt5.qtstyleplugin-kvantum
     qt6Packages.qtstyleplugin-kvantum
     (catppuccin-kvantum.override {

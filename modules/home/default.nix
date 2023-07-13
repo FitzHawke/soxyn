@@ -28,6 +28,7 @@
     ./mako
     ./media
     ./neovim
+    ./office
     ./pass
     ./rnnoise
     ./shell
