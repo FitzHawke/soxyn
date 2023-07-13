@@ -50,8 +50,7 @@ My goal is to evolve that configuration to have less manual setup on install (mo
 - build container images with nixos
 - rewrite build/configuration instructions in README
 - PROPER documentation
-  - seems people are actually finding this repo somehow. Lets make their life easier, nix is so confusing when you start!
-  - Thank you for visiting my greasy little horror show. This one is for you <3
+  - if anyone somehow stumbles across this greasy little horror show then lets make their life a little easier, nix can be so confusing!
   - also for me as I'll forget why I did half the things I did 😅
     - add comments throughout
     - add READMEs in each major section to explain choices/motivations

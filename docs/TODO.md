@@ -34,6 +34,8 @@ A stream of conciousness mess that serves as notes and tracking of plans
   - [ ] transfer everything to new home directory on all systems
   - [ ] register new ssh keys for signon where applicable
   - [ ] confirm no funny business with ownership (should still be uid 1000)
+- [ ] personal accounts in sops (email)
+- [ ] hostnames in here?
 
 ## Impermanence
 
@@ -45,11 +47,18 @@ A stream of conciousness mess that serves as notes and tracking of plans
   - which is better for me?
 - [ ] implement selected solution
 
+## Modules
+
+### Email
+
+- [ ] test out new thunderbird
+- [ ] see if evolution can be declaratively configured
+
 ## Hosts
 
 ### General
 
-- TODO - Fill out this section!
+- [ ] setup syncthing for each host to connect to external connections
 
 ### Dinraal
 
@@ -63,9 +72,12 @@ A stream of conciousness mess that serves as notes and tracking of plans
 
 ### Naydra
 
-**Status** - still running centOS (with Nix installed for testing)
+**Status** - still running centOS (Next on Deck)
+local NAS server which doubles as a local container host
 
-- [ ] local NAS server which doubles as a local container host
+- [ ] seperate out imports so server doesn't contain any desktop/unnecessary components
+- write out new components
+  - [ ] nfs client
 
 ### Gleeok
 
@@ -106,3 +118,4 @@ A stream of conciousness mess that serves as notes and tracking of plans
 - [ ] [nixos-router](https://github.com/chayleaf/nixos-router) vs current solution (OPNSense)
 - [ ] [nixos-mailserver](https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/) vs current solution (bare metal on vps)
 - [ ] flatpak. Is it more stable than FHS for electron apps? or Steam?
+- [ ] thunderbird config
