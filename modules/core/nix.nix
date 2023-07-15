@@ -37,7 +37,7 @@
     };
     package = pkgs.nixUnstable;
 
-    # Make builds run with low priority so my system stays responsive
+    # Make builds low priority so system stays responsive
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
 
@@ -50,7 +50,6 @@
 
     settings = {
       auto-optimise-store = true;
-      # use binary cache, its not gentoo
       builders-use-substitutes = true;
       # allow sudo users to mark the following values as trusted
       allowed-users = ["root" "@wheel"];
@@ -64,7 +63,7 @@
       keep-derivations = true;
       keep-outputs = true;
 
-      # use binary cache, its not gentoo
+      # use binary cache
       substituters = [
         "https://cache.nixos.org"
         "https://numtide.cachix.org"

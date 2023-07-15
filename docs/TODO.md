@@ -1,6 +1,6 @@
 # TODO
 
-A stream of conciousness mess that serves as notes and tracking of plans
+Originally a nice list of plans that has turned into a stream of conciousness mess of notes and tracking progress as I go. TODO - make into a proper TODO!
 
 ## Documentation
 
@@ -111,11 +111,13 @@ local NAS server which doubles as a local container host
 - is having custom images worth the maintenance burden? (maybe)
 - [ ] try building a version each image I currently use (8 of them left. too lazy to list rn)
 
-## Research
+## Research/Testing
 
 - [ ] containers (as above)
 - [ ] impermanence (as above)
 - [ ] [nixos-router](https://github.com/chayleaf/nixos-router) vs current solution (OPNSense)
 - [ ] [nixos-mailserver](https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/) vs current solution (bare metal on vps)
-- [ ] flatpak. Is it more stable than FHS for electron apps? or Steam?
 - [ ] thunderbird config
+- [ ] flatpak. Is it more stable than FHS for electron apps? or Steam?
+- [ ] nixos-stable then pull specific packages from unstable
+  - potentially make things like steam/electron apps more stable

@@ -1,15 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  nur-modules = import inputs.nur {
-    nurpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-  };
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    nur-modules.repos.colinsane.pkgs.lemoa
     anki-bin
     anytype
     bandwhich
