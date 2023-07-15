@@ -11,6 +11,20 @@
       driSupport32Bit = true;
     };
   };
+
+  boot = {
+    # some attempts to fix bluetooth/wifi on RTK8822BE
+    kernelParams = [
+      "pcie_aspm.policy=performance"
+
+      # fixes a lockup on first-gen ryzen
+      # corrected in bios but that eliminates c3-c6 rather than just c6
+      # bios seems to override this setting though
+      # "processor.max_cstate=5"
+    ];
+    extraModulePackages = with config.boot.kernelPackages; [rtw88];
+  };
+
   services = {
     fwupd.enable = true;
     smartd.enable = true;
