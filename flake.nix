@@ -47,6 +47,7 @@
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "";
     };
     xdg-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";

@@ -12,7 +12,7 @@ with lib; let
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
-  imports = [./config.nix ../eww ../../../hosts/${osConfig.networking.hostName}/wallpaper.nix ];
+  imports = [./config.nix ../eww ../../../hosts/${osConfig.networking.hostName}/wallpaper.nix];
   home.packages = with pkgs; [
     inputs.hyprwm-contrib.packages.${system}.grimblast
     hyprpaper
@@ -37,6 +37,8 @@ in {
     enable = true;
     latitude = "43.95";
     longitude = "-81.22";
+    # latitude = "\${cat ${osConfig.sops.secrets.loc-lat.path}}";
+    # longitude = "\${cat ${osConfig.sops.secrets.loc-long.path}}";
     temperature = {
       day = 6200;
       night = 3750;
