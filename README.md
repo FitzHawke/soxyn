@@ -56,7 +56,7 @@ My goal is to evolve that configuration to have less manual setup on install (mo
     - add READMEs in each major section to explain choices/motivations
 - add some extra contact links for anyone crazy enough to base their own config on mine 🤓
 
-For more detailed plans see [TODO](./docs/TODO.md)
+For more detailed plans see [TODO](./notes/TODO.md)
 
 ## Getting Started
 
