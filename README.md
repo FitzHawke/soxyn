@@ -130,7 +130,7 @@ When contributing, please ensure that your changes align with the existing code 
 If you have any questions about the how or why of anything in here then please don't hesitate to reach out! Or even just if you found value and want to say thanks, I'd love to hear from you! I can be reached through any of the links below:
 
 - Email - [will.featherston@gmail.com](mailto:will.featherston@gmail.com)
-- Matrix - [@fitzhawke:matrix.org](matrix:u/fitzhawke:matrix.org)
+- Matrix - [@fitzhawke:matrix.org](https://matrix.to/#/@fitzhawke:matrix.org)
 - LinkedIn - [Will Featherston](https://www.linkedin.com/in/will-featherston/)
 
 These work too, but not as actively monitored
