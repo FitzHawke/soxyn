@@ -135,7 +135,6 @@ If you have any questions about the how or why of anything in here then please d
 
 These work too, but not as actively monitored
 
-- Discord - [FitzHawke](https://discordapp.com/users/FitzHawke)
 - Twitter - [@FitzHawke](https://twitter.com/FitzHawke)
 
 If none of the above work you can always open an issue here too! 😄

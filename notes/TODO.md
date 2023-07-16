@@ -26,7 +26,7 @@ Originally a nice list of plans that has turned into a stream of conciousness me
 
 - [x] setup SOPS
 - [ ] use SOPS for password instead of initialPassword
-- [x] update and hide location in secrets. (don't want to dox my new home too!)
+- [x] update and hide location in secrets
 - [ ] look through config for anything else that should be secret
 - [ ] consider changing username to fitz. (Not like its hard to find my real name. So I don't know if I really care)
   - would require
