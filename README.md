@@ -10,6 +10,7 @@ This repository contains my personal NixOS configurations, built using flakes. I
   - [Future](#future)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
+- [Contact](#contact)
 - [License](#license)
 - [Special Thanks](#special-thanks)
 
@@ -123,6 +124,21 @@ The modular structure of this configuration repository allows you to easily orga
 Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please open an issue or submit a pull request.
 
 When contributing, please ensure that your changes align with the existing code style and conventions.
+
+## Contact
+
+If you have any questions about the how or why of anything in here then please don't hesitate to reach out! Or even just if you found value and want to say thanks, I'd love to hear from you! I can be reached through any of the links below:
+
+- Email - [will.featherston@gmail.com](mailto:will.featherston@gmail.com)
+- Matrix - [@fitzhawke:matrix.org](matrix:u/fitzhawke:matrix.org)
+- LinkedIn - [Will Featherston](https://www.linkedin.com/in/will-featherston/)
+
+These work too, but not as actively monitored
+
+- Discord - [FitzHawke](https://discordapp.com/users/FitzHawke)
+- Twitter - [@FitzHawke](https://twitter.com/FitzHawke)
+
+If none of the above work you can always open an issue here too! 😄
 
 ## License
 

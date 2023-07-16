@@ -8,7 +8,7 @@ Originally a nice list of plans that has turned into a stream of conciousness me
   - [ ] rewrite install instructions
   - [ ] add section on steps to add new system
   - [ ] add steps on how to generate secrets
-  - [ ] add ways to contact for future friends
+  - [x] add ways to contact for future friends
 - secrets
   - [ ] README
   - [ ] comments
@@ -24,9 +24,9 @@ Originally a nice list of plans that has turned into a stream of conciousness me
 
 ## Secrets
 
-- [ ] setup SOPS
+- [x] setup SOPS
 - [ ] use SOPS for password instead of initialPassword
-- [ ] update and hide location in secrets. (don't want to dox my new home too!)
+- [x] update and hide location in secrets. (don't want to dox my new home too!)
 - [ ] look through config for anything else that should be secret
 - [ ] consider changing username to fitz. (Not like its hard to find my real name. So I don't know if I really care)
   - would require
@@ -78,6 +78,7 @@ local NAS server which doubles as a local container host
 - [ ] seperate out imports so server doesn't contain any desktop/unnecessary components
 - write out new components
   - [ ] nfs client
+  - [ ] nfs server (connect to farosh instead of sshd? Also can connect through split tunnel from dinraal)
 
 ### Gleeok
 
