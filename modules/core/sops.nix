@@ -11,6 +11,5 @@
     generateKey = true;
   };
 
-  sops.secrets.loc-lat.owner = config.users.users.will.name;
-  sops.secrets.loc-long.owner = config.users.users.will.name;
+  sops.secrets.wl-location.owner = config.users.users.will.name;
 }

@@ -35,15 +35,17 @@ in {
 
   services.wlsunset = {
     enable = true;
-    latitude = "43.95";
-    longitude = "-81.22";
-    # latitude = "\${cat ${osConfig.sops.secrets.loc-lat.path}}";
-    # longitude = "\${cat ${osConfig.sops.secrets.loc-long.path}}";
+    # these values end up in systemd startup script so we read them from the environment
+    latitude = "\$WL_LATITUDE";
+    longitude = "\$WL_LONGITUDE";
     temperature = {
       day = 6200;
       night = 3750;
     };
   };
+
+  # add env file from sops with WL_LATITUDE and WL_LONGITUDE
+  systemd.user.services.wlsunset.Service.EnvironmentFile = "${osConfig.sops.secrets.wl-location.path}";
 
   # fake a tray to let apps start
   # https://github.com/nix-community/home-manager/issues/2064
