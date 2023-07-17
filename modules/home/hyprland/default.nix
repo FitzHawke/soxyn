@@ -45,7 +45,11 @@ in {
   };
 
   # add env file from sops with WL_LATITUDE and WL_LONGITUDE
-  systemd.user.services.wlsunset.Service.EnvironmentFile = "${osConfig.sops.secrets.wl-location.path}";
+  # add to keys group to read the secrets
+  systemd.user.services.wlsunset.Service={
+    EnvironmentFile = "${osConfig.sops.secrets.wl-location.path}";
+    SupplementaryGroups = [ osConfig.users.groups.keys.name ];
+  };
 
   # fake a tray to let apps start
   # https://github.com/nix-community/home-manager/issues/2064

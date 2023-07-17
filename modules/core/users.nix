@@ -21,7 +21,6 @@ in {
         "wheel"
         "video"
         "audio"
-        "keys"
       ]
       ++ ifExists [
         "docker"
