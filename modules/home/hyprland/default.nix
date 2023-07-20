@@ -33,7 +33,7 @@
     };
   };
 
-  # add env file from sops with WL_LATITUDE and WL_LONGITUDE
+  # add env file from agenix with WL_LATITUDE and WL_LONGITUDE
   systemd.user.services.wlsunset.Service = {
     EnvironmentFile = "${osConfig.age.secrets.wl-loc.path}";
   };

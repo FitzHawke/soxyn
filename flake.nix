@@ -45,11 +45,6 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "";
-    };
     xdg-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -90,11 +85,6 @@
             alejandra
 
             inputs.agenix.packages.${system}.default
-
-            sops
-            ssh-to-age
-            gnupg
-            age
           ];
           NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
           DIRENV_LOG_FORMAT = "";

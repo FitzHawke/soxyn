@@ -40,6 +40,6 @@ in {
       ];
     uid = 1000;
     shell = pkgs.fish;
-    openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/ssh.pub)];
+    openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/pubkeys/ssh.pub)];
   };
 }
