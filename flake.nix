@@ -89,6 +89,8 @@
             nil
             alejandra
 
+            inputs.agenix.packages.${system}.default
+
             sops
             ssh-to-age
             gnupg
