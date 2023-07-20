@@ -1,6 +1,6 @@
 # SOPS
 
-SOPS is a secrets management utility made by mozilla. It enables secrets to be stored encrypted and only decrypted at runtime.
+[SOPS](https://github.com/getsops/sops) is a secrets management utility originally made by mozilla. It enables secrets to be encrypted and stored somewhere with public access and only decrypted when and where they are needed. [SOPS-nix](https://github.com/Mic92/sops-nix) is the nix implementation.
 
 ## `.sops.yaml`
 
@@ -40,7 +40,7 @@ creation_rules:
 - do NOT manually modify
 
 - to create or modify secrets file:
-  - move into root (with .sops.yaml)
+  - move into root (with .sops.yaml) `cd soxyn`
   - run `sops secrets/secrets.yaml`
   - will be booted in an editor where you can edit the secrets
   - when finished save and close editor as usual

@@ -34,8 +34,6 @@ Originally a nice list of plans that has turned into a stream of conciousness me
   - [ ] transfer everything to new home directory on all systems
   - [ ] register new ssh keys for signon where applicable
   - [ ] confirm no funny business with ownership (should still be uid 1000)
-- [ ] personal accounts in sops (email)
-- [ ] hostnames in here?
 
 ## Impermanence
 
@@ -51,8 +49,10 @@ Originally a nice list of plans that has turned into a stream of conciousness me
 
 ### Email
 
-- [ ] test out new thunderbird
-- [ ] see if evolution can be declaratively configured
+- [ ] ~~test out new thunderbird~~
+- [ ] ~~see if evolution can be declaratively configured~~
+
+No email for now. Gmail would be a pain.
 
 ## Hosts
 
@@ -86,7 +86,7 @@ local NAS server which doubles as a local container host
 
 - [ ] remote vps which serves as a container host for internet exposed containers with uptime requirements. Can likely shift some internal and only accessable through wireguard.
 
-### Otters *-- typo but I'm keeping it*
+### Otters *-- typo but I'm leaving it* 🦦
 
 - RaspberryPi
   - [ ] consider if I have any use for this
@@ -118,7 +118,7 @@ local NAS server which doubles as a local container host
 - [ ] impermanence (as above)
 - [ ] [nixos-router](https://github.com/chayleaf/nixos-router) vs current solution (OPNSense)
 - [ ] [nixos-mailserver](https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/) vs current solution (bare metal on vps)
-- [ ] thunderbird config
+- [x] thunderbird config
 - [ ] flatpak. Is it more stable than FHS for electron apps? or Steam?
 - [ ] nixos-stable then pull specific packages from unstable
   - potentially make things like steam/electron apps more stable

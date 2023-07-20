@@ -28,8 +28,8 @@
 
 #### electron apps
 
-- element-desktop crashes on launch unless launched with `NIXOS_OZONE_WL= %command`
-- vscode *usually* crashes on launch unless launched with `NIXOS_OZONE_WL= %command` -- This one really confuses me. Will crash approx 95% of the time with no rhyme or reason. Seemingly higher probablility of working if attempted immediately after boot.
+- element-desktop crashes on launch unless launched with `NIXOS_OZONE_WL= element-desktop`
+- vscode *usually* crashes on launch unless launched with `NIXOS_OZONE_WL= code` -- This one really confuses me. Will crash approx 95% of the time with no rhyme or reason. Seemingly higher probablility of working if attempted immediately after boot.
 
 #### steam
 
