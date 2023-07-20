@@ -33,6 +33,7 @@ in {
         {networking.hostName = "dinraal";}
         ./dinraal/hardware-configuration.nix
         ./dinraal/hardware.nix
+        ./dinraal/age.nix
         hw.common-cpu-intel
         hw.common-pc-laptop
         hmModule
@@ -51,6 +52,7 @@ in {
         {networking.hostName = "farosh";}
         ./farosh/hardware-configuration.nix
         ./farosh/hardware.nix
+        ./farosh/age.nix
         ./farosh/syncthing.nix
         bootloader
         hw.common-cpu-amd

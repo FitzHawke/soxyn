@@ -35,7 +35,7 @@
 
   # add env file from sops with WL_LATITUDE and WL_LONGITUDE
   systemd.user.services.wlsunset.Service = {
-    EnvironmentFile = "${osConfig.sops.secrets.wl-location.path}";
+    EnvironmentFile = "${osConfig.age.secrets.wl-loc.path}";
   };
 
   # start a service to monitor clipboard history
@@ -50,6 +50,4 @@
     Unit.After = ["graphical-session.target"];
     Install.WantedBy = ["graphical-session.target"];
   };
-
-  
 }
