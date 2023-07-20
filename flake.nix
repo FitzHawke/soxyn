@@ -7,6 +7,11 @@
 
     nur.url = "github:nix-community/NUR";
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
     anyrun = {
       url = "github:Kirottu/anyrun";
       # inputs.nixpkgs.follows = "nixpkgs";

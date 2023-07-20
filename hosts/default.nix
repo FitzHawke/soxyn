@@ -7,10 +7,11 @@
   bootloader = ../modules/core/bootloader.nix;
   core = ../modules/core;
   wayland = ../modules/wayland;
+  agenix = inputs.agenix.nixosModules.default;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
-  shared = [core bootloader wayland];
+  shared = [agenix core bootloader wayland];
 
   home-manager = {
     useUserPackages = true;
@@ -50,6 +51,7 @@ in {
         {networking.hostName = "farosh";}
         ./farosh/hardware-configuration.nix
         ./farosh/hardware.nix
+        ./farosh/syncthing.nix
         bootloader
         hw.common-cpu-amd
         hw.common-gpu-amd
