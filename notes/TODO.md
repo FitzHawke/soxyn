@@ -24,8 +24,8 @@ Originally a nice list of plans that has turned into a stream of conciousness me
 
 ## Secrets
 
-- [x] setup SOPS
-- [ ] use SOPS for password instead of initialPassword
+- [x] setup agenix
+- [ ] use agenix for password instead of initialPassword
 - [x] update and hide location in secrets
 - [ ] look through config for anything else that should be secret
 - [ ] consider changing username to fitz. (Not like its hard to find my real name. So I don't know if I really care)
@@ -59,6 +59,7 @@ No email for now. Gmail would be a pain.
 ### General
 
 - [ ] setup syncthing for each host to connect to external connections
+- [x] switch to agenix
 
 ### Dinraal
 
