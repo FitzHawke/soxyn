@@ -34,6 +34,7 @@ in {
         ./dinraal/hardware-configuration.nix
         ./dinraal/hardware.nix
         ./dinraal/age.nix
+        ./dinraal/syncthing.nix
         hw.common-cpu-intel
         hw.common-pc-laptop
         hmModule
