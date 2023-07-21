@@ -19,7 +19,7 @@
   system.fsPackages = [pkgs.sshfs];
 
   fileSystems."/".options = ["autodefrag" "compress=zstd" "discard=async"];
-  "/mnt/hylia" = {
+  fileSystems."/mnt/hylia" = {
       device = "will@192.168.1.50:/mnt/hylia";
       fsType = "sshfs";
       options = [
