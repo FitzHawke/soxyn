@@ -20,7 +20,7 @@
 
   fileSystems."/".options = ["autodefrag" "compress=zstd" "discard=async"];
   fileSystems."/mnt/hylia" = {
-      device = "will@192.168.1.50:/mnt/hylia";
+      device = "will@ruto.home.arpa:/mnt/hylia";
       fsType = "sshfs";
       options = [
         "allow_other"
