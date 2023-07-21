@@ -25,6 +25,7 @@
     obsidian
     quodlibet-full
     rsync
+    sd
     todo
     unzip
     xh

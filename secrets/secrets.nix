@@ -14,5 +14,5 @@ in
   "syncthing/naydra.age".publicKeys = users ++ systems;
   "syncthing/gleeok.age".publicKeys = users ++ systems;
   "syncthing/riju.age".publicKeys = users ++ systems;
-  "syncthing/web-pass.age".publicKeys = users ++ systems;
+  "syncthing/web_pass.age".publicKeys = users ++ systems;
 }
