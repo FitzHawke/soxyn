@@ -11,7 +11,7 @@
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
-  shared = [agenix core bootloader wayland];
+  shared = [agenix core bootloader];
 
   home-manager = {
     useUserPackages = true;
@@ -37,6 +37,7 @@ in {
         ./dinraal/syncthing.nix
         hw.common-cpu-intel
         hw.common-pc-laptop
+        wayland
         hmModule
         {inherit home-manager;}
       ]
@@ -45,7 +46,6 @@ in {
   };
 
   # main desktop
-  # very much a WIP
   farosh = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules =
@@ -55,10 +55,26 @@ in {
         ./farosh/hardware.nix
         ./farosh/age.nix
         ./farosh/syncthing.nix
-        bootloader
         hw.common-cpu-amd
         hw.common-gpu-amd
-        # hw.common-pc-ssd
+        wayland
+        hmModule
+        {inherit home-manager;}
+      ]
+      ++ shared;
+    specialArgs = {inherit inputs;};
+  };
+
+    naydra = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules =
+      [
+        {networking.hostName = "naydra";}
+        ./naydra/hardware-configuration.nix
+        ./naydra/hardware.nix
+        ./naydra/syncthing.nix
+        bootloader
+        hw.common-cpu-intel
         hmModule
         {inherit home-manager;}
       ]
