@@ -1,84 +1,7 @@
 {
-  lib,
   config,
-  pkgs,
   ...
-}: let
-  # basically have to rewrite the script from the module to sync secrets in
-  # there has to be a better way, but this works for now
-  # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/networking/syncthing.nix
-  cfg = config.services.syncthing;
-  cleanedConfig = lib.converge (lib.filterAttrsRecursive (_: v: v != null && v != {})) cfg.settings;
-
-  devices = lib.mapAttrsToList (_: device: device // {
-    deviceID = device.id;
-  }) cfg.settings.devices;
-
-  folders = lib.mapAttrsToList (_: folder: folder // {
-    devices = map (device: { deviceId = cfg.devices.${device}.id; }) folder.devices;
-  }) (lib.filterAttrs (_: folder:
-    folder.enable
-  ) cfg.settings.folders);
-
-  writeConf = let
-    bat = "${lib.getExe pkgs.bat} -pp";
-    sed = "${lib.getExe pkgs.gnused}";
-  in
-    pkgs.writers.writeBash "writeConf" ''
-      set -efu
-
-      # be careful not to leak secrets in the filesystem or in process listings
-
-      umask 0077
-
-      # get the api key by parsing the config.xml
-      while
-          ! ${pkgs.libxml2}/bin/xmllint \
-              --xpath 'string(configuration/gui/apikey)' \
-              ${cfg.configDir}/config.xml \
-              >"$RUNTIME_DIRECTORY/api_key"
-      do sleep 1; done
-
-      (printf "X-API-Key: "; cat "$RUNTIME_DIRECTORY/api_key") >"$RUNTIME_DIRECTORY/headers"
-
-      curl() {
-          ${pkgs.curl}/bin/curl -sSLk -H "@$RUNTIME_DIRECTORY/headers" \
-              --retry 1000 --retry-delay 1 --retry-all-errors \
-              "$@"
-      }
-
-      # query the old config
-      old_cfg=$(curl ${cfg.guiAddress}/rest/config)
-
-      # generate the new config by merging with the NixOS config options
-      new_cfg=$(printf '%s\n' "$old_cfg" | ${pkgs.jq}/bin/jq -c ${lib.escapeShellArg ''. * ${builtins.toJSON cleanedConfig} * {
-        "devices": (${builtins.toJSON devices}${lib.optionalString (cfg.settings.devices == {} || ! cfg.overrideDevices) " + .devices"}),
-        "folders": (${builtins.toJSON folders}${lib.optionalString (cfg.settings.folders == {} || ! cfg.overrideFolders) " + .folders"})
-      }''})
-
-    farosh="$(${bat} /run/agenix/far)"
-    naydra="$(${bat} /run/agenix/nay)"
-    gleeok="$(${bat} /run/agenix/glee)"
-    riju="$(${bat} /run/agenix/riju)"
-    web_pass="$(${bat} /run/agenix/pass)"
-
-    sec_cfg=$(echo $new_cfg | \
-      ${sed} "s/ST_FAROSH_KEY/$farosh/g" | \
-      ${sed} "s/ST_NAYDRA_KEY/$naydra/g" | \
-      ${sed} "s/ST_GLEEOK_KEY/$gleeok/g" | \
-      ${sed} "s/ST_RIJU_KEY/$riju/g" | \
-      ${sed} "s/ST_WEB_PASS/$web_pass/g")
-
-      # send the new config
-      curl -X PUT -d "$sec_cfg" ${cfg.guiAddress}/rest/config
-
-      # restart Syncthing if required
-      if curl ${cfg.guiAddress}/rest/config/restart-required |
-          ${pkgs.jq}/bin/jq -e .requiresRestart > /dev/null; then
-          curl -X POST ${cfg.guiAddress}/rest/system/restart
-      fi
-    '';
-in {
+}: {
   services.syncthing = {
     enable = true;
     user = "will";
@@ -110,9 +33,17 @@ in {
         password = "ST_WEB_PASS";
       };
     };
-  };
 
-  systemd.services.syncthing-init.serviceConfig.ExecStart = lib.mkForce writeConf;
+    # custom settings added from ../common/syncthing
+    # path defaults to '/run/agenix/' + secret name
+    secrets = {
+      "far" = {id="ST_FAROSH_KEY";};
+      "nay" = {id="ST_NAYDRA_KEY";};
+      "glee" = {id="ST_GLEEOK_KEY";};
+      "riju" = {id="ST_RIJU_KEY";};
+      "pass" = {id="ST_WEB_PASS";};
+    };
+  };
 
   age.secrets = {
     far = {
