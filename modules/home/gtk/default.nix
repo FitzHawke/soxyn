@@ -99,10 +99,7 @@ in {
       };
     };
     iconTheme = {
-      package = pkgs.catppuccin-papirus-folders.override {
-        accent = "mauve";
-        flavor = "mocha";
-      };
+      package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
     };
     font = {
