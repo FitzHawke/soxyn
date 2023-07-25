@@ -22,6 +22,14 @@ Originally a nice list of plans that has turned into a stream of conciousness me
     - [ ] README
     - [ ] comments
 
+## Meta
+
+- [ ] reorganize repo. again.
+  - [ ] `modules` folder should contain 'shareable' modules like syncthing that adds secret support
+  - [ ] current `modules` are just configurations shared between my hosts
+  - [ ] use `host-by-id` and `user-by-id`(for the conversion to multi-user) folders for dynamic linking
+  - [ ] how will a unique setup for both host and user work? 🤔 -- seems like it will be a rare occurance, and will lead to a lot of duplication if attempted to handle early. Expert reccomendation - Ignore until its a problem. Then blame our political opponents.
+
 ## Secrets
 
 - [x] setup agenix
@@ -53,6 +61,17 @@ Originally a nice list of plans that has turned into a stream of conciousness me
 - [ ] ~~see if evolution can be declaratively configured~~
 
 No email for now. Gmail would be a pain.
+
+### Syncthing
+
+- [ ] find out how to migrate device id across systems
+- [ ] implement deviceID secrets into syncthing modules
+
+### Jellyfin-Vue
+
+- [ ] test building tauri apps on nixos
+- [ ] could possibly replace jellyfin media player!
+- [ ] ci builds are available at <https://github.com/jellyfin/jellyfin-vue/actions>
 
 ## Hosts
 
@@ -97,7 +116,7 @@ local NAS server which doubles as a local container host
 - Router
   - [ ] networking is hard. is it easier on nix?
     - wouldn't mind dropping OPNSense
-    - OTOH I am far from a networking expert. Would nixos even be secure on a router?
+    - OTOH I am far from a networking expert. Would nixos *created by me* even be secure on a router?
 
 - Phone
   - [ ] pinephone seems like a fun toy
@@ -111,7 +130,9 @@ local NAS server which doubles as a local container host
 - can nixos give comparable isolation?
 - do I care about isolation? (yes. for at least one)
 - is having custom images worth the maintenance burden? (maybe)
-- [ ] try building a version each image I currently use (8 of them left. too lazy to list rn)
+- [ ] try building a version each image I currently use
+- [ ] or just be super lazy and have systemd build, update and run the containers on boot same as current setup (podman is amazing! who really needs docker-compose anyways)
+<https://docs.podman.io/en/latest/markdown/podman-generate-systemd.html#generate-systemd-unit-file-for-a-container-with-new-flag>
 
 ## Research/Testing
 

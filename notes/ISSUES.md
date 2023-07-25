@@ -45,3 +45,7 @@
 - bluetooth still tries to show even when disabled
 - brightness shows even on computers without adjustable brightness
 - workspace tracking can be a little odd with multiple monitors (wrong color sometimes is most noticeable)
+
+#### newsflash
+
+- [https://gitlab.com/news-flash/news_flash_gtk/-/issues/397]
