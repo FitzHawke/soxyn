@@ -29,7 +29,9 @@
 #### electron apps
 
 - element-desktop crashes on launch unless launched with `NIXOS_OZONE_WL= element-desktop`
-- vscode *usually* crashes on launch unless launched with `NIXOS_OZONE_WL= code` -- This one really confuses me. Will crash approx 95% of the time with no rhyme or reason. Seemingly higher probablility of working if attempted immediately after boot.
+- <https://github.com/NixOS/nixpkgs/issues/244486>
+
+- vscode *usually* crashes on launch unless launched with `NIXOS_OZONE_WL= code` -- This one really confuses me. Will crash approx 95% of the time with no rhyme or reason. Seemingly higher probability of working if attempted immediately after boot.
 
 #### steam
 
@@ -38,9 +40,10 @@
 #### eww
 
 - using custom build until tray is accepted into upstream
+  - <https://github.com/elkowar/eww/pull/743>
 - spacing around apps in tray is tight
 - styling on dropdown menu is whack
-- clicks dont always register on tray dropdown
+- clicks don't always register on tray dropdown
 - battery ring still shows even on desktop without battery
 - bluetooth still tries to show even when disabled
 - brightness shows even on computers without adjustable brightness
@@ -48,4 +51,5 @@
 
 #### newsflash
 
-- [https://gitlab.com/news-flash/news_flash_gtk/-/issues/397]
+- weird rendering if a line has multiple `$` present
+- <https://gitlab.com/news-flash/news_flash_gtk/-/issues/397>
