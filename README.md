@@ -4,23 +4,23 @@ This repository contains my personal NixOS configurations, built using flakes. I
 
 ## 📑 Table of Contents
 
-- [Introduction](#👋-introduction)
-  - [Features](#✅-features)
-  - [Limitations](#⚠-limitations)
-  - [Future](#🗓-future)
-- [Getting Started](#🥽-getting-started)
-  - [Pre-Install](#📌-pre-install)
-  - [Setup](#📐-setup)
-  - [Partitioning](#🪚-partitioning)
-    - [Encrypted](#🔑-full-disk-encryption-with-luks)
-    - [Non-Encrypted](#🔓-no-encryption)
-  - [Install](#💻-install)
-  - [Customization](#💡-customization)
-  - [Updating](#🚀-updating)
-- [Contributing](#🔨-contributing)
-- [Contact](#📳-contact)
-- [License](#📜-license)
-- [Special Thanks](#❤-special-thanks)
+- [Introduction](#-introduction)
+  - [Features](#-features)
+  - [Limitations](#-limitations)
+  - [Future](#-future)
+- [Getting Started](#-getting-started)
+  - [Pre-Install](#-pre-install)
+  - [Setup](#-setup)
+  - [Partitioning](#-partitioning)
+    - [Encrypted](#-full-disk-encryption-with-luks)
+    - [Non-Encrypted](#-no-encryption)
+  - [Install](#-install)
+  - [Customization](#-customization)
+  - [Updating](#-updating)
+- [Contributing](#-contributing)
+- [Contact](#-contact)
+- [License](#-license)
+- [Special Thanks](#-special-thanks)
 
 ## 👋 Introduction
 
@@ -105,7 +105,7 @@ Currently secrets are used at:
 
 ### 🪚 Partitioning
 
-We have written up instructions for 2 different partition schemas below, one with [full disk encryption](#full-disk-encryption-with-luks) (requires decryption password entry on boot) and one [without encryption](#no-encryption). We recommend using encryption on any devices you travel with or devices with private information you'd like to keep secure.
+We have written up instructions for 2 different partition schemas below, one with [full disk encryption](#-full-disk-encryption-with-luks) (requires decryption password entry on boot) and one [without encryption](#-no-encryption). We recommend using encryption on any devices you travel with or devices with private information you'd like to keep secure.
 
 We are using btrfs on a nvme ssd with UEFI boot and no swap partition for the following examples.
 
@@ -167,7 +167,7 @@ We are using btrfs on a nvme ssd with UEFI boot and no swap partition for the fo
    mount /dev/nvme0n1p2 /mnt/boot
    ```
 
-Whew, finally done partitioning setup! Now you can skip down to [Install](#💻-install) for the next steps.
+Whew, finally done partitioning setup! Now you can skip down to [Install](#-install) for the next steps.
 
 #### 🔓 No Encryption
 
@@ -216,7 +216,7 @@ Whew, finally done partitioning setup! Now you can skip down to [Install](#💻-
    mount /dev/nvme0n1p2 /mnt/boot
    ```
 
-Whew, finally done partitioning setup! Now you can skip down to [Install](#💻-install) for the next steps.
+Whew, finally done partitioning setup! Now you can skip down to [Install](#-install) for the next steps.
 
 ### 💻 Install
 
