@@ -2,6 +2,8 @@
   config,
   ...
 }: {
+  imports = [ ../common/syncthing.nix ];
+
   services.syncthing = {
     enable = true;
     user = "will";
