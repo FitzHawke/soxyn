@@ -17,12 +17,14 @@
     - only use bluetooth for controller connection, can use usb instead
   - was also a problem on fedora
   - no observed rhyme or reason to whether it works
-  - system does not even recognise having a bluetooth device
+  - system does not even recognize having a bluetooth device
   - goes for a long period (days/weeks) before randomly 'toggling' its status
   - wifi also likely has issues (primarily use wired connection)
     - on fedora it would randomly drop and reconnect
-  - think it likely a firmware issue on motherboard
-    - possibly loading an incorrect driver?
+  - ~~think it likely a firmware issue on motherboard~~
+    - definitely an issue with motherboard firmware
+    - to temporarily fix clear CMOS and then resetup bios
+      - lesson of the day is realtek === 💩
 
 ### common
 
