@@ -1,3 +1,6 @@
+(defvar GB 1024000000)
+(defvar MB 1024000)
+
 (defwidget system-menu []
   (box ; time & date
     :class "system-menu-box"
@@ -8,16 +11,16 @@
       :space-evenly false
       (label
         :class "time text"
-        :text "${time.hour}:${time.minute}")
+        :text {formattime(EWW_TIME, "%H:%M")})
       (box
         :class "date-box"
         :space-evenly false
         (label
           :class "date"
-          :text {time.date})
+          :text {formattime(EWW_TIME, "%d/%m")})
         (label
           :class "day"
-          :text {time.day})))
+          :text {formattime(EWW_TIME, "%A")})))
 
     (centerbox ; wifi/bluetooth/airplane buttons
       :class "system-row"
@@ -153,7 +156,7 @@
         :space-evenly false
         :halign "end"
         (circular-progress
-          :value {memory.percent}
+          :value {EWW_RAM.used_mem_perc}
           :class "sys-mem"
           :thickness 3
           (label
@@ -167,11 +170,11 @@
             :halign "start"
             :class "sys-text-mem")
           (label
-            :text "${memory.used} used"
+            :text {EWW_RAM.used_mem / GB < 1 ? "${round(EWW_RAM.used_mem / MB, 1)} M used" : "${round(EWW_RAM.used_mem / GB, 1)} G used"}
             :halign "start"
             :class "sys-text-sub")
           (label
-            :text "${memory.total} total"
+            :text {EWW_RAM.total_mem / GB < 1 ? "${round(EWW_RAM.total_mem / MB, 1)} M total" : "${round(EWW_RAM.total_mem / GB, 1)} G total"}
             :halign "start"
             :class "sys-text-sub"))))
 
@@ -182,18 +185,17 @@
         :space-evenly false
         :halign "start"
         (label
-          :class "battery-icon icon"
-          :style "color: ${battery.color}"
-          :text {battery.icon})
+          :class "battery-icon icon ${EWW_BATTERY.total_avg > 20 ? '' : 'low'}"
+          :text {battery_icons[round(EWW_BATTERY.total_avg / (100 / arraylength(battery_icons)) - 1,0)]})
         (label
           :class "text"
-          :text {battery.percentage})
+          :text {round(EWW_BATTERY.total_avg,0)})
         (label
           :class "battery-status text"
           :text {battery.status})
         (label
-          :class "battery-wattage text"
-          :text {battery.status != "Fully Charged" ? battery.wattage : ""}))
+          :class "battery-rate text"
+          :text {battery.rate}))
       (label) ; empty element; centerbox requires 3 children but we only need left/right
       (box ; power button
         :space-evenly false

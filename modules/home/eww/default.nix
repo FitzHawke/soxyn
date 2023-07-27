@@ -5,13 +5,15 @@
   ...
 }: { 
   home.packages = with pkgs; [
+    inputs.gross.packages.${system}.gross
+    inputs.eww.packages.${system}.eww-wayland
+
     bash
     blueberry
     bluez
     brillo
     coreutils
     dbus
-    inputs.eww.packages.${system}.eww-wayland
     findutils
     gawk
     gnome.gnome-control-center

@@ -24,8 +24,7 @@
   (box
     :space-evenly false
     :halign "start"
-    (workspaces)
-    ))
+    (workspaces)))
 
 (defwidget center []
   (box
@@ -45,7 +44,7 @@
     (net)
     (sys)
     (clock_module)))
-
+  
 (defwidget bar-box []
   (centerbox
     (left)

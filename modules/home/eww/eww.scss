@@ -8,7 +8,7 @@
   background-color: $bg;
   background-position: center;
   background-size: cover;
-  border: 1px solid rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, .3);
   color: $fg;
   margin: 5px 5px 10px;
   @include rounding;
@@ -16,7 +16,7 @@
 
 * {
   all: unset;
-  font-family: "Lexend", Roboto, sans-serif;
+  font-family: "Product Sans", Roboto, sans-serif;
   transition: 200ms ease;
 }
 
@@ -26,7 +26,6 @@
 @import 'css/osd';
 @import 'css/sidebar';
 @import 'css/system';
-@import 'css/tray';
 @import 'css/volume';
 
 .bar {
@@ -90,16 +89,16 @@ scale trough {
 }
 
 /* workspaces */
-.workspaces {
-  .focused {
-    background-color: $bg;
-    border-radius: 1rem;
-    margin: .3rem;
-    padding: .25rem;
-  }
+.focused {
+  background-color: $bg;
+  border-radius: 1rem;
+  margin: .3rem;
+  padding: .25rem;
+}
 
-  .ws {
-    border-radius: 2rem;
-    margin: .7rem .25rem;
-  }
+.workspaces { margin-left: 10px; }
+
+.ws {
+  border-radius: 2rem;
+  margin: .7rem .25rem;
 }

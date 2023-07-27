@@ -25,6 +25,11 @@
       url = "github:fitzhawke/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    gross = {
+      url = "github:fufexan/gross";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
