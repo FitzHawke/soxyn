@@ -39,32 +39,32 @@
     # custom settings added from ../common/syncthing
     # path defaults to '/run/agenix/' + secret name
     secrets = {
-      "far" = {id="ST_FAROSH_KEY";};
-      "nay" = {id="ST_NAYDRA_KEY";};
-      "glee" = {id="ST_GLEEOK_KEY";};
-      "riju" = {id="ST_RIJU_KEY";};
-      "pass" = {id="ST_WEB_PASS";};
+      "syncthing/farosh" = {id="ST_FAROSH_KEY";};
+      "syncthing/naydra" = {id="ST_NAYDRA_KEY";};
+      "syncthing/gleeok" = {id="ST_GLEEOK_KEY";};
+      "syncthing/riju" = {id="ST_RIJU_KEY";};
+      "syncthing/pass" = {id="ST_WEB_PASS";};
     };
   };
 
   age.secrets = {
-    far = {
+    "syncthing/farosh" = {
       file = ../../secrets/syncthing/farosh.age;
       owner = config.services.syncthing.user;
     };
-    glee = {
+    "syncthing/gleeok" = {
       file = ../../secrets/syncthing/gleeok.age;
       owner = config.services.syncthing.user;
     };
-    nay = {
+    "syncthing/naydra" = {
       file = ../../secrets/syncthing/naydra.age;
       owner = config.services.syncthing.user;
     };
-    riju = {
+    "syncthing/riju" = {
       file = ../../secrets/syncthing/riju.age;
       owner = config.services.syncthing.user;
     };
-    pass = {
+    "syncthing/pass" = {
       file = ../../secrets/syncthing/web_pass.age;
       owner = config.services.syncthing.user;
     };
