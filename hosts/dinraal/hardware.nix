@@ -10,6 +10,12 @@
       ];
     };
   };
+
+  boot = {
+    # switch kernel
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  };
+
   services = {
     fwupd.enable = true;
     smartd.enable = true;

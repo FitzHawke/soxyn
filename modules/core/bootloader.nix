@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }: {
   environment.systemPackages = [
@@ -12,8 +11,6 @@
     bootspec.enable = true;
     consoleLogLevel = 4;
     initrd.systemd.enable = true;
-    # switch kernel
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
     # load modules on boot
     kernelModules = [];
 
