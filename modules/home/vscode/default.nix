@@ -13,7 +13,7 @@
 {
   programs.vscode = with pkgs; {
     enable = true;
-    package = vscode;
+    package = vscode.fhsWithPackages (pkgs: with pkgs; [ libsecret ]);
     mutableExtensionsDir = true;
 
     #    extensions = with vscode-extensions;
