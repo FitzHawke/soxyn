@@ -18,7 +18,7 @@ in {
     mutableUsers = false;
     users.will = {
       isNormalUser = true;
-      passwordFile = config.age.secrets.fitz-pass.path;
+      passwordFile = config.age.secrets."users/fitz-pass".path;
       extraGroups =
         [
           "wheel"
@@ -46,7 +46,7 @@ in {
       openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/pubkeys/ssh.pub)];
     };
   };
-  age.secrets."fitz-pass" = {
-      file = ../../secrets/fitz-pass.age;
+  age.secrets."users/fitz-pass" = {
+      file = ../../secrets/users/fitz-pass.age;
   };
 }
