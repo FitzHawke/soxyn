@@ -65,7 +65,7 @@
       owner = config.services.syncthing.user;
     };
     "syncthing/pass" = {
-      file = ../../secrets/syncthing/web_pass.age;
+      file = ../../secrets/syncthing/web-pass.age;
       owner = config.services.syncthing.user;
     };
   };

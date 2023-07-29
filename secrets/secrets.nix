@@ -7,12 +7,12 @@ let
   systems = [ farosh dinraal ];
 in
 {
-  "fitz-pass.age".publicKeys = users ++ systems;
-  "wl-loc.age".publicKeys = users ++ systems;
+  "users/fitz-pass.age".publicKeys = users ++ systems;
+  "users/wl-loc.age".publicKeys = users ++ systems;
   "syncthing/dinraal.age".publicKeys = [ will farosh ];
   "syncthing/farosh.age".publicKeys = [ will dinraal ];
   "syncthing/naydra.age".publicKeys = users ++ systems;
   "syncthing/gleeok.age".publicKeys = users ++ systems;
   "syncthing/riju.age".publicKeys = users ++ systems;
-  "syncthing/web_pass.age".publicKeys = users ++ systems;
+  "syncthing/web-pass.age".publicKeys = users ++ systems;
 }

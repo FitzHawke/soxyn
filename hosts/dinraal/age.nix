@@ -1,6 +1,6 @@
 {...}: {
   age.secrets.wl-loc = {
-    file = ../../secrets/wl-loc.age;
+    file = ../../secrets/users/wl-loc.age;
     owner = "will";
   };
 }
