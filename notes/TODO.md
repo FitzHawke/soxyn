@@ -7,11 +7,11 @@ Originally a nice list of plans that has turned into a stream of consciousness m
 - README
   - [x] rewrite install instructions
   - [ ] add section on steps to add new system
-  - [ ] add steps on how to re-generate secrets
+  - [x] add steps on how to re-generate secrets
   - [x] add ways to contact for future friends
 - secrets
-  - [ ] README
-  - [ ] comments
+  - [x] README
+  - [x] comments
 - hosts
   - [ ] README
   - [ ] comments
@@ -33,15 +33,9 @@ Originally a nice list of plans that has turned into a stream of consciousness m
 ## Secrets
 
 - [x] setup agenix
-- [ ] use agenix for password instead of initialPassword
+- [x] use agenix for password instead of initialPassword
 - [x] update and hide location in secrets
 - [ ] look through config for anything else that should be secret
-- [ ] consider changing username to fitz. (Not like its hard to find my real name. So I don't know if I really care)
-  - would require
-  - [ ] generate new ssh configs (probably extra, but why not)
-  - [ ] transfer everything to new home directory on all systems
-  - [ ] register new ssh keys for sign-on where applicable
-  - [ ] confirm no funny business with ownership (should still be uid 1000)
 
 ## Impermanence
 
@@ -57,7 +51,7 @@ Originally a nice list of plans that has turned into a stream of consciousness m
 - [ ] ~~test out new thunderbird~~
 - [ ] ~~see if evolution can be declaratively configured~~
 
-No email for now. Gmail would be a pain.
+No email client for now. Gmail would be a pain.
 
 ## Hosts
 
@@ -87,7 +81,7 @@ local NAS server which doubles as a local container host
 
 - [ ] separate out imports so server doesn't contain any desktop/unnecessary components
 - write out new components
-  - [ ] nfs client
+  - [x] nfs client
   - [ ] nfs server (connect to farosh instead of sshd? Also can connect through split tunnel from dinraal)
 
 ### Gleeok
@@ -118,7 +112,7 @@ local NAS server which doubles as a local container host
 - [ ] compare nix built images with ones on registry
 - [ ] compare images with straight up nix installs
 
-- [ ] or just be super lazy and install a systemd service to build, update and run containers from a repo (podman is amazing! who really needs docker-compose anyways)
+- [ ] or just be super lazy and install a systemd service to build and run containers from a repo (podman is amazing! who really needs docker-compose anyways)
 <https://docs.podman.io/en/latest/markdown/podman-generate-systemd.html#generate-systemd-unit-file-for-a-container-with-new-flag>
 
 ## Research/Testing
@@ -127,6 +121,7 @@ local NAS server which doubles as a local container host
 - [ ] impermanence (as above)
 - [ ] [nixos-router](https://github.com/chayleaf/nixos-router) vs current solution (OPNSense)
 - [ ] [nixos-mailserver](https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/) vs current solution (bare metal on vps)
+- [ ] [Stalwart Mail Server](https://stalw.art/) could also work
 - [x] thunderbird config
 - [ ] flatpak. Is it more stable than FHS for electron apps? or Steam?
 - [ ] nixos-stable then pull specific packages from unstable
