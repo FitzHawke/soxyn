@@ -9,7 +9,7 @@
   #        inherit (config) monitors;
   #      }) +
   wayland.windowManager.hyprland.extraConfig =
-    builtins.readFile ../../../hosts/${osConfig.networking.hostName}/hyprland.txt
+    builtins.readFile ../../../by-id/${osConfig.networking.hostName}/hyprland.txt
     + ''
       $mod = SUPER
 

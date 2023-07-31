@@ -30,6 +30,20 @@ This repository contains my personal NixOS configurations, tailored to my specif
 
 My goal is to evolve that configuration to have less manual setup on install (more imperative) and have more things synced between systems (or through the cloud). Basically the dream is to eliminate configuration drift.
 
+### 🗺 Layout
+
+- [Assets](./assets) - extra files like desktop images and readme images
+- [Hosts](./hosts) - Contains all unique host configurations
+  - [By-id](./hosts/by-id) - configuration settings unique to each individual host
+  - [Shared](./hosts/shared) - configuration settings shared between hosts
+    - [Core](./hosts/shared/core/) - configuration modules for the root system
+    - [Home](./hosts/shared/home/) - configuration modules to be imported inside of home-manager
+    - [Meta](./hosts/shared/meta/) - groupings of configuration modules, ie. desktop environments
+    - [Users](./hosts/shared/users/) - configuration modules for users
+- [Modules](./modules) - modules that add additional configuration options
+- [Notes](./notes) - additional notes mostly to myself, not available in comments or readmes. *Likely contains outdated information*
+- [Secrets](./secrets) - ssh pubkeys and information to be decrypted on system bootup
+
 ### ✅ Features
 
 - Built with flakes for reproducibility and declarative configuration.
@@ -278,7 +292,7 @@ Contributions are welcome! If you have any suggestions, improvements, or bug fix
 
 When contributing, please ensure that your changes align with the existing code style and conventions.
 
-## 📳 Contact
+## 🚜 Contact
 
 If you have any questions about the how or why of anything in here then please don't hesitate to reach out! Or even just if you found value and want to say thanks, I'd love to hear from you! I can be reached through any of the links below:
 

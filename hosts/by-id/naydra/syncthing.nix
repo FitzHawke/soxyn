@@ -2,7 +2,7 @@
   config,
   ...
 }: {
-  imports = [ ../common/syncthing.nix ];
+  imports = [ ../../../modules/core/syncthing.nix ];
 
   services.syncthing = {
     enable = true;
@@ -39,33 +39,33 @@
     # custom settings added from ../common/syncthing
     # path defaults to '/run/agenix' + secret name
     secrets = {
-      "din" = {id="ST_DINRAAL_KEY";};
-      "far" = {id="ST_FAROSH_KEY";};
-      "glee" = {id="ST_GLEEOK_KEY";};
-      "riju" = {id="ST_RIJU_KEY";};
-      "pass" = {id="ST_WEB_PASS";};
+      "syncthing/dinraal" = {id="ST_DINRAAL_KEY";};
+      "syncthing/farosh" = {id="ST_FAROSH_KEY";};
+      "syncthing/gleeok" = {id="ST_GLEEOK_KEY";};
+      "syncthing/riju" = {id="ST_RIJU_KEY";};
+      "syncthing/pass" = {id="ST_WEB_PASS";};
     };
   };
 
   age.secrets = {
-    din = {
-      file = ../../secrets/syncthing/dinraal.age;
+    "syncthing/dinraal" = {
+      file = ../../../secrets/syncthing/dinraal.age;
       owner = config.services.syncthing.user;
     };
-    glee = {
-      file = ../../secrets/syncthing/gleeok.age;
+    "syncthing/gleeok" = {
+      file = ../../../secrets/syncthing/gleeok.age;
       owner = config.services.syncthing.user;
     };
-    far = {
-      file = ../../secrets/syncthing/farosh.age;
+    "syncthing/farosh" = {
+      file = ../../../secrets/syncthing/farosh.age;
       owner = config.services.syncthing.user;
     };
-    riju = {
-      file = ../../secrets/syncthing/riju.age;
+    "syncthing/riju" = {
+      file = ../../../secrets/syncthing/riju.age;
       owner = config.services.syncthing.user;
     };
-    pass = {
-      file = ../../secrets/syncthing/web_pass.age;
+    "syncthing/pass" = {
+      file = ../../../secrets/syncthing/web-pass.age;
       owner = config.services.syncthing.user;
     };
   };

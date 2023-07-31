@@ -52,5 +52,9 @@
       fsType = "fuse.mergerfs";
       options = ["allow_other" "minfreespace=16G" "fsname=hylia"];
     };
+    "/mnt/down" = {
+      device = "192.168.2.3:/home/user/rtdown/completed";
+      fsType = "nfs";
+    };
   };
 }

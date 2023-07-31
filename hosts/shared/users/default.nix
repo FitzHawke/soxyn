@@ -43,10 +43,10 @@ in {
         ];
       uid = 1000;
       shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/pubkeys/ssh.pub)];
+      openssh.authorizedKeys.keys = [(builtins.readFile ../../../secrets/pubkeys/ssh.pub)];
     };
   };
   age.secrets."users/fitz-pass" = {
-      file = ../../secrets/users/fitz-pass.age;
+      file = ../../../secrets/users/fitz-pass.age;
   };
 }
