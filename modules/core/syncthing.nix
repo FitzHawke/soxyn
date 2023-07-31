@@ -8,7 +8,7 @@
   # this works for now, but is prone to breaking with updates
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/networking/syncthing.nix
   cfg = config.services.syncthing;
-  cleanedConfig = lib.converge (lib.filterAttrsRecursive (_: v: v != null && v != {} && v != "secrets")) cfg.settings;
+  cleanedConfig = lib.converge (lib.filterAttrsRecursive (_: v: v != null && v != {} )) cfg.settings;
 
   devices = lib.mapAttrsToList (_: device:
     device
@@ -20,7 +20,7 @@
   folders = lib.mapAttrsToList (_: folder:
     folder
     // {
-      devices = map (device: {deviceId = cfg.devices.${device}.id;}) folder.devices;
+      devices = map (device: {deviceId = cfg.settings.devices.${device}.id;}) folder.devices;
     }) (lib.filterAttrs (
       _: folder:
         folder.enable

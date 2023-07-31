@@ -1,8 +1,5 @@
-{
-  config,
-  ...
-}: {
-  imports = [ ../../../modules/core/syncthing.nix ];
+{config, ...}: {
+  imports = [../../../modules/core/syncthing.nix];
 
   services.syncthing = {
     enable = true;
@@ -35,15 +32,14 @@
         password = "ST_WEB_PASS";
       };
     };
-
     # custom settings added from ../common/syncthing
     # path defaults to '/run/agenix/' + secret name
     secrets = {
-      "syncthing/farosh" = {id="ST_FAROSH_KEY";};
-      "syncthing/naydra" = {id="ST_NAYDRA_KEY";};
-      "syncthing/gleeok" = {id="ST_GLEEOK_KEY";};
-      "syncthing/riju" = {id="ST_RIJU_KEY";};
-      "syncthing/pass" = {id="ST_WEB_PASS";};
+      "syncthing/farosh" = {id = "ST_FAROSH_KEY";};
+      "syncthing/naydra" = {id = "ST_NAYDRA_KEY";};
+      "syncthing/gleeok" = {id = "ST_GLEEOK_KEY";};
+      "syncthing/riju" = {id = "ST_RIJU_KEY";};
+      "syncthing/pass" = {id = "ST_WEB_PASS";};
     };
   };
 
