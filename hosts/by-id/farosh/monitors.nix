@@ -1,8 +1,9 @@
-# Currently Unused. Defined directly in 'hyprland.txt'
-{
+{...}: {
+  imports = [../../../modules/home/monitors.nix];
   monitors = [
     {
       name = "DP-1";
+      primary = true;
       width = 1920;
       height = 1080;
       refreshRate = 60;
