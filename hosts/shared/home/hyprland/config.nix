@@ -1,16 +1,24 @@
 {
   osConfig,
   config,
+  lib,
   ...
 }: {
-  # extraConfig =
-  #      (import ./moniters.nix {
-  #        inherit lib;
-  #        inherit (config) monitors;
-  #      }) +
+  imports = [../../../by-id/${osConfig.networking.hostName}/monitors.nix];
   wayland.windowManager.hyprland.extraConfig =
-    builtins.readFile ../../../by-id/${osConfig.networking.hostName}/hyprland.txt
+    lib.concatMapStrings (
+      m: let
+        resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+        position = "${toString m.x}x${toString m.y}";
+      in "monitor=${m.name},${
+        if m.enabled
+        then "${resolution},${position},1"
+        else "disable"
+      }\n"
+    ) (config.monitors)
     + ''
+
+
       $mod = SUPER
 
       # startup programs alongside hyprland
