@@ -4,14 +4,15 @@
   ...
 }: let
   inherit (self) inputs;
-  bootloader = ../modules/core/bootloader.nix;
-  core = ../modules/core;
-  wayland = ../modules/wayland;
+  core = ./shared/core;
+  gamemode = ./shared/core/gamemode;
+  users = ./shared/users;
+  wayland = ./shared/meta/wayland;
   agenix = inputs.agenix.nixosModules.default;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
-  shared = [agenix core bootloader];
+  shared = [agenix core users];
 
   home-manager = {
     useUserPackages = true;
@@ -20,10 +21,10 @@
       inherit inputs;
       inherit self;
     };
-    users.will = ../modules/home;
+    users.will = ./shared/home;
   };
 in {
-  # all my hosts are named after zelda creatures btw
+  # all my hosts are named after zelda characters and creatures
 
   # laptop
   dinraal = nixpkgs.lib.nixosSystem {
@@ -31,12 +32,13 @@ in {
     modules =
       [
         {networking.hostName = "dinraal";}
-        ./dinraal/hardware-configuration.nix
-        ./dinraal/hardware.nix
-        ./dinraal/age.nix
-        ./dinraal/syncthing.nix
+        ./by-id/dinraal/hardware-configuration.nix
+        ./by-id/dinraal/hardware.nix
+        ./by-id/dinraal/age.nix
+        ./by-id/dinraal/syncthing.nix
         hw.common-cpu-intel
         hw.common-pc-laptop
+        gamemode
         wayland
         hmModule
         {inherit home-manager;}
@@ -51,12 +53,29 @@ in {
     modules =
       [
         {networking.hostName = "farosh";}
-        ./farosh/hardware-configuration.nix
-        ./farosh/hardware.nix
-        ./farosh/age.nix
-        ./farosh/syncthing.nix
+        ./by-id/farosh/hardware-configuration.nix
+        ./by-id/farosh/hardware.nix
+        ./by-id/farosh/age.nix
+        ./by-id/farosh/syncthing.nix
         hw.common-cpu-amd
         hw.common-gpu-amd
+        gamemode
+        wayland
+        hmModule
+        {inherit home-manager;}
+      ]
+      ++ shared;
+    specialArgs = {inherit inputs;};
+  };
+
+  # generic image
+  korok = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules =
+      [
+        {networking.hostName = "farosh";}
+        ./by-id/korok/hardware-configuration.nix
+        ./by-id/korok/hardware.nix
         wayland
         hmModule
         {inherit home-manager;}
@@ -70,10 +89,9 @@ in {
     modules =
       [
         {networking.hostName = "naydra";}
-        ./naydra/hardware-configuration.nix
-        ./naydra/hardware.nix
-        ./naydra/syncthing.nix
-        bootloader
+        ./by-id/naydra/hardware-configuration.nix
+        ./by-id/naydra/hardware.nix
+        ./by-id/naydra/syncthing.nix
         hw.common-cpu-intel
         hmModule
         {inherit home-manager;}
@@ -82,5 +100,5 @@ in {
     specialArgs = {inherit inputs;};
   };
   
-  # gleeok naydra and valoo are future projects :)
+  # korok (generic), gleeok and valoo are future projects :)
 }
