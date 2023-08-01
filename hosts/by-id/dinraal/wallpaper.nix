@@ -1,7 +1,9 @@
-{ ... }: {
+{...}: let
+  primary = ../../../assets/beach-1.png;
+in {
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-      preload=${./primary.png}
+    preload=${primary}
 
-      wallpaper = eDP-1,${./primary.png}
-    '';
+    wallpaper = eDP-1,${primary}
+  '';
 }
