@@ -68,6 +68,22 @@ in {
     specialArgs = {inherit inputs;};
   };
 
+  # generic image
+  korok = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules =
+      [
+        {networking.hostName = "farosh";}
+        ./by-id/korok/hardware-configuration.nix
+        ./by-id/korok/hardware.nix
+        wayland
+        hmModule
+        {inherit home-manager;}
+      ]
+      ++ shared;
+    specialArgs = {inherit inputs;};
+  };
+
     naydra = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules =

@@ -241,17 +241,17 @@ Now we can finally do the install!
    nix-shell -p nixFlakes
 
    # generate a hardware-configuration.nix for your specific hardware
-   nixos-generate-config --root /mnt --dir hosts/dinraal/
+   nixos-generate-config --root /mnt --dir hosts/by-id/korok/
 
    # make sure git is tracking the changes
-   git add hosts/dinraal/hardware-configuration.nix
+   git add hosts/korok/hardware-configuration.nix
    ```
 
    We can either install directly or from a git repository
 
    ```bash
    # install the flake
-   nixos-install --flake '.#dinraal' # github:fitzhawke/soxyn#dinraal
+   nixos-install --flake '.#korok' # github:fitzhawke/soxyn#korok
    ```
 
 Now reboot and login! *Don't forget to change your password if you used initialPassword*
