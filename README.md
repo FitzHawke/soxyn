@@ -13,6 +13,7 @@ This repository contains my personal NixOS configurations, built using flakes. I
 - [Contact](#contact)
 - [License](#license)
 - [Special Thanks](#special-thanks)
+- [The Rabbit Hole](#-the-rabbit-hole)
 
 ## Introduction
 
@@ -153,3 +154,20 @@ A list of people whose amazing configs served as a reference while I fumbled my 
 - [NotAShelf](https://github.com/NotAShelf/nyx)
 - [sioodmy](https://github.com/sioodmy/dotfiles)
 - [Misterio77](https://github.com/Misterio77/nix-config)
+
+And the countless others that have both supported and tolerated my shenanigans.
+
+## 🐇 The Rabbit Hole
+
+### More by FitzHawke
+
+To be filled out later
+
+### Shout-outs
+
+For more yet, check out what these brilliant devs are up to!
+
+- [Jarrod](https://github.com/jarrodmjack)
+- [Ned](https://github.com/ned-park)
+- [DVKR](https://github.com/3dvkr)
+- [Jamil](https://github.com/jamilsinno)
