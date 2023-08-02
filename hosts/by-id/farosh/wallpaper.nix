@@ -1,6 +1,6 @@
 {...}: let
-  primary = ../../../assets/cherry-1.png;
-  second = ../../../assets/cherry-2.png;
+  primary = ../../../assets/firewatch-3-1.png;
+  second = ../../../assets/firewatch-3-2.png;
 in {
   xdg.configFile."hypr/hyprpaper.conf".text = ''
     preload=${primary}
