@@ -1,4 +1,4 @@
-# Soxyn - My NixOS configurations - *Stability Guaranteed or your Money Back*
+# Soxyn - NixOS configurations - *Stability Guaranteed or your Money Back*
 
 This repository contains my personal NixOS configurations, built using flakes. It provides a declarative and reproducible way to define and manage my system configuration.
 
@@ -327,11 +327,15 @@ And the countless others that have both supported and tolerated my shenanigans.
 
 ## 🐇 The Rabbit Hole
 
-### More by FitzHawke
+### 🧭 More of Me
 
-To be filled out later
+Take a look at some of my other projects!
 
-### Shout-outs
+- My [website](https://fitzhawke.com) is currently a single page portfolio page made with React and Astro. I had a lot of fun making this one, and am excited for its next evolution. A blog. Coming Soon(ish)
+- [PEFS](https://pefson.cyclic.sh) a custom built fitness tracker with thew intent of easy data entry and beautiful data representations.
+- Ask me about all the networks I've built or programs I've hosted over the years. It's quite a list, ranging from setting up a wireless point-to-point network (Wifi throughout the barn?! Amazing!) to running my own email server (Fun, but I don't recommend doing it seriously)
+
+### 📣 Shout-outs
 
 For more yet, check out what these brilliant devs are up to!
 
