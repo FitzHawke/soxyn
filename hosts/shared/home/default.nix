@@ -22,7 +22,6 @@
     ./discord
     ./firefox
     ./git
-    ./gtk
     ./hyprland
     ./kitty
     ./mako
@@ -33,6 +32,7 @@
     ./rnnoise
     ./shell
     ./swaylock
+    ./theme
     ./tools
     ./vscode
     ./zathura
