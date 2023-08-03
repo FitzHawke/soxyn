@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     # gui
     anki-bin # flashcards
+    bitwarden # password manager
     blueberry # bluetooth gui
     chromium # backup browser
     element-desktop # matrix chat app
@@ -9,9 +10,11 @@
     gimp # image editing
     jellyfin-media-player # gui for connecting with jellyfin servers
     jq # cli json parsing
+    keepassxc # password manager
     newsflash # RSS reader
     obsidian # markdown knowledge base
     quodlibet-full # gui music
+
 
     # cli
     bc # calculator
@@ -23,6 +26,7 @@
     hyperfine # benchmarking tool
     imagemagick # image conversion tools
     nmap # network scanning
+    rbw # bitwarden cli
     rsync # folder syncing
     sd # sed alt in rust with easy syntax
     unzip # archive manager

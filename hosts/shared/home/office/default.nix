@@ -5,6 +5,7 @@
     gnome.gnome-calculator
     gnome.gnome-calendar
     gnome.nautilus
+    gnome-text-editor
     libreoffice-fresh
     thunderbird
   ];

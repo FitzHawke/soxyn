@@ -28,7 +28,6 @@
     ./media
     ./neovim
     ./office
-    ./pass
     ./rnnoise
     ./shell
     ./swaylock
