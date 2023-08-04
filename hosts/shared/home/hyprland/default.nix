@@ -5,7 +5,13 @@
   osConfig,
   ...
 }: {
-  imports = [./config.nix ../eww ../../../by-id/${osConfig.networking.hostName}/wallpaper.nix];
+  imports = [
+    ./config.nix
+    ../eww
+    ../../../by-id/${osConfig.networking.hostName}/wallpaper.nix
+    inputs.hyprland.homeManagerModules.default
+  ];
+  
   home.packages = with pkgs; [
     inputs.hyprwm-contrib.packages.${system}.grimblast # screenshots
     hyprpaper # wallpaper

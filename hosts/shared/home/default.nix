@@ -1,6 +1,4 @@
-{inputs, ...}:
-# glue all configs together
-{
+{...}: {
   config = {
     home.stateVersion = "23.05";
     home.extraOutputsToInstall = ["doc" "devdoc"];
@@ -11,12 +9,9 @@
     };
   };
   imports = [
-    inputs.hyprland.homeManagerModules.default
-    inputs.anyrun.homeManagerModules.default
-
     ./packages.nix
     ./games.nix
-    
+
     ./anyrun
     ./bottom
     ./discord
