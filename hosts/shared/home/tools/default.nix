@@ -2,36 +2,38 @@
   pkgs,
   config,
   ...
-}: let
-  browser = ["firefox.desktop"];
+}: 
+# let
+#   browser = ["firefox.desktop"];
 
-  associations = {
-    "text/html" = browser;
-    "x-scheme-handler/http" = browser;
-    "x-scheme-handler/https" = browser;
-    "x-scheme-handler/ftp" = browser;
-    "x-scheme-handler/about" = browser;
-    "x-scheme-handler/unknown" = browser;
-    "application/x-extension-htm" = browser;
-    "application/x-extension-html" = browser;
-    "application/x-extension-shtml" = browser;
-    "application/xhtml+xml" = browser;
-    "application/x-extension-xhtml" = browser;
-    "application/x-extension-xht" = browser;
+#   associations = {
+#     "text/html" = browser;
+#     "x-scheme-handler/http" = browser;
+#     "x-scheme-handler/https" = browser;
+#     "x-scheme-handler/ftp" = browser;
+#     "x-scheme-handler/about" = browser;
+#     "x-scheme-handler/unknown" = browser;
+#     "application/x-extension-htm" = browser;
+#     "application/x-extension-html" = browser;
+#     "application/x-extension-shtml" = browser;
+#     "application/xhtml+xml" = browser;
+#     "application/x-extension-xhtml" = browser;
+#     "application/x-extension-xht" = browser;
 
-    "audio/*" = ["mpv.desktop"];
-    "video/*" = ["mpv.dekstop"];
-    "image/*" = ["imv.desktop"];
-    "inode/directory" = ["org.gnome.Nautilus.desktop"];
-    "application/json" = browser;
-    "application/pdf" = ["org.pwmt.zathura.desktop"];
-    "x-scheme-handler/spotify" = ["spotify.desktop"];
-    "x-scheme-handler/discord" = ["webcord.desktop"];
-    "x-scheme-handler/element" = ["element-desktop.desktop"];
-    "x-scheme-handler/anytype" = ["anytype.desktop"];
-    "x-scheme-handler/steam" = ["steam.desktop"];
-  };
-in {
+#     "audio/*" = ["mpv.desktop"];
+#     "video/*" = ["mpv.dekstop"];
+#     "image/*" = ["imv.desktop"];
+#     "inode/directory" = ["org.gnome.Nautilus.desktop"];
+#     "application/json" = browser;
+#     "application/pdf" = ["org.pwmt.zathura.desktop"];
+#     "x-scheme-handler/spotify" = ["spotify.desktop"];
+#     "x-scheme-handler/discord" = ["webcord.desktop"];
+#     "x-scheme-handler/element" = ["element-desktop.desktop"];
+#     "x-scheme-handler/anytype" = ["anytype.desktop"];
+#     "x-scheme-handler/steam" = ["steam.desktop"];
+#   };
+# in 
+{
   services = {
     udiskie.enable = true;
     gpg-agent = {
@@ -87,7 +89,7 @@ in {
       publicShare = "${config.home.homeDirectory}/other";
       templates = "${config.home.homeDirectory}/other";
     };
-    mimeApps.enable = true;
-    mimeApps.defaultApplications = associations;
+    # mimeApps.enable = true;
+    # mimeApps.defaultApplications = associations;
   };
 }
