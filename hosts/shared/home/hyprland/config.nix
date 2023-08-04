@@ -64,10 +64,13 @@
         fullscreen_opacity=1.0
         rounding = 16
         multisample_edges = true
-        blur_new_optimizations = true
-        blur = true
-        blur_size = 3
-        blur_passes = 3
+        
+        blur {
+          enabled = true
+          new_optimizations = true
+          size = 3
+          passes = 3
+        }
 
         drop_shadow = true
         shadow_ignore_window = true
