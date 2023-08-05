@@ -16,7 +16,7 @@ To edit, while in the same directory as secrets.nix run the command `agenix -e p
 S7UKX27-GI7ZTXS-GC6RKUA-7AJGZ44-C6NAYEB-HSKTJQK-KJHU2NO-CWV7EQW
 ```
 
-- syncthing/web_pass: password for web UI
+- syncthing/web-pass: password for web UI
 
 ```txt
 password
@@ -32,4 +32,10 @@ $y$j9T$IQUOeWzrG3F0pFHNjTBNj0$FEtZmNgNq92ukg6xqDf2isUyjVTaMACOaStQC3qPmpD
 
 ```txt
 WL_LATITUDE=10.01 WL_LONGITUDE=-12.21
+```
+
+- wireguard/\<name>-key: wireguard private-key for the respective node
+
+```txt
+0000000000000000000000000000000000000000000=
 ```
