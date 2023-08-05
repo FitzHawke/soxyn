@@ -68,7 +68,7 @@ in {
     specialArgs = {inherit inputs;};
   };
 
-  # generic image
+  # generic image WIP
   korok = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules =
@@ -84,7 +84,8 @@ in {
     specialArgs = {inherit inputs;};
   };
 
-    naydra = nixpkgs.lib.nixosSystem {
+  # NAS/server WIP not tested or in use yet
+  naydra = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules =
       [
@@ -99,6 +100,23 @@ in {
       ++ shared;
     specialArgs = {inherit inputs;};
   };
+
+  # Dedi server. WIP, not tested or in use yet
+  gleeok = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules =
+      [
+        {networking.hostName = "gleeok";}
+        ./by-id/gleeok/hardware-configuration.nix
+        ./by-id/gleeok/hardware.nix
+        ./by-id/gleeok/syncthing.nix
+        hw.common-cpu-intel
+        hmModule
+        {inherit home-manager;}
+      ]
+      ++ shared;
+    specialArgs = {inherit inputs;};
+  };
   
-  # korok (generic), gleeok and valoo are future projects :)
+  # valoo will be a future project :)
 }
