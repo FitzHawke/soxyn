@@ -86,20 +86,20 @@ in {
 
         cik = "clone-in-kitty --type os-window";
 
-        cat = "${getBin bat}/bin/bat --style=plain";
+        cat = "${getExe bat} --style=plain";
         grep = "${getExe ripgrep}";
         fzf = "${getExe skim}";
         MANPAGER = "sh -c 'col -bx | bat -l man -p'";
         du = "${getExe du-dust}";
-        ps = "${getBin procs}/bin/procs";
+        ps = "${getExe procs}";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
         l = "ls -lF --time-style=long-iso --icons";
         sc = "doas systemctl";
         scu = "systemctl --user ";
-        la = "${getBin exa}/bin/exa -lah --tree";
-        ls = "${getBin exa}/bin/exa -h --git --icons --color=auto --group-directories-first -s extension";
-        tree = "${getBin exa}/bin/exa --tree --icons --tree";
+        la = "${getExe exa} -lah --tree";
+        ls = "${getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
+        tree = "${getExe exa} --tree --icons --tree";
         burn = "pkill -9";
         diff = "diff --color=auto";
         ".." = "cd ..";

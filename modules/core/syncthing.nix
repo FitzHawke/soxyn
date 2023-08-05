@@ -32,7 +32,7 @@
         script = ''${sed} "s/${secret.id}/$(${bat} ${secret.path})/g"'';
       }) cfg.secrets;
 
-  bat = "${lib.getBin pkgs.bat}/bin/bat -pp";
+  bat = "${lib.getExe pkgs.bat} -pp";
   sed = "${lib.getExe pkgs.gnused}";
 
   writeConf = pkgs.writers.writeBash "writeConf" ''
