@@ -16,5 +16,7 @@ in
   "syncthing/riju.age".publicKeys = users ++ systems;
   "syncthing/web-pass.age".publicKeys = users ++ systems;
   "wireguard/dinraal-key.age".publicKeys = [ will dinraal ];
+  "wireguard/dinraal-env.age".publicKeys = [ will dinraal ];
   "wireguard/gleeok-key.age".publicKeys = [ will ];
+  "wireguard/gleeok-env.age".publicKeys = [ will ];
 }
