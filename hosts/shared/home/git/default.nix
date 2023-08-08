@@ -20,6 +20,7 @@
       "node_modules"
       "result"
       "result-*"
+      "*.fignore"
     ];
     extraConfig = {
       init = {defaultBranch = "main";};
