@@ -25,6 +25,7 @@
     ./office
     ./rnnoise
     ./shell
+    ./spotify
     ./swaylock
     ./theme
     ./tools

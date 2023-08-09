@@ -1,19 +1,20 @@
 {
-  inputs',
+  inputs,
+  pkgs,
   ...
-}: {
-  imports = [inputs'.spicetify.homeManagerModule];
+}: let spicePkgs = inputs.spicetify.packages.${pkgs.system}.default; in{
+  imports = [inputs.spicetify.homeManagerModule];
   programs.spicetify = {
     enable = true;
-    enabledCustomApps = with inputs'.spicetify.default; [
+    enabledCustomApps = with spicePkgs.apps; [
       lyrics-plus
       new-releases
     ];
 
-    theme = inputs'.spicetify.default.themes.catppuccin-mocha;
+    theme = spicePkgs.themes.catppuccin-mocha;
     colorScheme = "mauve";
 
-    enabledExtensions = with inputs'.spicetify.default; [
+    enabledExtensions = with spicePkgs.extensions; [
       autoSkipVideo
       shuffle
       popupLyrics
