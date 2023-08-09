@@ -49,7 +49,7 @@
   systemd.user.services.cliphist = {
     Unit.Description = "Clipboard history";
     Service = {
-      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
+      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
       Restart = "always";
     };
     Unit.PartOf = ["graphical-session.target"];
