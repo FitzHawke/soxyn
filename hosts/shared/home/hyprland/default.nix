@@ -8,6 +8,7 @@
     ./config.nix
     ../eww
     ../../../by-id/${osConfig.networking.hostName}/wallpaper.nix
+    inputs.hyprland.homeManagerModules.default
   ];
   
   home.packages = with pkgs; [
