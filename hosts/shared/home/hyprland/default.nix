@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   inputs,
   osConfig,
   ...
@@ -9,7 +8,6 @@
     ./config.nix
     ../eww
     ../../../by-id/${osConfig.networking.hostName}/wallpaper.nix
-    inputs.hyprland.homeManagerModules.default
   ];
   
   home.packages = with pkgs; [
@@ -25,7 +23,6 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
   };
 
   services.wlsunset = {

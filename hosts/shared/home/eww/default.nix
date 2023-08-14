@@ -18,6 +18,7 @@
     gawk
     gnome.gnome-control-center
     gnused
+    hyprland
     imagemagick
     jaq
     jc
