@@ -37,9 +37,10 @@
     wireplumber
     wlogout
   ];
+  eww-pack = inputs.eww.packages.${pkgs.system}.eww-wayland;
 in {
-  home.packages = with pkgs; [
-    inputs.eww.packages.${system}.eww-wayland
+  home.packages = [
+    eww-pack
   ];
 
   # remove nix files
@@ -62,13 +63,17 @@ in {
   systemd.user.services.eww = {
     Unit = {
       Description = "Eww Daemon";
-      PartOf = ["tray.target"];
+      PartOf = ["tray.target" "graphical-session.target"];
     };
     Service = {
       Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
-      ExecStart = "${inputs.eww.packages.${pkgs.system}.eww-wayland}/bin/eww daemon --no-daemonize";
+      ExecStart = "${eww-pack}/bin/eww daemon --no-daemonize";
+      ExecStartPost = "${eww-pack}/bin/eww open bar";
       Restart = "on-failure";
     };
-    Install.WantedBy = ["graphical-session.target"];
+    # temp disabled due to when starting automatically and using hyprland to open the bar
+    # the unit would not be started until after hyprland had already initialized eww,
+    # causing this unit to start a seperate eww daemon. And the bar to be tied to the wrong env
+    # Install.WantedBy = ["graphical-session.target"];
   };
 }

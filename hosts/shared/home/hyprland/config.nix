@@ -25,7 +25,7 @@
       exec-once = dbus-update-activation-environment --systemd --all
       exec-once = hyprpaper
       exec-once = mako
-      exec-once = eww open bar
+      exec-once = systemctl --user enable --now eww
 
       input {
         kb_layout = us

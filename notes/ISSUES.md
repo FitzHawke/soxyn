@@ -5,10 +5,10 @@
 ### dinraal
 
 - eww launches twice on system boot
-  - **Status** Minor
-    - easy to fix by running `eww kill` once after boot
-  - doesn't happen on farosh
-  - possibly residue in config files from older builds
+  - **Status** Likely fixed, need to test more to confirm
+    - ~~easy to fix by running `eww kill` once after boot~~
+  - ~~doesn't happen on farosh~~
+  - ~~possibly residue in config files from older builds~~
 
 ### farosh
 
