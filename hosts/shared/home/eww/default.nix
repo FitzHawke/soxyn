@@ -1,12 +1,14 @@
 {
+  config,
   pkgs,
   lib,
   inputs,
   ...
-}: { 
-  home.packages = with pkgs; [
+}: let
+  dependencies = with pkgs; [
     inputs.gross.packages.${system}.gross
     inputs.eww.packages.${system}.eww-wayland
+    config.wayland.windowManager.hyprland.package
 
     bash
     blueberry
@@ -18,7 +20,6 @@
     gawk
     gnome.gnome-control-center
     gnused
-    hyprland
     imagemagick
     jaq
     jc
@@ -27,7 +28,6 @@
     pavucontrol
     playerctl
     procps
-    pulseaudio
     ripgrep
     socat
     udev
@@ -36,6 +36,10 @@
     wget
     wireplumber
     wlogout
+  ];
+in {
+  home.packages = with pkgs; [
+    inputs.eww.packages.${system}.eww-wayland
   ];
 
   # remove nix files
@@ -54,4 +58,17 @@
 
   # colors file
   xdg.configFile."eww/css/_colors.scss".text = builtins.readFile ./css/_colors.scss;
+
+  systemd.user.services.eww = {
+    Unit = {
+      Description = "Eww Daemon";
+      PartOf = ["tray.target"];
+    };
+    Service = {
+      Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
+      ExecStart = "${inputs.eww.packages.${pkgs.system}.eww-wayland}/bin/eww daemon --no-daemonize";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = ["graphical-session.target"];
+  };
 }

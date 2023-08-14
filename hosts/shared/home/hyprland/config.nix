@@ -25,7 +25,7 @@
       exec-once = dbus-update-activation-environment --systemd --all
       exec-once = hyprpaper
       exec-once = mako
-      exec-once = eww daemon && eww open bar
+      exec-once = eww open bar
 
       input {
         kb_layout = us
@@ -124,11 +124,10 @@
 
       # fix xwayland apps
       windowrulev2 = rounding 0, xwayland:1, floating:1
-      windowrulev2 = center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$
-      windowrulev2 = size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$
 
-      layerrule = blur, ^(gtk-layer-shell|anyrun)$
-      layerrule = ignorezero, ^(gtk-layer-shell|anyrun)$
+      $layers = ^(eww-.+|bar|system-menu|anyrun|gtk-layer-shell)$
+      layerrule = blur, $layers
+      layerrule = ignorezero, $layers
 
       # media controls
       bindl = , XF86AudioPlay, exec, playerctl play-pause
