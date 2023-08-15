@@ -10,6 +10,7 @@
       x = 0;
       y = 0;
       workspace = "1";
+      wallpaper = ../../../assets/beach-1.png;
     }
   ];
 }

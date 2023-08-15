@@ -5,6 +5,17 @@
   ...
 }: {
   imports = [../../../by-id/${osConfig.networking.hostName}/monitors.nix];
+
+  # map through monitors to build wallpaper config
+  xdg.configFile."hypr/hyprpaper.conf".text = lib.concatMapStrings (
+    m: if m.enabled then ''
+    preload=${m.wallpaper}
+    wallpaper=${m.name},${m.wallpaper}
+    '' else ""
+  ) (config.monitors);
+
+  # map through monitors and setup for hyprland config
+  # outputs: "monitor=DP-1,1920x1080@60,0x0,1"
   wayland.windowManager.hyprland.extraConfig =
     lib.concatMapStrings (
       m: let
@@ -64,7 +75,7 @@
         fullscreen_opacity=1.0
         rounding = 16
         multisample_edges = true
-        
+
         blur {
           enabled = true
           new_optimizations = true

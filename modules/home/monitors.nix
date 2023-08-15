@@ -1,11 +1,12 @@
 # all credit goes to Misterio77 for this module
 # https://github.com/Misterio77/nix-config/blob/main/modules/home-manager/monitors.nix
-{ lib, config, ... }:
-
-let
-  inherit (lib) mkOption types;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkOption types;
+in {
   options.monitors = mkOption {
     type = types.listOf (types.submodule {
       options = {
@@ -49,13 +50,19 @@ in
           type = types.nullOr types.str;
           default = null;
         };
+        wallpaper = mkOption {
+          type = types.nullOr types.path;
+          default = null;
+        };
       };
     });
   };
   config = {
-    assertions = [{
-      assertion = (lib.length (lib.filter (m: m.primary) config.monitors)) == 1;
-      message = "Exactly one monitor must be set to primary.";
-    }];
+    assertions = [
+      {
+        assertion = (lib.length (lib.filter (m: m.primary) config.monitors)) == 1;
+        message = "Exactly one monitor must be set to primary.";
+      }
+    ];
   };
 }
