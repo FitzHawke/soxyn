@@ -21,6 +21,8 @@
     };
     eww = {
       # url = "github:elkowar/eww";
+      # temporarily use own branch while waiting on sys tray to be merged into upstream
+      # https://github.com/elkowar/eww/pull/743
       url = "github:fitzhawke/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
