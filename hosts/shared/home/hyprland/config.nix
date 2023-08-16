@@ -73,7 +73,7 @@
         active_opacity=0.96
         inactive_opacity=0.85
         fullscreen_opacity=1.0
-        rounding = 16
+        rounding = 12
         multisample_edges = true
 
         blur {
@@ -139,6 +139,7 @@
       $layers = ^(eww-.+|bar|system-menu|anyrun|gtk-layer-shell)$
       layerrule = blur, $layers
       layerrule = ignorezero, $layers
+      layerrule = xray 1, $layers
 
       # media controls
       bindl = , XF86AudioPlay, exec, playerctl play-pause
