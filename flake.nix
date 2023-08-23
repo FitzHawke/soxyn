@@ -23,7 +23,7 @@
       # url = "github:elkowar/eww";
       # temporarily use own branch while waiting on sys tray to be merged into upstream
       # https://github.com/elkowar/eww/pull/743
-      url = "github:fitzhawke/eww";
+      url = "github:ralismark/eww/tray-3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gross = {
