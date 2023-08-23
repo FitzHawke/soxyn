@@ -5,10 +5,10 @@
 ### dinraal
 
 - eww launches twice on system boot
-  - **Status** Likely fixed, need to test more to confirm
-    - ~~easy to fix by running `eww kill` once after boot~~
-  - ~~doesn't happen on farosh~~
-  - ~~possibly residue in config files from older builds~~
+  - **Status** Still an issue 🤔
+    - easy to fix by running `eww kill` once after boot
+  - doesn't happen on farosh
+  - possibly residue in config files from older builds
 
 ### farosh
 
@@ -30,14 +30,14 @@
 
 #### electron apps
 
-- element-desktop crashes on launch unless launched on xwayland with `NIXOS_OZONE_WL= element-desktop`
+- ~~element-desktop crashes on launch unless launched on xwayland with `NIXOS_OZONE_WL= element-desktop`~~
 - <https://github.com/NixOS/nixpkgs/issues/244486>
 
 - vscode *usually* crashes on launch unless launched on xwayland with `NIXOS_OZONE_WL= code` -- This one really confuses me. Will crash approx 95% of the time with no rhyme or reason. Seemingly higher probability of working if attempted immediately after boot.
 
 #### steam
 
-- ~~crashes on launch~~ seems like a nixpkgs update fixed this. Keep an eye and see if being broken is common.
+- crashes on launch. seems like a nixpkgs update fixed this. Keep an eye and see if being broken is common.
 
 #### eww
 

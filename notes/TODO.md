@@ -22,21 +22,6 @@ Originally a nice list of plans that has turned into a stream of consciousness m
     - [ ] README
     - [ ] comments
 
-## Meta
-
-- [ ] reorganize repo. again.
-  - [ ] `modules` folder should contain 'shareable' modules like syncthing that adds secret support
-  - [ ] current `modules` are just configurations shared between my hosts
-  - [ ] use `host-by-id` and `user-by-id`(for the conversion to multi-user) folders for dynamic linking
-  - [ ] how will a unique setup for both host and user work? 🤔 -- seems like it will be a rare occurrence, and will lead to a lot of duplication if attempted to handle early. Expert recommendation - Ignore until its a problem. Then blame our political opponents.
-
-## Secrets
-
-- [x] setup agenix
-- [x] use agenix for password instead of initialPassword
-- [x] update and hide location in secrets
-- [ ] look through config for anything else that should be secret
-
 ## Impermanence
 
 - [ ] research possible solutions
@@ -126,9 +111,3 @@ local NAS server which doubles as a local container host
 - [ ] flatpak. Is it more stable than FHS for electron apps? or Steam?
 - [ ] nixos-stable then pull specific packages from unstable
   - potentially make things like steam/electron apps more stable
-
-### Jellyfin-Vue
-
-- [ ] test building tauri apps on nixos
-- [ ] could possibly replace jellyfin media player!
-- [ ] ci builds are available at <https://github.com/jellyfin/jellyfin-vue/actions>
