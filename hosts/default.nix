@@ -37,6 +37,7 @@ in {
         ./by-id/dinraal/hardware.nix
         ./by-id/dinraal/age.nix
         ./by-id/dinraal/syncthing.nix
+        ./by-id/dinraal/wireguard.nix
         hw.common-cpu-intel
         hw.common-pc-laptop
         gamemode
