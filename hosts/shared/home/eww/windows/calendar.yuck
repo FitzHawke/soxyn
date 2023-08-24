@@ -1,6 +1,6 @@
-(defwidget calendar-win []
+(defwidget calendar-window []
   (box
-    :class "calendar-win text"
+    :class "text calendar-window"
     (calendar)))
 
 (defwindow calendar
@@ -11,4 +11,5 @@
   	:anchor "top right"
     :width "0px"
     :height "0px")
-  (calendar-win))
+  :namespace "eww-calendar"
+  (calendar-window))
