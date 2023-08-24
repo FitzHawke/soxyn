@@ -4,7 +4,8 @@
 
 Currently has much work to be done in support of that goal.
 
-- [ ] user password (or entire file) needs override
+- [x] user password (or entire file) needs override
+- [ ] need to override anywhere in config that I specifically use a username. Currently it is risky to change name from will.
 - [ ] ssh keys need easy-override, for any others that may want to use it. Unless you want me to have free access to your computer 🤯
 - [x] ensure no syncthing
 - [ ] generic monitor configuration (can I set wallpaper without knowing monitor id?) --  *half completed*

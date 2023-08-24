@@ -80,9 +80,9 @@ in {
         {networking.hostName = "farosh";}
         ./by-id/korok/hardware-configuration.nix
         ./by-id/korok/hardware.nix
+        ./by-id/korok/users.nix
         wayland
         hmModule
-        agenix
         core
         {inherit home-manager;}
       ];
