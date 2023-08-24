@@ -9,23 +9,24 @@ Originally a nice list of plans that has turned into a stream of consciousness m
   - [ ] add section on steps to add new system
   - [x] add steps on how to re-generate secrets
   - [x] add ways to contact for future friends
+  - [ ] split install into separate docs
 - secrets
   - [x] README
   - [x] comments
 - hosts
   - [ ] README
   - [ ] comments
-- modules
-  - [ ] general README
-  - [ ] comments
-  - eww
+  - shared
     - [ ] README
     - [ ] comments
+- modules
+  - [ ] README
+  - [ ] comments
 
 ## Impermanence
 
 - [ ] research possible solutions
-  - [ ] [Colin](https://git.uninsane.org/colin/nix-files) uses a homebrew FS module, looks very powerful, but I dont understand it yet
+  - [ ] [Colin](https://git.uninsane.org/colin/nix-files) uses a homebrew FS module, looks very powerful, but I don't fully understand it yet
   - [ ] [Impermenence module](https://github.com/nix-community/impermanence) is more widely used and likely requires less maintenance
 - [ ] implement selected solution
 
@@ -53,7 +54,7 @@ No email client for now. Gmail would be a pain.
 
 **Status** - Full NixOS
 
-- [ ] set up split tunneling with wireguard so I have network access while away from home
+- [ ] test split tunneling with wireguard so I have network access while away from home
 
 ### Farosh
 
@@ -74,6 +75,10 @@ local NAS server which doubles as a local container host
 **Status** - still running debian
 
 - [ ] remote vps which serves as a container host for internet exposed containers with uptime requirements. Can likely shift some internal and only accessible through wireguard.
+
+### Korok
+
+**Status** - See [here](../hosts/by-id/korok/README.md)
 
 ### Otters *-- typo but I'm leaving it* 🦦
 

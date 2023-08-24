@@ -82,9 +82,10 @@ in {
         ./by-id/korok/hardware.nix
         wayland
         hmModule
+        agenix
+        core
         {inherit home-manager;}
-      ]
-      ++ shared;
+      ];
     specialArgs = {inherit inputs;};
   };
 
@@ -122,5 +123,5 @@ in {
     specialArgs = {inherit inputs;};
   };
   
-  # valoo will be a future project :)
+  # valoo, bokoblin and hinox will be future projects :)
 }

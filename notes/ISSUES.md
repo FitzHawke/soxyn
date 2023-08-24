@@ -46,7 +46,6 @@
     - <https://github.com/elkowar/eww/pull/743>
   - spacing around apps in tray is tight
   - styling on dropdown menu is whack
-  - clicks don't always register on tray dropdown
 - battery ring still shows even on desktop without battery
 - bluetooth still tries to show even when disabled
 - brightness shows even on computers without adjustable brightness

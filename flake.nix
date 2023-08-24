@@ -1,5 +1,8 @@
 {
-  description = "My NixOS configuration";
+  # This file is mainly for setting up overarching configuration
+  # like which repositories to use as sources and which architectures to build
+  # the configuration for the systems themselves is handled in the hosts directory
+  description = "Soxyn configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,7 +24,7 @@
     };
     eww = {
       # url = "github:elkowar/eww";
-      # temporarily use own branch while waiting on sys tray to be merged into upstream
+      # temporarily use ralismarks branch while waiting on sys tray to be merged into upstream
       # https://github.com/elkowar/eww/pull/743
       url = "github:ralismark/eww/tray-3";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,10 +65,11 @@
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
-      imports = [];
+      # this is the meat and potatoes here, imports ./hosts/default.nix where all the hosts are defined
       flake = {
         nixosConfigurations = import ./hosts inputs;
       };
+      # this is a bit of extra config for packages, formatting and a devShell
       perSystem = {
         config,
         system,
@@ -91,7 +95,7 @@
             nil
             alejandra
 
-            inputs.agenix.packages.${system}.default
+            inputs'.agenix.packages.default
           ];
           NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
           DIRENV_LOG_FORMAT = "";

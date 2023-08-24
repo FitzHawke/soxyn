@@ -1,4 +1,4 @@
-# Soxyn - NixOS configurations - *Stability Guaranteed or your Money Back*
+# Soxyn - NixOS configurations - _Stability Guaranteed or your Money Back_
 
 This repository contains my personal NixOS configurations, built using flakes. It provides a declarative and reproducible way to define and manage my system configuration.
 
@@ -42,7 +42,7 @@ My goal is to evolve that configuration to have less manual setup on install (mo
     - [Meta](./hosts/shared/meta/) - groupings of configuration modules, ie. desktop environments
     - [Users](./hosts/shared/users/) - configuration modules for users
 - [Modules](./modules) - modules that add additional configuration options
-- [Notes](./notes) - additional notes mostly to myself, not available in comments or readmes. *Likely contains outdated information*
+- [Notes](./notes) - additional notes mostly to myself, not available in comments or readmes. _Likely contains outdated information_
 - [Secrets](./secrets) - ssh pubkeys and information to be decrypted on system bootup
 
 ### ✅ Features
@@ -68,8 +68,6 @@ My goal is to evolve that configuration to have less manual setup on install (mo
 - add more hosts
   - Naydra (NAS currently with containers)
   - Gleeok (VPS currently with mail-server/more containers)
-  - rpi - any use for this with nix?
-  - router - currently OPNSense. Consider trying nixos-router project
 - impermanence <- wipe the system every reboot and only persist necessary data
 - build container images with nixos
 - build install iso
@@ -85,9 +83,9 @@ For more detailed plans see [TODO](./notes/TODO.md)
 
 ### 📌 Pre-Install
 
-You have 2 options here, clone the repo locally (for private repos) or install directly from github! *Note: you will either need to fork the repo or clone in order to edit the secrets for your system.*
+You have 2 options here, clone the repo locally (for private repos) or install directly from github! _Note: you will either need to fork the repo or clone in order to edit the secrets for your system._
 
-Coming soon a generic image that avoids all secrets or has better instructions to replace them.
+Coming soon a generic image that avoids all secrets or has better instructions to replace them. [Korok](./hosts/by-id/korok/) is the host that will fill that role. See the [readme](./hosts/by-id/korok/README.md) for status.
 
 Currently secrets are used at:
 
@@ -103,16 +101,16 @@ Currently secrets are used at:
 
 1. Download an iso image from <https://nixos.org/download.html#nixos-iso> and write the image to a usb stick.
 
-    ```bash
-    wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
+   ```bash
+   wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
 
-    # Write it to a flash drive
-    sudo dd if=nixos.iso of=/dev/sdX bs=4M conv=fsync
-    ```
+   # Write it to a flash drive
+   sudo dd if=nixos.iso of=/dev/sdX bs=4M conv=fsync
+   ```
 
-    **Warning:** dd is an old school cloning utility without guardrails. It will happily overwrite anything you tell it to. Be careful with the `of=/dev/sdX` portion.
+   **Warning:** dd is an old school cloning utility without guardrails. It will happily overwrite anything you tell it to. Be careful with the `of=/dev/sdX` portion.
 
-    See [here](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) or [here](https://wiki.archlinux.org/title/USB_flash_installation_medium) for more info on writing the USB.
+   See [here](https://nixos.org/manual/nixos/stable/index.html#sec-booting-from-usb) or [here](https://wiki.archlinux.org/title/USB_flash_installation_medium) for more info on writing the USB.
 
 2. Boot into the installer. Instructions vary based on hardware, but basically find the boot menu by pressing something like `F12` or `DEL` during the splash screen.
 
@@ -132,104 +130,104 @@ We are using btrfs on a nvme ssd with UEFI boot and no swap partition for the fo
 
 #### 🔑 Full Disk Encryption with LUKS
 
-   We create a root partition (`/dev/nvme0n1p1`) encrypted with LUKS, with a single volume formatted with btrfs having 3 sub-volumes (`/`, `/nix`, `/home`) and a 512MB EFI boot partition (`/dev/nvme0n1p2`) needed for UEFI.
+We create a root partition (`/dev/nvme0n1p1`) encrypted with LUKS, with a single volume formatted with btrfs having 3 sub-volumes (`/`, `/nix`, `/home`) and a 512MB EFI boot partition (`/dev/nvme0n1p2`) needed for UEFI.
 
-   ```bash
-   # create partition table
-   parted /dev/nvme0n1 -- mklabel GPT
+```bash
+# create partition table
+parted /dev/nvme0n1 -- mklabel GPT
 
-   # create root partition
-   parted /dev/nvme0n1 -- mkpart primary 512MB 100%
-   parted /dev/nvme0n1 -- set 1 lvm on
+# create root partition
+parted /dev/nvme0n1 -- mkpart primary 512MB 100%
+parted /dev/nvme0n1 -- set 1 lvm on
 
-   # create the boot partition
-   parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
-   parted /dev/nvme0n1 -- set 2 esp on
+# create the boot partition
+parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
+parted /dev/nvme0n1 -- set 2 esp on
 
-   # setup and open encrypted LUKS partition
-   cryptsetup luksFormat /dev/nvme0n1
-   cryptsetup luksOpen /dev/nvme0n1 luks
+# setup and open encrypted LUKS partition
+cryptsetup luksFormat /dev/nvme0n1
+cryptsetup luksOpen /dev/nvme0n1 luks
 
-   # format the boot partition (labeled BOOT)
-   mkfs.fat -F 32 -n BOOT /dev/nvme0n1p2
+# format the boot partition (labeled BOOT)
+mkfs.fat -F 32 -n BOOT /dev/nvme0n1p2
 
-   # format the root with btrfs (labeled NIXOS)
-   mkfs.btrfs -L NIXOS /dev/mapper/luks
+# format the root with btrfs (labeled NIXOS)
+mkfs.btrfs -L NIXOS /dev/mapper/luks
 
-   # mount the btrfs volume at /mnt
-   mount -t btrfs /dev/mapper/luks /mnt
+# mount the btrfs volume at /mnt
+mount -t btrfs /dev/mapper/luks /mnt
 
-   # create the sub-volumes
-   btrfs subvolume create /mnt/root
-   btrfs subvolume create /mnt/home
-   btrfs subvolume create /mnt/nix
+# create the sub-volumes
+btrfs subvolume create /mnt/root
+btrfs subvolume create /mnt/home
+btrfs subvolume create /mnt/nix
 
-   # unmount the volume
-   umount /mnt
+# unmount the volume
+umount /mnt
 
-   # re-mount the root sub-volume
-   mount -o subvol=root,autodefrag,compress=zstd,discard=async /dev/mapper/luks /mnt
+# re-mount the root sub-volume
+mount -o subvol=root,autodefrag,compress=zstd,discard=async /dev/mapper/luks /mnt
 
-   # create the mount directories
-   mkdir -p /mnt/{home,nix,boot}
+# create the mount directories
+mkdir -p /mnt/{home,nix,boot}
 
-   # mount the other sub-volumes
-   mount -o subvol=home,autodefrag,compress=zstd,discard=async /dev/mapper/luks /mnt/home
-   mount -o subvol=nix,autodefrag,compress=zstd,discard=async /dev/mapper/luks /mnt/nix
+# mount the other sub-volumes
+mount -o subvol=home,autodefrag,compress=zstd,discard=async /dev/mapper/luks /mnt/home
+mount -o subvol=nix,autodefrag,compress=zstd,discard=async /dev/mapper/luks /mnt/nix
 
-   # Mount boot partition
-   mkdir /mnt/boot
-   mount /dev/nvme0n1p2 /mnt/boot
-   ```
+# Mount boot partition
+mkdir /mnt/boot
+mount /dev/nvme0n1p2 /mnt/boot
+```
 
 Whew, finally done partitioning setup! Now you can skip down to [Install](#-install) for the next steps.
 
 #### 🔓 No Encryption
 
-   We create a root partition (`/dev/nvme0n1p1`) formatted with btrfs having 3 sub-volumes (`/`, `/nix`, `/home`) and a 512MB EFI boot partition (`/dev/nvme0n1p2`) needed for UEFI.
+We create a root partition (`/dev/nvme0n1p1`) formatted with btrfs having 3 sub-volumes (`/`, `/nix`, `/home`) and a 512MB EFI boot partition (`/dev/nvme0n1p2`) needed for UEFI.
 
-   ```bash
-   # create partition table
-   parted /dev/nvme0n1 -- mklabel GPT
+```bash
+# create partition table
+parted /dev/nvme0n1 -- mklabel GPT
 
-   # create root partition
-   parted /dev/nvme0n1 -- mkpart primary 512MB 100%
+# create root partition
+parted /dev/nvme0n1 -- mkpart primary 512MB 100%
 
-   # create the boot partition
-   parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
-   parted /dev/nvme0n1 -- set 2 esp on
+# create the boot partition
+parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
+parted /dev/nvme0n1 -- set 2 esp on
 
-   # format the boot partition (labeled BOOT)
-   mkfs.fat -F 32 -n BOOT /dev/nvme0n1p2
+# format the boot partition (labeled BOOT)
+mkfs.fat -F 32 -n BOOT /dev/nvme0n1p2
 
-   # format the root with btrfs (labeled NIXOS)
-   mkfs.btrfs -L NIXOS /dev/nvme0n1p1
+# format the root with btrfs (labeled NIXOS)
+mkfs.btrfs -L NIXOS /dev/nvme0n1p1
 
-   # mount the btrfs volume at /mnt
-   mount -t btrfs /dev/nvme0n1p1 /mnt
+# mount the btrfs volume at /mnt
+mount -t btrfs /dev/nvme0n1p1 /mnt
 
-   # create the sub-volumes
-   btrfs subvolume create /mnt/root
-   btrfs subvolume create /mnt/home
-   btrfs subvolume create /mnt/nix
+# create the sub-volumes
+btrfs subvolume create /mnt/root
+btrfs subvolume create /mnt/home
+btrfs subvolume create /mnt/nix
 
-   # unmount the volume
-   umount /mnt
+# unmount the volume
+umount /mnt
 
-   # re-mount the root sub-volume
-   mount -o subvol=root,autodefrag,compress=zstd,discard=async /dev/nvme0n1p1 /mnt
+# re-mount the root sub-volume
+mount -o subvol=root,autodefrag,compress=zstd,discard=async /dev/nvme0n1p1 /mnt
 
-   # create the mount directories
-   mkdir -p /mnt/{home,nix,boot}
+# create the mount directories
+mkdir -p /mnt/{home,nix,boot}
 
-   # mount the other sub-volumes
-   mount -o subvol=home,autodefrag,compress=zstd,discard=async /dev/nvme0n1p1 /mnt/home
-   mount -o subvol=nix,autodefrag,compress=zstd,discard=async /dev/nvme0n1p1 /mnt/nix
+# mount the other sub-volumes
+mount -o subvol=home,autodefrag,compress=zstd,discard=async /dev/nvme0n1p1 /mnt/home
+mount -o subvol=nix,autodefrag,compress=zstd,discard=async /dev/nvme0n1p1 /mnt/nix
 
-   # Mount boot partition
-   mkdir /mnt/boot
-   mount /dev/nvme0n1p2 /mnt/boot
-   ```
+# Mount boot partition
+mkdir /mnt/boot
+mount /dev/nvme0n1p2 /mnt/boot
+```
 
 Whew, finally done partitioning setup! Now you can skip down to [Install](#-install) for the next steps.
 
@@ -237,32 +235,32 @@ Whew, finally done partitioning setup! Now you can skip down to [Install](#-inst
 
 Now we can finally do the install!
 
-   ```bash
-   # ensure flakes are enabled on the system
-   nix-shell -p nixFlakes
+```bash
+# ensure flakes are enabled on the system
+nix-shell -p nixFlakes
 
-   # generate a hardware-configuration.nix for your specific hardware
-   nixos-generate-config --root /mnt --dir hosts/by-id/korok/
+# generate a hardware-configuration.nix for your specific hardware
+nixos-generate-config --root /mnt --dir hosts/by-id/korok/
 
-   # make sure git is tracking the changes
-   git add hosts/korok/hardware-configuration.nix
-   ```
+# make sure git is tracking the changes
+git add hosts/korok/hardware-configuration.nix
+```
 
-   We can either install directly or from a git repository
+We can either install directly or from a git repository
 
-   ```bash
-   # install the flake
-   nixos-install --flake '.#korok' # github:fitzhawke/soxyn#korok
-   ```
+```bash
+# install the flake
+nixos-install --flake '.#korok' # github:fitzhawke/soxyn#korok
+```
 
-Now reboot and login! *Don't forget to change your password if you used initialPassword*
+Now reboot and login! _Don't forget to change your password if you used initialPassword_
 
 ### 💡 Customization
 
 To customize your NixOS configuration, you can:
 
 - Edit the existing configuration files to modify system settings or package installations.
-- Create new NixOS modules in the `modules` directory and import them into the main configuration files.
+- Create new NixOS modules in the [hosts/shared](./hosts/shared/) directory and import them into the main configuration files. If you follow the current structure, most configs are imported into a default.nix in the parent folder or directly in [hosts/default.nix](./hosts/default.nix)).
 
 The modular structure of this configuration repository allows you to easily organize and extend your setup according to your preferences.
 
@@ -281,10 +279,10 @@ git add .
 nix flake update
 
 # test the new configuration if you'd like
-sudo nixos-rebuild test --flake .#dinraal
+sudo nixos-rebuild test --flake .#korok
 
 # build and install the new config
-sudo nixos-rebuild switch --flake .#dinraal
+sudo nixos-rebuild switch --flake .#korok
 ```
 
 ## 🔨 Contributing
