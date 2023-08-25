@@ -4,6 +4,48 @@
   # the configuration for the systems themselves is handled in the hosts directory
   description = "Soxyn configuration";
 
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+      # this is the meat and potatoes here, imports ./hosts/default.nix where all the hosts are defined
+      flake = {
+        nixosConfigurations = import ./hosts inputs;
+      };
+      # this is a bit of extra config for packages, formatting and a devShell
+      perSystem = {
+        config,
+        system,
+        pkgs,
+        inputs',
+        ...
+      }: {
+        legacyPackages = import inputs.nixpkgs {
+          config.allowUnfree = true;
+          config.allowUnsupportedSystem = true;
+          inherit system;
+        };
+        imports = [{_module.args.pkgs = config.legacyPackages;}];
+
+        devShells.default = pkgs.mkShell {
+          name = "soxyn";
+          packages = with pkgs; [
+            nix
+            home-manager
+            git
+
+            nil
+            alejandra
+
+            inputs'.agenix.packages.default
+          ];
+          NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
+          DIRENV_LOG_FORMAT = "";
+        };
+
+        formatter = pkgs.alejandra;
+      };
+    };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -17,6 +59,11 @@
     anyrun = {
       url = "github:Kirottu/anyrun";
       # inputs.nixpkgs.follows = "nixpkgs";
+    };
+    anyrun-nixos-options = {
+      url = "github:n3oney/anyrun-nixos-options";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -58,50 +105,4 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {
-    flake-parts,
-    nixpkgs,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
-      # this is the meat and potatoes here, imports ./hosts/default.nix where all the hosts are defined
-      flake = {
-        nixosConfigurations = import ./hosts inputs;
-      };
-      # this is a bit of extra config for packages, formatting and a devShell
-      perSystem = {
-        config,
-        system,
-        pkgs,
-        inputs',
-        self',
-        ...
-      }: {
-        legacyPackages = import nixpkgs {
-          config.allowUnfree = true;
-          config.allowUnsupportedSystem = true;
-          inherit system;
-        };
-        imports = [{_module.args.pkgs = config.legacyPackages;}];
-
-        devShells.default = pkgs.mkShell {
-          name = "soxyn";
-          packages = with pkgs; [
-            nix
-            home-manager
-            git
-
-            nil
-            alejandra
-
-            inputs'.agenix.packages.default
-          ];
-          NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
-          DIRENV_LOG_FORMAT = "";
-        };
-
-        formatter = pkgs.alejandra;
-      };
-    };
 }

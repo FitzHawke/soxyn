@@ -41,6 +41,29 @@
         "type": "github"
       }
     },
+    "anyrun-nixos-options": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1691142041,
+        "narHash": "sha256-ik4CHY1xck8je6IKPB3w8rGq1uO9TYDFczTyMXdbB4k=",
+        "owner": "n3oney",
+        "repo": "anyrun-nixos-options",
+        "rev": "a4ba8f84f6b5c5771bc0f30dc0f4241d39b43208",
+        "type": "github"
+      },
+      "original": {
+        "owner": "n3oney",
+        "repo": "anyrun-nixos-options",
+        "type": "github"
+      }
+    },
     "eww": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -368,11 +391,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1692840041,
-        "narHash": "sha256-YH6xeHLFWhXwIWPsVmvGA8rwesp5IfPfnvgf6qc48uQ=",
+        "lastModified": 1692926290,
+        "narHash": "sha256-L/J4upTZoKB3zpsIgpBfTHIkyeHtzLAbUF9E+ZWF+LQ=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "6200081152e581b71a6e622b23d39c0ecf15fa40",
+        "rev": "ebff4944a27c4841566bdfc58547f1c2e54c575e",
         "type": "github"
       },
       "original": {
@@ -480,11 +503,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1692906366,
-        "narHash": "sha256-XQ5ZguOfoXRrRcHiWChKUwsuyf726XTKP360oDtePGM=",
+        "lastModified": 1692919240,
+        "narHash": "sha256-uDRyV7PqwFGsSTi+fz9eod05akAc7Xlwut7szYQSZ6M=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "202456d40f4700e2356f72e6ba57bb2a6ddc4921",
+        "rev": "7b245e0ed3f8230039eeb6c0c59dca22839609f5",
         "type": "github"
       },
       "original": {
@@ -497,6 +520,7 @@
       "inputs": {
         "agenix": "agenix",
         "anyrun": "anyrun",
+        "anyrun-nixos-options": "anyrun-nixos-options",
         "eww": "eww",
         "flake-parts": "flake-parts_2",
         "gross": "gross",
