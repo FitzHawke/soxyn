@@ -138,8 +138,9 @@
 
       $layers = ^(eww-.+|bar|system-menu|anyrun|gtk-layer-shell)$
       layerrule = blur, $layers
-      layerrule = ignorezero, $layers
-      layerrule = xray 1, $layers
+      layerrule = ignorealpha 0, $layers
+      layerrule = ignorealpha 0.5, ^(eww-(music|calendar)|system-menu|anyrun)$
+      layerrule = xray 1, ^(bar|gtk-layer-shell)$
 
       # media controls
       bindl = , XF86AudioPlay, exec, playerctl play-pause
