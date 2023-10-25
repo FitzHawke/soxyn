@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ ! "$XDG_CACHE_HOME" ]; then
-  XDG_CACHE_HOME="/home/mihai/.local/cache"
+  XDG_CACHE_HOME="/home/will/.local/cache"
 fi
 
 function get_time_ms {
@@ -33,20 +33,13 @@ function osd_handler {
 
     # handle showing
     if [ "$rundate" = "$currentdate" ] && [ "$lock" -eq 0 ]; then
-      eww open osd >/dev/null 2>&1
       eww update "$OBJ"=true >/dev/null 2>&1
       lock=1
     elif [ "$((currentdate - rundate))" = "2" ] && [ "$lock" -eq 1 ]; then
       eww update "$OBJ"=false >/dev/null 2>&1
       lock=0
-      if [ "$(eww get osd-volume)" = "false" ] && [ "$(eww get osd-brightness)" = "false" ]; then
-        sleep 1
-        eww close osd >/dev/null 2>&1
-      fi
     fi
 
     sleep 0.1
   done
-
-  eww close osd >/dev/null 2>&1
 }

@@ -6,7 +6,7 @@
 (defvar vol_reveal false)
 (defvar osd-brightness false)
 (defvar osd-volume false)
-(defvar battery_icons `["","","","","","","",""]`)
+(defvar battery_icons `["","","","","","","",""]`)
 
 (deflisten airplane "scripts/airplane")
 (deflisten battery "gross battery")
@@ -17,4 +17,4 @@
 (deflisten music_time "gross music-time")
 (deflisten net "scripts/net")
 (deflisten volume "scripts/volume")
-(deflisten hyprland "scripts/hyprland")
+(deflisten hyprland "gross hyprland")

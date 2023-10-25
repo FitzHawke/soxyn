@@ -49,7 +49,7 @@ in {
       filter = name: _type: let
         baseName = baseNameOf (toString name);
       in
-        !(lib.hasSuffix ".nix" baseName) && (baseName != "colors.scss");
+        !(lib.hasSuffix ".nix" baseName) && (baseName != "colors-dark.scss") && (baseName != "colors-light.scss");
       src = lib.cleanSource ./.;
     };
 
@@ -58,7 +58,7 @@ in {
   };
 
   # colors file
-  xdg.configFile."eww/css/colors.scss".text = builtins.readFile ./css/colors.scss;
+  xdg.configFile."eww/css/colors.scss".text = builtins.readFile ./css/colors-dark.scss;
 
   systemd.user.services.eww = {
     Unit = {

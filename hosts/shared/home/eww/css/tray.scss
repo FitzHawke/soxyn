@@ -2,7 +2,7 @@
     @include window;
     >menuitem {
       @include rounding;
-      background-color: $bg1;
+      background-color: $bg;
       margin: .3rem;
 
       &:hover{
@@ -10,7 +10,7 @@
       }
 
       check:checked ~ label {
-        color: $mauve;
+        color: $accent;
       }
     }
   }
