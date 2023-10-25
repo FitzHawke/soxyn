@@ -60,11 +60,6 @@
       url = "github:Kirottu/anyrun";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    anyrun-nixos-options = {
-      url = "github:n3oney/anyrun-nixos-options";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
