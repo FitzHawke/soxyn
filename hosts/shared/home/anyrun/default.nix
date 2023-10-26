@@ -21,7 +21,6 @@
         rink
         symbols
         kidex
-        inputs.anyrun-nixos-options.packages.${pkgs.system}.default
       ];
     };
 extraCss = ''
