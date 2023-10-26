@@ -18,7 +18,6 @@
     ./firefox
     ./git
     ./hyprland
-    ./kitty
     ./mako
     ./media
     ./neovim
@@ -27,6 +26,7 @@
     ./shell
     ./spotify
     ./swaylock
+    ./terminal
     ./theme
     ./tools
     ./vscode
