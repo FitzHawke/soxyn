@@ -31,7 +31,7 @@ in {
 
   programs = {
     nix-index.enable = false;
-    exa.enable = true;
+    eza.enable = true;
     zoxide = {
       enable = true;
       enableFishIntegration = true;
@@ -47,7 +47,7 @@ in {
       enableFishIntegration = true;
       defaultCommand = "rg --files --hidden";
       changeDirWidgetOptions = [
-        "--preview 'exa --icons --git --color always -T -L 3 {} | head -200'"
+        "--preview 'eza --icons --git --color always -T -L 3 {} | head -200'"
         "--exact"
       ];
     };
@@ -97,9 +97,9 @@ in {
         l = "ls -lF --time-style=long-iso --icons";
         sc = "doas systemctl";
         scu = "systemctl --user ";
-        la = "${getExe exa} -lah --tree";
-        ls = "${getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
-        tree = "${getExe exa} --tree --icons --tree";
+        la = "${getExe eza} -lah --tree";
+        ls = "${getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
+        tree = "${getExe eza} --tree --icons --tree";
         burn = "pkill -9";
         diff = "diff --color=auto";
         ".." = "cd ..";

@@ -18,7 +18,7 @@ in {
     mutableUsers = false;
     users.will = {
       isNormalUser = true;
-      passwordFile = config.age.secrets."users/fitz-pass".path;
+      hashedPasswordFile = config.age.secrets."users/fitz-pass".path;
       extraGroups =
         [
           "wheel"

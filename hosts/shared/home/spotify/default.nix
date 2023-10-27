@@ -11,8 +11,8 @@
       new-releases
     ];
 
-    theme = spicePkgs.themes.catppuccin-mocha;
-    colorScheme = "mauve";
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "mocha";
 
     enabledExtensions = with spicePkgs.extensions; [
       autoSkipVideo
