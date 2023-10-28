@@ -57,9 +57,11 @@
         border_size = 2
         col.active_border = rgb(89b4fa) rgb(cba6f7) 270deg
         col.inactive_border = rgb(11111b) rgb(b4befe) 270deg
+      }
 
-        col.group_border = rgb(313244)
-        col.group_border_active = rgb(f5c2e7)
+      group {
+        col.border_inactive = rgb(313244)
+        col.border_active = rgb(f5c2e7)
       }
 
       misc {
@@ -67,6 +69,7 @@
         key_press_enables_dpms = true
         enable_swallow = true
         swallow_regex=(kitty|Nautilus)
+        force_default_wallpaper=0
       }
 
       decoration {
@@ -74,7 +77,6 @@
         inactive_opacity=0.85
         fullscreen_opacity=1.0
         rounding = 12
-        multisample_edges = true
 
         blur {
           enabled = true
