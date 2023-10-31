@@ -22,7 +22,6 @@ in {
   home.packages = with pkgs; [
     inputs.nix-gaming.packages.${pkgs.system}.proton-ge
     bottles
-    factorio
     gamescope
     mangohud
     ryujinx
