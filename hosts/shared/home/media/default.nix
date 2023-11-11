@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    chatterino2
     playerctl
     pavucontrol
     pulsemixer
