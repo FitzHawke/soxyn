@@ -68,7 +68,7 @@
         mouse_move_enables_dpms = true
         key_press_enables_dpms = true
         enable_swallow = true
-        swallow_regex=(kitty|Nautilus)
+        swallow_regex=(foot|Nautilus)
         force_default_wallpaper=0
       }
 
@@ -190,7 +190,7 @@
       # launcher
       bindr = $mod, SUPER_L, exec, anyrun
       # terminal
-      bind = $mod, Return, exec, kitty
+      bind = $mod, Return, exec, foot
       # logout menu
       bind = $mod, Escape, exec, wlogout -p layer-shell
       # lock screen
