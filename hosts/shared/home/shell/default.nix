@@ -55,22 +55,144 @@ in {
     starship = {
       enable = true;
       settings = {
-        add_newline = false;
-        scan_timeout = 5;
         character = {
-          error_symbol = "[󰊠](bold red)";
-          success_symbol = "[󰊠](bold green)";
-          vicmd_symbol = "[󰊠](bold yellow)";
-          format = "$symbol [|](bold bright-black) ";
+          success_symbol = "[›](bold green)";
+          error_symbol = "[›](bold red)";
         };
-        git_commit = {commit_hash_length = 4;};
-        line_break.disabled = false;
-        lua.symbol = "[](blue) ";
-        python.symbol = "[](blue) ";
+
+        git_status = {
+          deleted = "✗";
+          modified = "✶";
+          staged = "✓";
+          stashed = "≡";
+        };
+        
+        aws = {
+          symbol = "  ";
+        };
+
+        buf = {
+          symbol = " ";
+        };
+
+        c = {
+          symbol = " ";
+        };
+
+        conda = {
+          symbol = " ";
+        };
+
+        dart = {
+          symbol = " ";
+        };
+
+        directory = {
+          read_only = " 󰌾";
+        };
+
+        docker_context = {
+          symbol = " ";
+        };
+
+        elixir = {
+          symbol = " ";
+        };
+
+        elm = {
+          symbol = " ";
+        };
+
+        fossil_branch = {
+          symbol = " ";
+        };
+
+        git_branch = {
+          symbol = " ";
+        };
+
+        golang = {
+          symbol = " ";
+        };
+
+        guix_shell = {
+          symbol = " ";
+        };
+
+        haskell = {
+          symbol = " ";
+        };
+
+        haxe = {
+          symbol = " ";
+        };
+
+        hg_branch = {
+          symbol = " ";
+        };
+
         hostname = {
-          ssh_only = true;
-          format = "[$hostname](bold blue) ";
-          disabled = false;
+          ssh_symbol = " ";
+        };
+
+        java = {
+          symbol = " ";
+        };
+
+        julia = {
+          symbol = " ";
+        };
+
+        lua = {
+          symbol = " ";
+        };
+
+        memory_usage = {
+          symbol = "󰍛 ";
+        };
+
+        meson = {
+          symbol = "󰔷 ";
+        };
+
+        nim = {
+          symbol = "󰆥 ";
+        };
+
+        nix_shell = {
+          symbol = " ";
+        };
+
+        nodejs = {
+          symbol = " ";
+        };
+
+        package = {
+          symbol = "󰏗 ";
+        };
+
+        pijul_channel = {
+          symbol = " ";
+        };
+
+        python = {
+          symbol = " ";
+        };
+
+        rlang = {
+          symbol = "󰟔 ";
+        };
+
+        ruby = {
+          symbol = " ";
+        };
+
+        rust = {
+          symbol = " ";
+        };
+
+        scala = {
+          symbol = " ";
         };
       };
     };
