@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  catppuccin_name = "Catppuccin-Mocha-Compact-Mauve-dark";
+  catppuccin_name = "Catppuccin-Mocha-Compact-Mauve-Dark";
   catppuccin = pkgs.catppuccin-gtk.override {
         accents = ["mauve"];
         size = "compact";
@@ -53,6 +53,7 @@ in {
 
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [
+    gnome.gnome-themes-extra
     libsForQt5.qtstyleplugin-kvantum
     qt6Packages.qtstyleplugin-kvantum
     (catppuccin-kvantum.override {
