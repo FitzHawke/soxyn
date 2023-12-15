@@ -6,14 +6,14 @@
     blueberry # bluetooth gui
     chromium # backup browser
     element-desktop # matrix chat app
-    # element-desktop.override {electron = electron_24;}) #  temp override electron version due to wayland crash https://github.com/NixOS/nixpkgs/issues/238416
     foliate # ebook reader gui
     gimp # image editing
     jellyfin-media-player # gui for connecting with jellyfin servers
     jq # cli json parsing
-    keepassxc # password manager
+    # keepassxc # password manager
     newsflash # RSS reader
-    obsidian # markdown knowledge base
+    # obsidian uses EOL electron version. Temp disable
+    # obsidian # markdown knowledge base
     quodlibet-full # gui music
 
 
