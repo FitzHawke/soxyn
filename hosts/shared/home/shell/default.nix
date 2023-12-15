@@ -215,7 +215,6 @@ in {
         du = "${getExe du-dust}";
         ps = "${getExe procs}";
         m = "mkdir -p";
-        fcd = "cd $(find -type d | fzf)";
         l = "ls -lF --time-style=long-iso --icons";
         sc = "doas systemctl";
         scu = "systemctl --user ";
@@ -243,7 +242,7 @@ in {
       with lib; {
         # Clear screen and scrollback
         clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
-        rebuild = "doas nix-store --verify; pushd ~/dev/dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
+        rebuild = "doas nix-store --verify; pushd ~/workspaces/soxyn && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
         cleanup = "doas nix-collect-garbage --delete-older-than 7d";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
