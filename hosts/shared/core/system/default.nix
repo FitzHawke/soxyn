@@ -87,7 +87,7 @@
   systemd = {
     oomd = {
       enableRootSlice = true;
-      enableUserServices = true;
+      enableUserSlices = true;
     };
 
     # TODO channels-to-flakes
