@@ -30,14 +30,6 @@ in {
     };
   };
 
-  home.file.".config/gtk-4.0/gtk.css".source = "${catppuccin}/share/themes/${catppuccin_name}/gtk-4.0/gtk.css";
-  home.file.".config/gtk-4.0/gtk-dark.css".source = "${catppuccin}/share/themes/${catppuccin_name}/gtk-4.0/gtk-dark.css";
-
-  home.file.".config/gtk-4.0/assets" = {
-    recursive = true;
-    source = "${catppuccin}/share/themes/${catppuccin_name}/gtk-4.0/assets";
-  };
-
   # cursor theme
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaDark;
