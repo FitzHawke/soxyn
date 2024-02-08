@@ -9,7 +9,7 @@
   users = ./shared/users;
   wayland = ./shared/meta/wayland;
   agenix = inputs.agenix.nixosModules.default;
-  hyprland = inputs.hyprland.nixosModules.default;
+  # hyprland = inputs.hyprland.nixosModules.default;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
@@ -41,7 +41,7 @@ in {
         hw.common-cpu-intel
         hw.common-pc-laptop
         gamemode
-        hyprland
+        # hyprland
         wayland
         hmModule
         {inherit home-manager;}
@@ -63,7 +63,7 @@ in {
         hw.common-cpu-amd
         hw.common-gpu-amd
         gamemode
-        hyprland
+        # hyprland
         wayland
         hmModule
         {inherit home-manager;}

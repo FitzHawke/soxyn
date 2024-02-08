@@ -7,7 +7,7 @@
   imports = [
     ./config.nix
     ../eww
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
   ];
   
   home.packages = with pkgs; [
