@@ -15,7 +15,7 @@
     # Do not accept IP source route packets (we're not a router)
     "net.ipv4.conf.all.accept_source_route" = 0;
     "net.ipv6.conf.all.accept_source_route" = 0;
-    # Don't send ICMP redirects (again, we're on a router)
+    # Don't send ICMP redirects (again, we're not a router)
     "net.ipv4.conf.all.send_redirects" = 0;
     "net.ipv4.conf.default.send_redirects" = 0;
     # Refuse ICMP redirects (MITM mitigations)
@@ -51,12 +51,12 @@
     };
     firewall = {
       enable = true;
+      checkReversePath = "loose";
       # if your minecraft server is not worky
       # this is probably why
       allowedTCPPorts = [443 80 22];
       allowedUDPPorts = [443 80];
       allowPing = false;
-      logReversePathDrops = true;
     };
   };
   # slows down boot time
