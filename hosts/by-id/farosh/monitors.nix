@@ -22,5 +22,23 @@
       workspace = "2";
       wallpaper = ../../../assets/firewatch-3-2.png;
     }
+    {
+      name = "DP-3";
+      width = 1920;
+      height = 1080;
+      refreshRate = 60;
+      x = 960;
+      y = -1080;
+      workspace = "3";
+      wallpaper = ../../../assets/cherry-2.png;
+      enabled = false;
+    }
   ];
+  # Keybinds to enable/disable third monitor as needed
+  extraHyprConf = ''
+
+  # enable/disable third monitor
+  bind = $mod, m, exec, hyprctl keyword monitor "DP-3, 1920x1080, 960x-1080, 1"
+  bind = $mod SHIFT, m, exec, hyprctl keyword monitor "DP-3, disabled"
+  '';
 }

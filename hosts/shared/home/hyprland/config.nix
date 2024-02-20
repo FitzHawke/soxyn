@@ -9,13 +9,10 @@
   # map through monitors to build wallpaper config
   xdg.configFile."hypr/hyprpaper.conf".text =
     lib.concatMapStrings (
-      m:
-        if m.enabled
-        then ''
-          preload=${m.wallpaper}
-          wallpaper=${m.name},${m.wallpaper}
-        ''
-        else ""
+      m: ''
+        preload=${m.wallpaper}
+        wallpaper=${m.name},${m.wallpaper}
+      ''
     ) (config.monitors)
     + ''
       splash = false
@@ -286,5 +283,6 @@
       # cycle monitors
       bind = $mod SHIFT, braceleft, focusmonitor, l
       bind = $mod SHIFT, braceright, focusmonitor, r
-    '';
+    ''
+    + config.extraHyprConf;
 }

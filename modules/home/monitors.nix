@@ -57,6 +57,10 @@ in {
       };
     });
   };
+  options.extraHyprConf = mkOption {
+    type = types.str;
+    default = "";
+  };
   config = {
     assertions = [
       {
