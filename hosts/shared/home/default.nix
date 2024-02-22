@@ -12,6 +12,7 @@
     ./packages.nix
     ./games.nix
 
+    ./ags
     ./anyrun
     ./bottom
     ./discord
