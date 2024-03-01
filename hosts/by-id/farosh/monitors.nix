@@ -13,7 +13,7 @@
       wallpaper = ../../../assets/firewatch-3-1.png;
     }
     {
-      name = "HDMI-A-1";
+      name = "DP-3";
       width = 1920;
       height = 1080;
       refreshRate = 60;
@@ -23,7 +23,7 @@
       wallpaper = ../../../assets/firewatch-3-2.png;
     }
     {
-      name = "DP-3";
+      name = "HDMI-A-1";
       width = 1920;
       height = 1080;
       refreshRate = 60;
@@ -38,7 +38,7 @@
   extraHyprConf = ''
 
   # enable/disable third monitor
-  bind = $mod, m, exec, hyprctl keyword monitor "DP-3, 1920x1080, 960x-1080, 1"
-  bind = $mod SHIFT, m, exec, hyprctl keyword monitor "DP-3, disabled"
+  bind = $mod, m, exec, hyprctl keyword monitor "HDMI-A-1, 1920x1080, 960x-1080, 1"
+  bind = $mod SHIFT, m, exec, hyprctl keyword monitor "HDMI-A-1, disabled"
   '';
 }
