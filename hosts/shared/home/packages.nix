@@ -40,6 +40,6 @@
 
     # testing
     anytype # cloud-synced organizer `everything app`
-    fractal # gtk matrix chat app
+    # fractal # gtk matrix chat app
   ];
 }
