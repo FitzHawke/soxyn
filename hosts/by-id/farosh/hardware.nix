@@ -19,6 +19,7 @@
       # potentially fixes a lockup on first-gen ryzen
       "processor.max_cstate=5"
     ];
+    kernelModules = [ "rtw88" ];
   };
 
   services = {
