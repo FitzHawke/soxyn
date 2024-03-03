@@ -216,7 +216,7 @@ in {
         ps = "${getExe procs}";
         m = "mkdir -p";
         l = "ls -lF --time-style=long-iso --icons";
-        sc = "doas systemctl";
+        sc = "sudo systemctl";
         scu = "systemctl --user ";
         la = "${getExe eza} -lah --tree";
         ls = "${getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
@@ -242,8 +242,8 @@ in {
       with lib; {
         # Clear screen and scrollback
         clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
-        rebuild = "doas nix-store --verify; pushd ~/workspaces/soxyn && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
-        cleanup = "doas nix-collect-garbage --delete-older-than 7d";
+        rebuild = "sudo nix-store --verify; pushd ~/workspaces/soxyn && sudo nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
+        cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
           ${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title = "%(artist)s - %(title)s" - -prefer-ffmpeg - o "%(title)s.%(ext)s" '';

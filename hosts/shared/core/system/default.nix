@@ -36,7 +36,7 @@
     git
     steam-run
     appimage-run
-    (writeScriptBin "sudo" ''exec doas "$@"'')
+    # (writeScriptBin "sudo" ''exec doas "$@"'')
   ];
 
   time = {
@@ -45,7 +45,9 @@
   };
   hardware.ledger.enable = true;
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+  };
 
   console = let
     variant = "u24n";
@@ -60,30 +62,6 @@
     interpreter = "/run/current-system/sw/bin/appimage-run";
   });
 
-  # programs.nix-ld = {
-  #   enable = true;
-  #   libraries = with pkgs; [
-  #     stdenv.cc.cc
-  #     openssl
-  #     curl
-  #     glib
-  #     util-linux
-  #     glibc
-  #     icu
-  #     libunwind
-  #     libuuid
-  #     zlib
-  #     libsecret
-  #     # graphical
-  #     freetype
-  #     mesa
-  #     libnotify
-  #     SDL2
-  #     vulkan-loader
-  #     gdk-pixbuf
-  #     xorg.libX11
-  #   ];
-  # };
   systemd = {
     oomd = {
       enableRootSlice = true;

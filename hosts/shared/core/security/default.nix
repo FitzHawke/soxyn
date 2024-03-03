@@ -56,33 +56,25 @@
       };
     };
 
-    doas = {
+    sudo-rs = {
       enable = true;
       extraRules = [
         {
-          groups = ["wheel"];
-          persist = true;
-          keepEnv = false;
-        }
-        {
+          commands = [
+            {
+              command = "${pkgs.systemd}/bin/systemctl suspend";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "${pkgs.systemd}/bin/reboot";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "${pkgs.systemd}/bin/poweroff";
+              options = ["NOPASSWD"];
+            }
+          ];
           groups = ["power"];
-          noPass = true;
-          cmd = "${pkgs.systemd}/bin/poweroff";
-        }
-        {
-          groups = ["power"];
-          noPass = true;
-          cmd = "${pkgs.systemd}/bin/reboot";
-        }
-        {
-          groups = ["nix"];
-          cmd = "nix-collect-garbage";
-          noPass = true;
-        }
-        {
-          groups = ["nix"];
-          cmd = "nixos-rebuild";
-          keepEnv = true;
         }
       ];
     };
