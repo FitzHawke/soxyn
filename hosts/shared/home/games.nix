@@ -27,6 +27,5 @@ in {
     ryujinx
     steam-with-pkgs
     wineWowPackages.wayland
-    yuzu
   ];
 }
