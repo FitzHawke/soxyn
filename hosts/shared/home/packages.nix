@@ -10,7 +10,6 @@
     gimp # image editing
     jellyfin-media-player # gui for connecting with jellyfin servers
     jq # cli json parsing
-    # keepassxc # password manager
     newsflash # RSS reader
     # obsidian uses EOL electron version. Temp disable
     # obsidian # markdown knowledge base
@@ -24,7 +23,6 @@
     ffmpeg # media conversions
     glow # render markdown in cli
     grex # generate regex expressions
-    hyperfine # benchmarking tool
     imagemagick # image conversion tools
     nmap # network scanning
     rbw # bitwarden cli
@@ -37,9 +35,9 @@
     # other
     cached-nix-shell # faster nix shells
     lm_sensors # hardware sensor readouts
+    alsa-plugins # extra codecs for alsa
 
     # testing
     anytype # cloud-synced organizer `everything app`
-    # fractal # gtk matrix chat app
   ];
 }
