@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./fonts.nix
     ./services.nix
@@ -31,7 +27,6 @@
       XDG_SESSION_TYPE = "wayland";
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${inputs.nix-gaming.packages.${pkgs.system}.proton-ge}";
     };
   };
 
@@ -56,5 +51,13 @@
   sound = {
     enable = true;
     mediaKeys.enable = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    extraCompatPackages = [
+      pkgs.proton-ge-bin.steamcompattool
+    ];
   };
 }
