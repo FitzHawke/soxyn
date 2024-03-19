@@ -29,14 +29,22 @@
         devShells.default = pkgs.mkShell {
           name = "soxyn";
           packages = with pkgs; [
+            # basics -- should already be available on systems running soxyn
             nix
             home-manager
             git
 
+            # nix lsp and formatting
             nil
             alejandra
 
+            # secrets management
             inputs'.agenix.packages.default
+
+            # packages for ags development
+            bun
+            nodePackages.typescript
+            nodePackages.typescript-language-server
           ];
           NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
           DIRENV_LOG_FORMAT = "";
@@ -84,9 +92,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    # };
     hyprwm-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";

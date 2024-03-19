@@ -28,7 +28,6 @@
     ./rnnoise
     ./shell
     ./spotify
-    # ./swaylock
     ./terminal
     ./theme
     ./tools
