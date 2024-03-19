@@ -7,6 +7,8 @@
   imports = [
     ./config.nix
     ../eww
+    ./hypridle.nix
+    ./hyprlock.nix
     # inputs.hyprland.homeManagerModules.default
   ];
   

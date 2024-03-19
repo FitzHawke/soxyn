@@ -48,11 +48,7 @@
       ];
       services = {
         login.enableGnomeKeyring = true;
-        swaylock = {
-          text = ''
-            auth include login
-          '';
-        };
+        hyprlock.text = "auth include login";
       };
     };
 
