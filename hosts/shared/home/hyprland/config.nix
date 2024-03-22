@@ -39,6 +39,7 @@
       # startup programs alongside hyprland
       exec-once = dbus-update-activation-environment --systemd --all
       exec-once = hyprpaper
+      exec-once = hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 24
       exec-once = mako
       exec-once = systemctl --user enable --now eww
 
@@ -48,6 +49,8 @@
         accel_profile = flat
         numlock_by_default = true
         follow_mouse = 2
+        mouse_refocus = false
+        float_switch_override_focus = 0
         touchpad {
           natural_scroll = true
           clickfinger_behavior = true

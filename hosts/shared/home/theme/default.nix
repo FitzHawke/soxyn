@@ -39,7 +39,7 @@ in {
   };
 
   home.sessionVariables = {
-    XCURSOR_SIZE = "16";
+    XCURSOR_SIZE = "24";
     GTK_THEME = catppuccin_name;
   };
 
