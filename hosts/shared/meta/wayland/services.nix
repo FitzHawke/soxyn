@@ -16,7 +16,14 @@
         HandlePowerKey=suspend
       '';
     };
+
+    # printing setup for modern printers (ipp)
     printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
   };
 
   # unlock GPG keyring on login
