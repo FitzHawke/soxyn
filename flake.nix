@@ -77,10 +77,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     eww = {
-      # url = "github:elkowar/eww";
-      # temporarily use ralismarks branch while waiting on sys tray to be merged into upstream
-      # https://github.com/elkowar/eww/pull/743
-      url = "github:ralismark/eww/tray-3";
+      url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gross = {
