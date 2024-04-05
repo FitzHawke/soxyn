@@ -2,7 +2,6 @@
 # https://github.com/LazyVim/LazyVim/discussions/1972
 # effectivly remade lazyvim
 {
-  config,
   lib,
   pkgs,
   ...
