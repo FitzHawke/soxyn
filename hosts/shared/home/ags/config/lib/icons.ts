@@ -1,9 +1,6 @@
 export const substitutes = {
-    "transmission-gtk": "transmission",
-    "blueberry.py": "blueberry",
-    "Caprine": "facebook-messenger",
-    "com.raggesilver.BlackBox-symbolic": "terminal-symbolic",
-    "org.wezfurlong.wezterm-symbolic": "terminal-symbolic",
+    "code-url-handler-symbolic": "text-editor-symbolic",
+    "foot-symbolic": "utilities-terminal-symbolic",
     "audio-headset-bluetooth": "audio-headphones-symbolic",
     "audio-card-analog-usb": "audio-speakers-symbolic",
     "audio-card-analog-pci": "audio-card-symbolic",
