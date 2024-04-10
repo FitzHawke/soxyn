@@ -1,25 +1,24 @@
-import options from "options"
+import { settings } from "settings";
 
-const { corners } = options.bar
+const { corners } = settings.bar;
 
-export default (monitor: number) => Widget.Window({
+export default (monitor: number) =>
+  Widget.Window({
     monitor,
     name: `corner${monitor}`,
     class_name: "screen-corner",
     anchor: ["top", "bottom", "right", "left"],
     click_through: true,
     child: Widget.Box({
-        class_name: "shadow",
+      class_name: "shadow",
+      child: Widget.Box({
+        class_name: "border",
+        expand: true,
         child: Widget.Box({
-            class_name: "border",
-            expand: true,
-            child: Widget.Box({
-                class_name: "corner",
-                expand: true,
-            }),
+          class_name: "corner",
+          expand: true,
         }),
+      }),
     }),
-    setup: self => self.hook(corners, () => {
-        self.toggleClassName("corners", corners.value)
-    }),
-})
+    setup: (self) => self.toggleClassName("corners", corners),
+  });

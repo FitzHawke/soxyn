@@ -1,10 +1,10 @@
 import icons from "lib/icons"
 import PanelButton from "../PanelButton"
-import options from "options"
+import { settings } from "settings"
 
 const n = await Service.import("notifications")
 const notifs = n.bind("notifications")
-const action = options.bar.messages.action.bind()
+const action = settings.bar.messages.action
 
 export default () => PanelButton({
     class_name: "messages",

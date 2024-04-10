@@ -1,20 +1,21 @@
 import { type MprisPlayer } from "types/service/mpris"
 import PanelButton from "../PanelButton"
-import options from "options"
+import { settings } from "settings"
 import icons from "lib/icons"
 import { icon } from "lib/utils"
 
 const mpris = await Service.import("mpris")
-const { length, direction, preferred, monochrome, format } = options.bar.media
+const { length, direction, preferred, monochrome, format } = settings.bar.media
 
-const getPlayer = (name = preferred.value) =>
+const getPlayer = (name = preferred) =>
     mpris.getPlayer(name) || mpris.players[0] || null
 
 const Content = (player: MprisPlayer) => {
     const revealer = Widget.Revealer({
         click_through: true,
-        visible: length.bind().as(l => l > 0),
-        transition: direction.bind().as(d => `slide_${d}` as const),
+        visible: length > 0,
+        // @ts-ignore
+        transition: `slide_${direction}`,
         setup: self => {
             let current = ""
             self.hook(player, () => {
@@ -30,11 +31,10 @@ const Content = (player: MprisPlayer) => {
         },
         child: Widget.Label({
             truncate: "end",
-            max_width_chars: length.bind().as(n => n > 0 ? n : -1),
+            max_width_chars: length > 0 ? length : -1,
             label: Utils.merge([
                 player.bind("track_title"),
                 player.bind("track_artists"),
-                format.bind(),
             ], () => `${format}`
                 .replace("{title}", player.track_title)
                 .replace("{artists}", player.track_artists.join(", "))
@@ -47,16 +47,16 @@ const Content = (player: MprisPlayer) => {
     })
 
     const playericon = Widget.Icon({
-        icon: Utils.merge([player.bind("entry"), monochrome.bind()], (entry => {
-            const name = `${entry}${monochrome.value ? "-symbolic" : ""}`
+        icon: Utils.merge([player.bind("entry")], (entry => {
+            const name = `${entry}${monochrome ? "-symbolic" : ""}`
             return icon(name, icons.fallback.audio)
         })),
     })
 
     return Widget.Box({
         attribute: { revealer },
-        children: direction.bind().as(d => d === "right"
-            ? [playericon, revealer] : [revealer, playericon]),
+        children: direction === "right"
+            ? [playericon, revealer] : [revealer, playericon],
     })
 }
 
@@ -87,6 +87,5 @@ export default () => {
     }
 
     return btn
-        .hook(preferred, update)
         .hook(mpris, update, "notify::players")
 }

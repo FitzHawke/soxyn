@@ -10,6 +10,7 @@ in {
   imports = [inputs.ags.homeManagerModules.default];
 
   home.packages = with pkgs; [
+    ags
     agsoxyn
     bun
     dart-sass

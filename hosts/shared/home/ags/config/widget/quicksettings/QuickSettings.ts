@@ -8,14 +8,21 @@ import { DND } from "./widgets/DND";
 import { MicMute } from "./widgets/MicMute";
 import { Media } from "./widgets/Media";
 import PopupWindow from "widget/PopupWindow";
-import options from "options";
+import { settings } from "settings";
 
-const { bar, quicksettings } = options;
+type layout =
+  | "top"
+  | "center"
+  | "top-right"
+  | "top-center"
+  | "top-left"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right";
+
+const { bar, quicksettings } = settings;
 const media = (await Service.import("mpris")).bind("players");
-const layout = Utils.derive(
-  [bar.position, quicksettings.position],
-  (bar, qs) => `${bar}-${qs}` as const
-);
+const layout = `${bar.position}-${quicksettings.position}` as layout;
 
 const Row = (
   toggles: Array<() => Gtk.Widget> = [],
@@ -37,7 +44,7 @@ const Settings = () =>
   Widget.Box({
     vertical: true,
     class_name: "quicksettings vertical",
-    css: quicksettings.width.bind().as((w) => `min-width: ${w}px;`),
+    css: `min-width: ${quicksettings.width}px;`,
     children: [
       Header(),
       Widget.Box({
@@ -62,17 +69,11 @@ const QuickSettings = () =>
   PopupWindow({
     name: "quicksettings",
     exclusivity: "exclusive",
-    transition: bar.position
-      .bind()
-      .as((pos) => (pos === "top" ? "slide_down" : "slide_up")),
-    layout: layout.value,
+    transition: bar.position === "top" ? "slide_down" : "slide_up",
+    layout: layout,
     child: Settings(),
   });
 
 export function setupQuickSettings() {
   App.addWindow(QuickSettings());
-  layout.connect("changed", () => {
-    App.removeWindow("quicksettings");
-    App.addWindow(QuickSettings());
-  });
 }

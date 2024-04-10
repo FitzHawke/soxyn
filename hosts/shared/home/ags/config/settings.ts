@@ -1,21 +1,24 @@
-export const theme = {
+type layout = "fill" | "start" | "end" | "center" | "baseline";
+type position = "top" | "right" | "bottom" | "left";
+
+export const settings = {
   notifications: {
     width: 440,
     blacklist: ["Spotify"],
-    position: ["top", "right"],
+    position: ["top", "right"] as position[],
   },
 
   osd: {
     microphone: {
       pack: {
-        v: "end",
-        h: "center",
+        v: "end" as layout,
+        h: "center" as layout,
       },
     },
     progress: {
       pack: {
-        v: "center",
-        h: "end",
+        v: "center" as layout,
+        h: "end" as layout,
       },
       vertical: true,
     },
@@ -66,6 +69,8 @@ export const theme = {
           "spotify",
         ],
       ],
+      max: 6,
+      iconSize: 62,
     },
     sh: {
       max: 6,
@@ -77,6 +82,7 @@ export const theme = {
   bar: {
     powermenu: {
       monochrome: true,
+      action: () => App.toggleWindow("powermenu"),
     },
     media: {
       length: 40,
@@ -106,16 +112,18 @@ export const theme = {
     },
     date: {
       format: "%H:%M - %A %e.",
+      action: () => App.toggleWindow("datemenu"),
     },
     launcher: {
       label: {
-        label: "Apps",
+        label: " Apps",
         colored: false,
       },
       icon: {
         icon: "nixos",
         colored: true,
       },
+      action: () => App.toggleWindow("launcher"),
     },
     layout: {
       end: [
@@ -131,8 +139,11 @@ export const theme = {
       center: ["date"],
       start: ["launcher", "workspaces", "taskbar", "expander", "messages"],
     },
-    corner: true,
-    position: "top",
+    messages: {
+      action: () => App.toggleWindow("datemenu"),
+    },
+    corners: true,
+    position: "top" as position,
     flatButtons: true,
   },
 

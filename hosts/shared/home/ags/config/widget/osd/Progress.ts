@@ -1,7 +1,7 @@
 import type Gtk from "gi://Gtk?version=3.0"
 import GLib from "gi://GLib?version=2.0"
 import { range } from "lib/utils"
-import options from "options"
+import { settings } from "settings"
 
 type ProgressProps = {
     height?: number
@@ -60,7 +60,7 @@ export default ({
                 return
             }
 
-            const frames = options.transition.value / 10
+            const frames = settings.transition / 10
             const goal = preferred - fill_size
             const step = goal / frames
 

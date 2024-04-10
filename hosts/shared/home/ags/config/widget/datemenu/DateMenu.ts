@@ -1,36 +1,42 @@
-import PopupWindow from "widget/PopupWindow"
-import NotificationColumn from "./NotificationColumn"
-import DateColumn from "./DateColumn"
-import options from "options"
+import PopupWindow from "widget/PopupWindow";
+import NotificationColumn from "./NotificationColumn";
+import DateColumn from "./DateColumn";
+import { settings } from "settings";
 
-const { bar, datemenu } = options
-const pos = bar.position.bind()
-const layout = Utils.derive([bar.position, datemenu.position], (bar, qs) =>
-    `${bar}-${qs}` as const,
-)
+type layout =
+  | "top"
+  | "center"
+  | "top-right"
+  | "top-center"
+  | "top-left"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right";
 
-const Settings = () => Widget.Box({
+const { bar, datemenu } = settings;
+const pos = bar.position;
+const layout = `${bar.position}-${datemenu.position}` as layout;
+
+const Settings = () =>
+  Widget.Box({
     class_name: "datemenu horizontal",
     vexpand: false,
     children: [
-        NotificationColumn(),
-        Widget.Separator({ orientation: 1 }),
-        DateColumn(),
+      NotificationColumn(),
+      Widget.Separator({ orientation: 1 }),
+      DateColumn(),
     ],
-})
+  });
 
-const DateMenu = () => PopupWindow({
+const DateMenu = () =>
+  PopupWindow({
     name: "datemenu",
     exclusivity: "exclusive",
-    transition: pos.as(pos => pos === "top" ? "slide_down" : "slide_up"),
-    layout: layout.value,
+    transition: pos === "top" ? "slide_down" : "slide_up",
+    layout: layout,
     child: Settings(),
-})
+  });
 
 export function setupDateMenu() {
-    App.addWindow(DateMenu())
-    layout.connect("changed", () => {
-        App.removeWindow("datemenu")
-        App.addWindow(DateMenu())
-    })
+  App.addWindow(DateMenu());
 }

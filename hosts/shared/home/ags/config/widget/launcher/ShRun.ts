@@ -1,10 +1,10 @@
 import icons from "lib/icons"
-import options from "options"
+import { settings } from "settings"
 import { bash, dependencies } from "lib/utils"
 
 const iconVisible = Variable(false)
 
-const MAX = options.launcher.sh.max
+const MAX = settings.launcher.sh.max
 const BINS = `${Utils.CACHE_DIR}/binaries`
 bash("{ IFS=:; ls -H $PATH; } | sort ")
     .then(bins => Utils.writeFile(bins, BINS))

@@ -1,11 +1,11 @@
 import { type Application } from "types/service/applications"
 import { launchApp, icon } from "lib/utils"
-import options from "options"
+import { settings } from "settings"
 import icons from "lib/icons"
 
 const apps = await Service.import("applications")
 const { query } = apps
-const { iconSize } = options.launcher.apps
+const { iconSize } = settings.launcher.apps
 
 const QuickAppButton = (app: Application) => Widget.Button({
     hexpand: true,
@@ -15,7 +15,7 @@ const QuickAppButton = (app: Application) => Widget.Button({
         launchApp(app)
     },
     child: Widget.Icon({
-        size: iconSize.bind(),
+        size: iconSize,
         icon: icon(app.icon_name, icons.fallback.executable),
     }),
 })
@@ -43,7 +43,7 @@ const AppItem = (app: Application) => {
 
     const appicon = Widget.Icon({
         icon: icon(app.icon_name, icons.fallback.executable),
-        size: iconSize.bind(),
+        size: iconSize,
     })
 
     const textBox = Widget.Box({
@@ -65,12 +65,12 @@ const AppItem = (app: Application) => {
     })
 }
 export function Favorites() {
-    const favs = options.launcher.apps.favorites.bind()
+    const favs = settings.launcher.apps.favorites
     return Widget.Revealer({
-        visible: favs.as(f => f.length > 0),
+        visible: favs.length > 0,
         child: Widget.Box({
             vertical: true,
-            children: favs.as(favs => favs.flatMap(fs => [
+            children: favs.flatMap(fs => [
                 Widget.Separator(),
                 Widget.Box({
                     class_name: "quicklaunch horizontal",
@@ -79,14 +79,14 @@ export function Favorites() {
                         .filter(f => f)
                         .map(QuickAppButton),
                 }),
-            ])),
+            ]),
         }),
     })
 }
 
 export function Launcher() {
     const applist = Variable(query(""))
-    const max = options.launcher.apps.max
+    const max = settings.launcher.apps.max
     let first = applist.value[0]
 
     function SeparatedAppItem(app: Application) {
@@ -111,7 +111,7 @@ export function Launcher() {
         filter(text: string | null) {
             first = query(text || "")[0]
             list.children.reduce((i, item) => {
-                if (!text || i >= max.value) {
+                if (!text || i >= max) {
                     item.reveal_child = false
                     return i
                 }

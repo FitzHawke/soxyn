@@ -1,15 +1,15 @@
 import icons from "lib/icons"
 import PanelButton from "../PanelButton"
-import options from "options"
+import { settings } from "settings"
 
-const { monochrome, action } = options.bar.powermenu
+const { monochrome, action } = settings.bar.powermenu
 
 export default () => PanelButton({
     window: "powermenu",
-    on_clicked: action.bind(),
+    on_clicked: action,
     child: Widget.Icon(icons.powermenu.shutdown),
-    setup: self => self.hook(monochrome, () => {
-        self.toggleClassName("colored", !monochrome.value)
+    setup: self => {
+        self.toggleClassName("colored", !monochrome)
         self.toggleClassName("box")
-    }),
+    },
 })

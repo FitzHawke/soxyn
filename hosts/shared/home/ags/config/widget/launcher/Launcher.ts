@@ -1,11 +1,11 @@
 import { type Binding } from "lib/utils";
 import PopupWindow, { Padding } from "widget/PopupWindow";
 import icons from "lib/icons";
-import options from "options";
+import { settings } from "settings";
 import * as AppLauncher from "./AppLauncher";
 import * as ShRun from "./ShRun";
 
-const { width, margin } = options.launcher;
+const { width, margin } = settings.launcher;
 
 function Launcher() {
   const favs = AppLauncher.Favorites();
@@ -77,7 +77,7 @@ function Launcher() {
   }
 
   const layout = Widget.Box({
-    css: width.bind().as((v) => `min-width: ${v}pt;`),
+    css: `min-width: ${width}pt;`,
     class_name: "launcher",
     vertical: true,
     vpack: "start",
@@ -94,7 +94,7 @@ function Launcher() {
   return Widget.Box(
     { vertical: true, css: "padding: 1px" },
     Padding("applauncher", {
-      css: margin.bind().as((v) => `min-height: ${v}pt;`),
+      css: `min-height: ${margin}pt;`,
       vexpand: false,
     }),
     layout

@@ -1,9 +1,9 @@
 import icons from "lib/icons"
-import options from "options"
+import { settings } from "settings"
 import PanelButton from "../PanelButton"
 
 const battery = await Service.import("battery")
-const { bar, percentage, blocks, width, low } = options.bar.battery
+const { bar, percentage, blocks, width, low } = settings.bar.battery
 
 const Indicator = () => Widget.Icon({
     setup: self => self.hook(battery, () => {
@@ -16,7 +16,7 @@ const Indicator = () => Widget.Icon({
 const PercentLabel = () => Widget.Revealer({
     transition: "slide_right",
     click_through: true,
-    reveal_child: percentage.bind(),
+    reveal_child: percentage,
     child: Widget.Label({
         label: battery.bind("percent").as(p => `${p}%`),
     }),
@@ -25,21 +25,12 @@ const PercentLabel = () => Widget.Revealer({
 const LevelBar = () => {
     const level = Widget.LevelBar({
         bar_mode: "discrete",
-        max_value: blocks.bind(),
-        visible: bar.bind().as(b => b !== "hidden"),
-        value: battery.bind("percent").as(p => (p / 100) * blocks.value),
+        max_value: blocks,
+        visible: bar !== "hidden",
+        value: battery.bind("percent").as(p => (p / 100) * blocks),
+        css: `block { min-width: ${width / blocks}pt; }`,
     })
-    const update = () => {
-        level.value = (battery.percent / 100) * blocks.value
-        level.css = `block { min-width: ${width.value / blocks.value}pt; }`
-    }
     return level
-        .hook(width, update)
-        .hook(blocks, update)
-        .hook(bar, () => {
-            level.vpack = bar.value === "whole" ? "fill" : "center"
-            level.hpack = bar.value === "whole" ? "fill" : "center"
-        })
 }
 
 const WholeButton = () => Widget.Overlay({
@@ -75,20 +66,21 @@ const Regular = () => Widget.Box({
     ],
 })
 
+const buttonStyle = bar === "whole" ? WholeButton() : Regular()
+
 export default () => PanelButton({
     class_name: "battery-bar",
     hexpand: false,
-    on_clicked: () => { percentage.value = !percentage.value },
     visible: battery.bind("available"),
+    // @ts-ignore
     child: Widget.Box({
         expand: true,
         visible: battery.bind("available"),
-        child: bar.bind().as(b => b === "whole" ? WholeButton() : Regular()),
+        child: buttonStyle,
     }),
     setup: self => self
-        .hook(bar, w => w.toggleClassName("bar-hidden", bar.value === "hidden"))
         .hook(battery, w => {
             w.toggleClassName("charging", battery.charging || battery.charged)
-            w.toggleClassName("low", battery.percent < low.value)
+            w.toggleClassName("low", battery.percent < low)
         }),
 })

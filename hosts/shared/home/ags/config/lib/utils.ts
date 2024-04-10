@@ -10,7 +10,7 @@ export type Binding<T> = import("types/service").Binding<any, any, T>;
 /**
  * @returns substitute icon || name || fallback icon
  */
-export function icon(name: string | null, fallback = icons.missing) {
+export function icon(name: string | null, fallback = icons.missing): string {
   if (!name) return fallback || "";
 
   if (GLib.file_test(name, GLib.FileTest.EXISTS)) return name;

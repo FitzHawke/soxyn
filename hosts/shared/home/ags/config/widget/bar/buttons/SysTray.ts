@@ -1,10 +1,10 @@
 import { type TrayItem } from "types/service/systemtray"
 import PanelButton from "../PanelButton"
 import Gdk from "gi://Gdk"
-import options from "options"
+import { settings } from "settings"
 
 const systemtray = await Service.import("systemtray")
-const { ignore } = options.bar.systray
+const { ignore } = settings.bar.systray
 
 const SysTrayItem = (item: TrayItem) => PanelButton({
     class_name: "tray-item",
@@ -36,5 +36,5 @@ const SysTrayItem = (item: TrayItem) => PanelButton({
 
 export default () => Widget.Box()
     .bind("children", systemtray, "items", i => i
-        .filter(({ id }) => !ignore.value.includes(id))
+        .filter(({ id }) => !ignore.includes(id))
         .map(SysTrayItem))
