@@ -21,7 +21,6 @@
     ./firefox
     ./git
     ./hyprland
-    ./mako
     ./media
     ./neovim
     ./office

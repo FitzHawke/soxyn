@@ -40,8 +40,7 @@
       exec-once = dbus-update-activation-environment --systemd --all
       exec-once = hyprpaper
       exec-once = hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 24
-      exec-once = mako
-      exec-once = systemctl --user enable --now eww
+      exec-once = agsoxyn
 
       input {
         kb_layout = us

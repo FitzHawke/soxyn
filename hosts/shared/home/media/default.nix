@@ -4,8 +4,7 @@
     playerctl
     pavucontrol
     pulsemixer
-    # imv uses insecure freeimage library. disable until update to 4.5.0 (pr# 290398)
-    # imv 
+    imv 
   ];
   programs = {
     mpv = {

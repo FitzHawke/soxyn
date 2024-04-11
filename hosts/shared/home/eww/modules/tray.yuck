@@ -1,6 +1,0 @@
-(defwidget tray []
-  (box
-    :class "tray"
-    :pack-direction "rtl"
-    (systray)))
-

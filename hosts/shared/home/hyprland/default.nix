@@ -1,18 +1,16 @@
 {
   pkgs,
-  inputs,
   osConfig,
   ...
 }: {
   imports = [
     ./config.nix
-    ../eww
     ./hypridle.nix
     ./hyprlock.nix
   ];
   
   home.packages = with pkgs; [
-    inputs.hyprwm-contrib.packages.${system}.grimblast # screenshots
+    grimblast # screenshots
     hyprpaper # wallpaper
     libnotify # notifications daemon
     wf-recorder # screen recording
