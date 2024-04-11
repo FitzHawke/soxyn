@@ -7,8 +7,6 @@
     inherit inputs;
   };
 in {
-  imports = [inputs.ags.homeManagerModules.default];
-
   home.packages = with pkgs; [
     ags
     agsoxyn
@@ -26,8 +24,4 @@ in {
     networkmanager
     gtk3
   ];
-
-  programs.ags = {
-    enable = true;
-  };
 }
