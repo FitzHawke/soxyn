@@ -8,7 +8,7 @@
   };
 in {
   home.packages = with pkgs; [
-    ags
+    inputs.ags.packages.${system}.default
     agsoxyn
     bun
     dart-sass
