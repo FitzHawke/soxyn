@@ -188,17 +188,14 @@
       bind = $mod, T, togglefloating,
       bind = $mod, P, pseudo,
       bind = $mod ALT, ,resizeactive,
-      # toggle "monocle" (no_gaps_when_only)
-      $kw = dwindle:no_gaps_when_only
-      bind = $mod, M, exec, hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jaq -r '.int') ^ 1))
 
       # utility commands
       # launcher
-      bindr = $mod, SUPER_L, exec, anyrun
+      bindr = $mod, SUPER_L, exec, agsoxyn -t launcher
       # terminal
       bind = $mod, Return, exec, foot
       # logout menu
-      bind = $mod, Escape, exec, wlogout -p layer-shell
+      bind = $mod, Escape, exec, agsoxyn -t powermenu
       # lock screen
       bind = $mod SHIFT, L, exec, loginctl lock-session
       # browser

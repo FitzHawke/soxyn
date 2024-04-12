@@ -15,7 +15,6 @@
     ./games.nix
 
     ./ags
-    ./anyrun
     ./bottom
     ./discord
     ./firefox
