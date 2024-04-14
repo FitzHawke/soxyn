@@ -7,6 +7,5 @@
     gnome.nautilus
     gnome-text-editor
     libreoffice-fresh
-    thunderbird
   ];
 }
