@@ -5,6 +5,7 @@
     pavucontrol
     pulsemixer
     imv 
+    vdhcoapp
   ];
   programs = {
     mpv = {

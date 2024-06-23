@@ -1,6 +1,7 @@
 {pkgs, ...}: {
-  home.packages = [
-    pkgs.webcord
+  home.packages = with pkgs; [
+    webcord
+    dissent
   ];
 
   xdg.configFile."WebCord/Themes/catppuccin".text = ''
