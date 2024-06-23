@@ -1,9 +1,9 @@
 {pkgs, ...}: let
-  catppuccin_name = "Catppuccin-Mocha-Compact-Mauve-Dark";
+  catppuccin_name = "catppuccin-mocha-mauve-compact+default";
   catppuccin = pkgs.catppuccin-gtk.override {
-        accents = ["mauve"];
-        size = "compact";
-        variant = "mocha";
+    accents = ["mauve"];
+    size = "compact";
+    variant = "mocha";
   };
 in {
   dconf = {
@@ -33,14 +33,13 @@ in {
   # cursor theme
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaDark;
-    name = "Catppuccin-Mocha-Dark-Cursors";
+    name = "catppuccin-mocha-dark-cursors";
     gtk.enable = true;
     x11.enable = true;
   };
 
   home.sessionVariables = {
     XCURSOR_SIZE = "24";
-    GTK_THEME = catppuccin_name;
   };
 
   # catppuccin theme for qt-apps
