@@ -5,10 +5,8 @@
 }: {
   hardware = {
     enableRedistributableFirmware = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
     };
   };
 

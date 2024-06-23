@@ -1,13 +1,9 @@
 {pkgs, config, ...}: {
   hardware = {
   enableRedistributableFirmware = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-      ];
+      enable32Bit = true;
     };
   };
 
