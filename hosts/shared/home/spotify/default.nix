@@ -2,13 +2,15 @@
   inputs,
   pkgs,
   ...
-}: let spicePkgs = inputs.spicetify.packages.${pkgs.system}.default; in{
-  imports = [inputs.spicetify.homeManagerModule];
+}: let
+  spicePkgs = inputs.spicetify.legacyPackages.${pkgs.system};
+in {
+  imports = [inputs.spicetify.homeManagerModules.default];
   programs.spicetify = {
     enable = true;
     enabledCustomApps = with spicePkgs.apps; [
-      lyrics-plus
-      new-releases
+      lyricsPlus
+      newReleases
     ];
 
     theme = spicePkgs.themes.catppuccin;
