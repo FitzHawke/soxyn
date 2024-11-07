@@ -18,7 +18,7 @@
       # potentially fixes a lockup on first-gen ryzen
       "processor.max_cstate=5"
     ];
-    kernelModules = [ "rtw88" ];
+    kernelModules = ["rtw88"];
   };
 
   services = {
@@ -29,7 +29,7 @@
 
   programs.gamemode.settings.gpu = {
     apply_gpu_optimisations = "accept-responsibility";
-    gpu_device = 0;
+    gpu_device = 1;
     amd_performance_level = "high";
   };
 
