@@ -1,10 +1,11 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     evolution
-    gnome.file-roller
-    gnome.gnome-calculator
-    gnome.gnome-calendar
-    gnome.nautilus
+    file-roller
+    gnome-calculator
+    gnome-calendar
+    gnome-disk-utility
+    nautilus
     gnome-text-editor
     libreoffice-fresh
   ];

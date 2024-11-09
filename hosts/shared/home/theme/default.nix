@@ -44,7 +44,7 @@ in {
 
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [
-    gnome.gnome-themes-extra
+    gnome-themes-extra
     libsForQt5.qtstyleplugin-kvantum
     qt6Packages.qtstyleplugin-kvantum
     (catppuccin-kvantum.override {
