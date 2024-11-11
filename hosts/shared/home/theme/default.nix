@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  catppuccin_name = "catppuccin-mocha-mauve-compact+default";
+  catppuccin_name = "catppuccin-mocha-mauve-compact";
   catppuccin = pkgs.catppuccin-gtk.override {
     accents = ["mauve"];
     size = "compact";
@@ -36,6 +36,7 @@ in {
     name = "catppuccin-mocha-dark-cursors";
     gtk.enable = true;
     x11.enable = true;
+    size = 24;
   };
 
   home.sessionVariables = {
@@ -48,8 +49,8 @@ in {
     libsForQt5.qtstyleplugin-kvantum
     qt6Packages.qtstyleplugin-kvantum
     (catppuccin-kvantum.override {
-      accent = "Mauve";
-      variant = "Mocha";
+      accent = "mauve";
+      variant = "mocha";
     })
   ];
 
