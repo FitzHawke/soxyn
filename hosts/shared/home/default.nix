@@ -9,7 +9,16 @@
       json.enable = false;
       manpages.enable = false;
     };
+
+    nix = {
+      gc = {
+        automatic = true;
+        frequency = "daily";
+        options = "--delete-older-than 3d";
+      };
+    };
   };
+
   imports = [
     ./packages.nix
     ./games.nix

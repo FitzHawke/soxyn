@@ -59,10 +59,10 @@
       extra-experimental-features = ["flakes" "nix-command"];
       flake-registry = "/etc/nix/registry.json";
 
-      # for direnv GC roots
-      keep-derivations = true;
-      keep-outputs = true;
-      
+      # # for direnv GC roots
+      # keep-derivations = true;
+      # keep-outputs = true;
+
       # use binary caches for nixpkgs and any that don't follow nixpkgs
       substituters = [
         "https://cache.nixos.org"
