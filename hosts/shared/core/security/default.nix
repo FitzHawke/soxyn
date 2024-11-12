@@ -2,13 +2,11 @@
   pkgs,
   lib,
   ...
-}:
-# this makes our system more secure
-# note that it might break some stuff, eg webcam
-{
+}: {
   # tmpfs = /tmp is mounted in ram. Doing so makes temp file management speedy
   # on ssd systems, and volatile! Because it's wiped on reboot.
   boot.tmp.useTmpfs = lib.mkDefault true;
+
   # Firefox cache on tmpfs
   fileSystems."/home/will/.cache/mozilla/firefox" = {
     device = "tmpfs";
@@ -21,6 +19,7 @@
       "size=128M"
     ];
   };
+
   programs.ssh.startAgent = true;
   security = {
     protectKernelImage = true;

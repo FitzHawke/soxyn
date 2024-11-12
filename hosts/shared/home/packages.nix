@@ -38,6 +38,6 @@
     alsa-plugins # extra codecs for alsa
 
     # testing
-    anytype # cloud-synced organizer `everything app`
+    # anytype # cloud-synced organizer `everything app`
   ];
 }

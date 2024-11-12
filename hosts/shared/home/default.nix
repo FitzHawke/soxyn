@@ -30,7 +30,8 @@
     ./git
     ./hyprland
     ./media
-    ./neovim
+    # the rotating circus of breakages in nix
+    # ./neovim
     ./office
     ./rnnoise
     ./shell
