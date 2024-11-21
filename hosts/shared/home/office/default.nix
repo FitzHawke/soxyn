@@ -7,6 +7,6 @@
     gnome-disk-utility
     nautilus
     gnome-text-editor
-    libreoffice-fresh
+    libreoffice
   ];
 }
