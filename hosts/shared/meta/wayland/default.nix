@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./fonts.nix
     ./services.nix
@@ -28,6 +32,7 @@
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
     };
+    systemPackages = [(inputs.umu.packages.${pkgs.system}.umu.override {version = "${inputs.umu.shortRev}";})];
   };
 
   xdg.portal = {
