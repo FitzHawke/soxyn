@@ -14,9 +14,11 @@
     # obsidian uses EOL electron version. Temp disable
     # obsidian # markdown knowledge base
     quodlibet-full # gui music
+    zed-editor # text/code editor
 
 
     # cli
+    aoc-cli # advent of code cli util
     bc # calculator
     fd # simpler syntax for find
     catimg # cat for imgs
