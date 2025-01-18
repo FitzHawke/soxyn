@@ -20,7 +20,8 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       jetbrains-mono
-      (nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
+      nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
     ];
 
     enableDefaultPackages = false;
