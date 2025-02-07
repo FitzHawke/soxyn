@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   osConfig,
@@ -7,21 +6,14 @@
 }: {
   imports = [../../../../by-id/${osConfig.networking.hostName}/monitors.nix];
 
-  home.packages = with pkgs; [
-    hyprpaper
-  ];
-
-  # map through monitors to build wallpaper config
-  xdg.configFile."hypr/hyprpaper.conf".text =
-    lib.concatMapStrings (
-      m: ''
-        preload=${m.wallpaper}
-        wallpaper=${m.name},${m.wallpaper}
-      ''
-    ) (config.monitors)
-    + ''
-      splash = false
-    '';
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      splash = false;
+      preload = lib.map (m: "${m.wallpaper}") (config.monitors);
+      wallpaper = lib.map (m: "${m.name},${m.wallpaper}") (config.monitors);
+    };
+  };
 
   # map through monitors and setup for hyprland config
   # outputs: "monitor=DP-1,1920x1080@60,0x0,1"

@@ -2,7 +2,6 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "dbus-update-activation-environment --systemd --all"
-      "hyprpaper"
       "hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 24"
       "agsoxyn"
     ];
