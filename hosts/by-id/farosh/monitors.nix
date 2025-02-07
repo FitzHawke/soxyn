@@ -37,8 +37,8 @@
   # Keybinds to enable/disable third monitor as needed
   extraHyprConf = ''
 
-  # enable/disable third monitor
-  bind = $mod, m, exec, hyprctl keyword monitor "HDMI-A-1, 1920x1080, 960x-1080, 1"
-  bind = $mod SHIFT, m, exec, hyprctl keyword monitor "HDMI-A-1, disabled"
+    # enable/disable third monitor
+    bind = $mod, m, exec, hyprctl keyword monitor "HDMI-A-1, 1920x1080, 960x-1080, 1"
+    bind = $mod SHIFT, m, exec, hyprctl keyword monitor "HDMI-A-1, disabled"
   '';
 }
