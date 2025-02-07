@@ -28,7 +28,7 @@
     ./discord
     ./firefox
     ./git
-    ./hyprland
+    ./hypr
     ./media
     # the rotating circus of breakages in nix
     # ./neovim

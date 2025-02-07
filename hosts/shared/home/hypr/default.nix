@@ -4,25 +4,18 @@
   ...
 }: {
   imports = [
-    ./config.nix
+    ./hyprland
     ./hypridle.nix
     ./hyprlock.nix
   ];
-  
+
   home.packages = with pkgs; [
     grimblast # screenshots
-    hyprpaper # wallpaper
     libnotify # notifications daemon
     wf-recorder # screen recording
-    brillo # brightness
-    pamixer # cli volume adjustment
     wl-clipboard # clipboard
     cliphist # clipboard history
   ];
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-  };
 
   services.wlsunset = {
     enable = true;
