@@ -32,7 +32,7 @@
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
     };
-    systemPackages = [(inputs.umu.packages.${pkgs.system}.umu.override {version = "${inputs.umu.shortRev}";})];
+    systemPackages = [inputs.umu.packages.${pkgs.system}.default];
   };
 
   xdg.portal = {

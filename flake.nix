@@ -46,7 +46,7 @@
             nodePackages.typescript
             nodePackages.typescript-language-server
           ];
-          NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
+          NIX_CONFIG = "extra-experimental-features = nix-command flakes";
           DIRENV_LOG_FORMAT = "";
         };
 
@@ -80,8 +80,8 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    umu= {
-      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+    umu = {
+      url = "github:Open-Wine-Components/umu-launcher?dir=packaging/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
