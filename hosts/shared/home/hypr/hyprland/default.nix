@@ -1,4 +1,8 @@
-{...}: {
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    grimblast # screenshots
+  ];
+
   imports = [
     ./binds.nix
     ./monitors.nix
