@@ -1,10 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    webcord
     dissent
-  ];
 
-  xdg.configFile."WebCord/Themes/catppuccin".text = ''
-    @import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-mauve.theme.css");
-  '';
+    # may need to run once without OpenASAR and Vencord after update
+    # openASAR appears to not download something discord needs
+    (discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
+  ];
 }
