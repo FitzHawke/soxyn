@@ -39,6 +39,8 @@
           invert_numlock = false;
 
           position = "0, -20";
+          halign = "center";
+          valign = "center";
         }
       ];
 
@@ -50,6 +52,8 @@
           font_family = "Noto Sans";
 
           position = "0, 80";
+          halign = "center";
+          valign = "center";
         }
       ];
     };
