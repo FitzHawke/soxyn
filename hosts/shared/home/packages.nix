@@ -18,12 +18,14 @@
     bc # calculator
     fd # simpler syntax for find
     catimg # cat for imgs
+    comma # run commands without install (nix shell)
     ffmpeg # media conversions
     glow # render markdown in cli
     grex # generate regex expressions
     imagemagick # image conversion tools
     nmap # network scanning
     rbw # bitwarden cli
+    ripgrep # rusty grep
     rsync # folder syncing
     sd # sed alt in rust with easy syntax
     unzip # archive manager

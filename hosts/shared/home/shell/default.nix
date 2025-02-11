@@ -4,7 +4,6 @@
   config,
   ...
 }: {
-  home.packages = with pkgs; [comma ripgrep];
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
 
   programs = {
@@ -184,8 +183,6 @@
         vim = "${getExe neovim}";
         vi = "${getExe neovim}";
 
-        cik = "clone-in-kitty --type os-window";
-
         cat = "${getExe bat} --style=plain";
         grep = "${getExe ripgrep}";
         fzf = "${getExe skim}";
@@ -208,11 +205,11 @@
         "......" = "cd ../../../../../";
 
         docs = "$HOME/documents";
-        notes = "$HOME/documents/notes";
-        dotfiles = "$HOME/workspaces/dotfiles";
+        dots = "$HOME/workspaces/soxyn";
         dl = "$HOME/download";
-        vids = "$HOME/videos";
-        music = "$HOME/music";
+        vids = "$HOME/media/videos";
+        music = "$HOME/media/music";
+        pics = "$HOME/media/pcitures";
         work = "$HOME/workspaces";
         media = "/run/media/$USER";
       };
@@ -221,10 +218,10 @@
         # Clear screen and scrollback
         clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
         rebuild = "sudo nix-store --verify; pushd ~/workspaces/soxyn && sudo nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
-        cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+        cleanup = "sudo nix-collect-garbage --delete-older-than 3d";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
-          ${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title = "%(artist)s - %(title)s" - -prefer-ffmpeg - o "%(title)s.%(ext)s" '';
+          ${getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title = "%(artist)s - %(title)s" - -prefer-ffmpeg - o "%(title)s.%(ext)s" '';
       };
       functions = {
         # Disable greeting
