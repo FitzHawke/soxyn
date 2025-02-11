@@ -3,7 +3,6 @@
     # gui
     anki-bin # flashcards
     bitwarden # password manager
-    blueberry # bluetooth gui
     chromium # backup browser
     element-desktop # matrix chat app
     foliate # ebook reader gui
@@ -11,11 +10,8 @@
     jellyfin-media-player # gui for connecting with jellyfin servers
     jq # cli json parsing
     newsflash # RSS reader
-    # obsidian uses EOL electron version. Temp disable
-    # obsidian # markdown knowledge base
     quodlibet-full # gui music
     zed-editor # text/code editor
-
 
     # cli
     aoc-cli # advent of code cli util
@@ -38,8 +34,5 @@
     cached-nix-shell # faster nix shells
     lm_sensors # hardware sensor readouts
     alsa-plugins # extra codecs for alsa
-
-    # testing
-    # anytype # cloud-synced organizer `everything app`
   ];
 }

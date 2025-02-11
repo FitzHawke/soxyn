@@ -1,5 +1,4 @@
-{pkgs,  ...}: {
-
+{pkgs, ...}: {
   # imports = [/home/will/workspaces/notSoxyn/factorio.nix];
 
   # Lazy secrets management. Needed at buildtime and I dont know how to do that with agenix...

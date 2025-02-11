@@ -3,30 +3,8 @@
   lib,
   config,
   ...
-}: let
-  apply-hm-env = pkgs.writeShellScript "apply-hm-env" ''
-    ${lib.optionalString (config.home.sessionPath != []) ''
-      export PATH=${builtins.concatStringsSep ":" config.home.sessionPath}:$PATH
-    ''}
-    ${builtins.concatStringsSep "\n" (lib.mapAttrsToList (k: v: ''
-        export ${k}=${v}
-      '')
-      config.home.sessionVariables)}
-    ${config.home.sessionVariablesExtra}
-    exec "$@"
-  '';
-
-  # runs processes as systemd transient services
-  run-as-service = pkgs.writeShellScriptBin "run-as-service" ''
-    exec ${pkgs.systemd}/bin/systemd-run \
-      --slice=app-manual.slice \
-      --property=ExitType=cgroup \
-      --user \
-      --wait \
-      bash -lc "exec ${apply-hm-env} $@"
-  '';
-in {
-  home.packages = with pkgs; [run-as-service comma ripgrep];
+}: {
+  home.packages = with pkgs; [comma ripgrep];
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
 
   programs = {
@@ -66,7 +44,7 @@ in {
           staged = "✓";
           stashed = "≡";
         };
-        
+
         aws = {
           symbol = "  ";
         };
