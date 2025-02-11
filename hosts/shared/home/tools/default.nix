@@ -4,9 +4,13 @@
   ...
 }: let
   browser = ["firefox.desktop"];
+  audioPlayer = ["io.bassi.Amberol.desktop"];
+  imageViewer = ["org.gnome.Loupe.desktop"];
+  videoPlayer = ["io.github.celluloid_player.Celluloid.desktop"];
 
   # custom settings for default applicatuions
   associations = {
+    # web related
     "text/html" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
@@ -19,21 +23,40 @@
     "application/xhtml+xml" = browser;
     "application/x-extension-xhtml" = browser;
     "application/x-extension-xht" = browser;
+    "application/json" = browser;
 
-    # /* doesn't work for all associations. TODO list out audio/video/image/text types manually
-    "audio/*" = ["mpv.desktop"];
-    "video/*" = ["mpv.dekstop"];
-    "image/*" = ["imv.desktop"];
+    # audio
+    "audio/*" = audioPlayer;
+    "audio/aac" = audioPlayer;
+    "audio/flac" = audioPlayer;
+    "audio/x-vorbis+ogg" = audioPlayer;
+    "audio/opus" = audioPlayer;
+    "audio/mp3" = audioPlayer;
+    "audio/wav" = audioPlayer;
+
+    # images
+    "image/*" = imageViewer;
+    "image/gif" = imageViewer;
+    "image/jpeg" = imageViewer;
+    "image/jpg" = imageViewer;
+    "image/png" = imageViewer;
+    "image/svg" = imageViewer;
+
+    # video
+    "video/*" = videoPlayer;
+    "video/avi" = videoPlayer;
+    "video/mkv" = videoPlayer;
+    "video/mp4" = videoPlayer;
+
+    # other
     "text/*" = ["org.gnome.TextEditor.desktop"];
     "text/plain" = ["org.gnome.TextEditor.desktop"];
     "inode/directory" = ["org.gnome.Nautilus.desktop"];
-    "application/json" = browser;
-    "application/pdf" = ["org.pwmt.zathura.desktop"];
+    "application/pdf" = ["org.pwmt.zathura-pdf-mupdf.desktop"];
     "x-scheme-handler/spotify" = ["spotify.desktop"];
-    "x-scheme-handler/discord" = ["webcord.desktop"];
+    "x-scheme-handler/discord" = ["discord.desktop"];
     "x-scheme-handler/element" = ["element-desktop.desktop"];
     "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
-    "x-scheme-handler/anytype" = ["anytype.desktop"];
     "x-scheme-handler/steam" = ["steam.desktop"];
   };
 in {

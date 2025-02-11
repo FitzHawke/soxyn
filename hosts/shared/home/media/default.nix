@@ -1,24 +1,15 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    amberol
+    celluloid
     chatterino2
+    loupe
     playerctl
     pavucontrol
     pulsemixer
-    imv 
     vdhcoapp
   ];
   programs = {
-    mpv = {
-      enable = true;
-      defaultProfiles = ["gpu-hq"];
-      config.osc = false;
-      scripts = with pkgs.mpvScripts; [
-        mpris
-        thumbnail
-        sponsorblock
-      ];
-    };
-
     obs-studio = {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [wlrobs];

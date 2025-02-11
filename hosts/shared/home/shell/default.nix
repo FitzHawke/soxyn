@@ -184,6 +184,7 @@
         vi = "${getExe neovim}";
 
         cat = "${getExe bat} --style=plain";
+        imv = "${getExe loupe}";
         grep = "${getExe ripgrep}";
         fzf = "${getExe skim}";
         MANPAGER = "sh -c 'col -bx | bat -l man -p'";
