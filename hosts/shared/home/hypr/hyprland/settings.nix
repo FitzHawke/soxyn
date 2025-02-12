@@ -2,7 +2,6 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 24"
-      "agsoxyn"
     ];
 
     general = {

@@ -76,6 +76,7 @@
 in
   stdenv.mkDerivation {
     inherit name;
+    meta.mainProgram = name;
     src = config;
 
     installPhase = ''
