@@ -15,5 +15,4 @@
       plugins = with pkgs.obs-studio-plugins; [wlrobs];
     };
   };
-  services.playerctld.enable = true;
 }
