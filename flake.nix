@@ -42,7 +42,7 @@
             inputs'.agenix.packages.default
 
             # packages for ags development
-            bun
+            inputs'.ags.packages.default
             nodePackages.typescript
             nodePackages.typescript-language-server
           ];
@@ -66,6 +66,14 @@
     };
     ags-old = {
       url = "github:Aylur/ags/v1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    astal = {
+      url = "github:Aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
