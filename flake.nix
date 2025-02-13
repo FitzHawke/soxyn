@@ -64,7 +64,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
     };
-    ags = {
+    ags-old = {
       url = "github:Aylur/ags/v1";
       inputs.nixpkgs.follows = "nixpkgs";
     };

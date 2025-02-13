@@ -23,7 +23,7 @@
 }: let
   name = "agsoxyn";
 
-  ags = inputs.ags.packages.${system}.default.override {
+  ags = inputs.ags-old.packages.${system}.default.override {
     extraPackages = [accountsservice];
   };
 
