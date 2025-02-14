@@ -42,9 +42,21 @@
             inputs'.agenix.packages.default
 
             # packages for ags development
-            inputs'.ags.packages.default
             nodePackages.typescript
             nodePackages.typescript-language-server
+            (inputs'.ags.packages.default.override {
+              extraPackages = with inputs'.ags.packages; [
+                apps
+                battery
+                bluetooth
+                hyprland
+                mpris
+                network
+                notifd
+                tray
+                wireplumber
+              ];
+            })
           ];
           NIX_CONFIG = "extra-experimental-features = nix-command flakes";
           DIRENV_LOG_FORMAT = "";
@@ -70,10 +82,6 @@
     };
     ags = {
       url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    astal = {
-      url = "github:Aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {

@@ -1,8 +1,8 @@
 {
   inputs,
   pkgs,
-  lib,
-  config,
+  # lib,
+  # config,
   ...
 }: let
   agsoxyn = pkgs.callPackage ./agsoxyn.nix {
@@ -13,23 +13,23 @@ in {
     agsoxyn
   ];
 
-  systemd.user.services.agsoxyn = {
-    Install = {
-      WantedBy = [config.wayland.systemd.target];
-    };
+  # systemd.user.services.agsoxyn = {
+  #   Install = {
+  #     WantedBy = [config.wayland.systemd.target];
+  #   };
 
-    Unit = {
-      ConditionEnvironment = "WAYLAND_DISPLAY";
-      Description = "agsoxyn desktop";
-      After = [config.wayland.systemd.target];
-      PartOf = [config.wayland.systemd.target];
-    };
+  #   Unit = {
+  #     ConditionEnvironment = "WAYLAND_DISPLAY";
+  #     Description = "agsoxyn desktop";
+  #     After = [config.wayland.systemd.target];
+  #     PartOf = [config.wayland.systemd.target];
+  #   };
 
-    Service = {
-      ExecStart = "${lib.getExe agsoxyn}";
-      ExecStop = "${lib.getExe agsoxyn} -q";
-      Restart = "always";
-      RestartSec = "10";
-    };
-  };
+  #   Service = {
+  #     ExecStart = "${lib.getExe agsoxyn}";
+  #     ExecStop = "${lib.getExe agsoxyn} -q";
+  #     Restart = "always";
+  #     RestartSec = "10";
+  #   };
+  # };
 }

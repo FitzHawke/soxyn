@@ -6,25 +6,26 @@
 }: let
   name = "agsoxyn";
   src = ./config;
-  ags = inputs.ags.packages.${system}.default;
 in
-  pkgs.stdenvNoCC.mkDerivation {
-    inherit name src;
-    meta.mainProgram = name;
+  inputs.ags.lib.bundle {
+    inherit pkgs name src;
+    entry = "${src}/app.ts";
+    gtk4 = true;
 
-    nativeBuildInputs = [
-      ags
-      pkgs.wrapGAppsHook
-      pkgs.gobject-introspection
-    ];
-
-    buildInputs = with inputs.astral.packages.${system}; [
-      astral4
-      io
-    ];
-
-    installPhase = ''
-      mkdir -p $out/bin
-      ags bundle ${src}/app.ts $out/bin/${name}
-    '';
+    extraPackages =
+      (with inputs.ags.packages.${system}; [
+        apps
+        battery
+        bluetooth
+        hyprland
+        mpris
+        network
+        notifd
+        tray
+        wireplumber
+      ])
+      ++ (with pkgs; [
+        brightnessctl
+        hyprpicker
+      ]);
   }
