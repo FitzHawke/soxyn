@@ -29,7 +29,7 @@
     ];
 
     bindr = [
-      "$mod, SUPER_L, exec, agsoxyn -t launcher"
+      "$mod, SUPER_L, exec, agsoxynleg -t launcher"
     ];
 
     bind = [
@@ -53,7 +53,7 @@
       # terminal
       "$mod, Return, exec, foot"
       # logout menu
-      "$mod, Escape, exec, agsoxyn -t powermenu"
+      "$mod, Escape, exec, agsoxynleg -t powermenu"
       # lock screen
       "$mod SHIFT, L, exec, hyprlock"
       # calculator

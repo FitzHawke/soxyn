@@ -21,7 +21,7 @@
   gtk3,
   which,
 }: let
-  name = "agsoxyn";
+  name = "agsoxynleg";
 
   ags = inputs.ags-old.packages.${system}.default.override {
     extraPackages = [accountsservice];
