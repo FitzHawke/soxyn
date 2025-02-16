@@ -1,7 +1,7 @@
 import { App } from "astal/gtk4";
 import style from "./style/style.scss";
-import { Bar } from "./widget/bar/Bar";
-import { Launcher } from "./widget/launcher/Launcher";
+import { Bar } from "@widgets/bar/Bar";
+import { Launcher } from "@widgets/launcher/Launcher";
 
 App.start({
   instanceName: "agsoxyn",
