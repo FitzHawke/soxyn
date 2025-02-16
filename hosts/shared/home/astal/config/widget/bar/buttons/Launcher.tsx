@@ -1,3 +1,11 @@
+import { App } from "astal/gtk4";
+
 export const Launcher = () => {
-  return <label label={" launch "} />;
+  return (
+    <box>
+      <button onClicked={() => App.get_window("launcher")!.show()}>
+        <label label={" launch "} />
+      </button>
+    </box>
+  );
 };
