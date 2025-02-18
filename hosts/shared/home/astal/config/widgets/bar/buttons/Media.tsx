@@ -1,5 +1,5 @@
 import { bind, timeout, Variable } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gtk, hook } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
 
 export const Media = () => {
@@ -8,7 +8,13 @@ export const Media = () => {
     const player = ps[0];
     if (!player) return <box />;
 
-    const lbl = <label label={`${player.artist} - ${player.title}`} />;
+    const lbl = (
+      <label
+        label={bind(player, "metadata").as(
+          () => `${player.artist} - ${player.title}`,
+        )}
+      />
+    );
 
     const ico = <image iconName={`${player.entry}-symbolic`} />;
 
@@ -18,13 +24,12 @@ export const Media = () => {
       <revealer
         transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
         revealChild={bind(reveal)}
-        // the setup doesnt work yet
         setup={(self) => {
           let current = "";
-          bind(player, "title").as((p) => {
-            if (current === p) return;
+          hook(self, player, "notify", () => {
+            if (current === player.title) return;
 
-            current = p;
+            current = player.title;
             reveal.set(true);
             timeout(3000, () => reveal.set(false));
           });
