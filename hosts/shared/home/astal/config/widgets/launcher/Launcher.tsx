@@ -1,89 +1,123 @@
-import { Variable } from "astal";
-import { App, Astal, Gdk, Gtk } from "astal/gtk4";
+import { DropWindow } from "@widgets/windows/DropWindow";
+import { subprocess, Variable } from "astal";
+import { App, Gtk, hook } from "astal/gtk4";
 import Apps from "gi://AstalApps";
 
-const fancyLaunch = false;
-
-const hide = () => App.get_window("launcher")!.hide();
-const launchCmd = (app: Apps.Application) => {
-  if (fancyLaunch) {
-    // uwsm app -- app.exec (?)
-    // https://github.com/Aylur/astal/issues/259
-    // may need to do special parsing or env shennanigans
-  } else app.launch();
-};
-
-const SingleApp = ({ app }: { app: Apps.Application }) => {
-  return (
-    <button
-      cssClasses={["AppButton"]}
-      onClicked={() => {
-        hide();
-        launchCmd(app);
-      }}
-    >
-      <box>
-        <image iconName={app.iconName} />
-        <label
-          cssClasses={["app-name"]}
-          valign={Gtk.Align.CENTER}
-          xalign={0}
-          label={app.name}
-        />
-      </box>
-    </button>
-  );
-};
-
 export const Launcher = () => {
-  const MAX_ITEMS = 5;
+  const uwsmLaunch = false;
   const apps = new Apps.Apps();
-  const width = Variable(1000);
+  const searchTxt = Variable("");
 
-  const text = Variable("");
-  const list = text((text) => apps.fuzzy_query(text).slice(0, MAX_ITEMS));
+  const hide = () => App.get_window("launcher")?.hide();
+
+  const launchCmd = (app: Apps.Application) => {
+    const uwsm = (cmd: string) => {
+      return subprocess({
+        cmd: ["uwsm", "app", "--", cmd],
+        err: (err) => console.error(err),
+      });
+    };
+
+    if (uwsmLaunch) {
+      const exe = app.executable
+        .split(/\s+/)
+        .filter((str) => !str.startsWith("%") && !str.startsWith("@"))
+        .join(" ");
+      uwsm(exe);
+      app.frequency += 1;
+    } else app.launch();
+  };
+
+  const AppItem = ({ app }: { app: Apps.Application }) => {
+    const title = (
+      <label
+        cssClasses={["title"]}
+        label={app.name}
+        hexpand
+        xalign={0}
+        valign={Gtk.Align.CENTER}
+      />
+    );
+
+    const description = (
+      <label
+        cssClasses={["description"]}
+        label={app.description || ""}
+        hexpand
+        wrap
+        maxWidthChars={30}
+        xalign={0}
+        justify={Gtk.Justification.LEFT}
+        valign={Gtk.Align.CENTER}
+      />
+    );
+
+    const appIcon = <image iconName={app.iconName} />;
+
+    const fullAppText = (
+      <box
+        vertical
+        valign={Gtk.Align.CENTER}
+        children={app.description ? [title, description] : [title]}
+      />
+    );
+
+    return (
+      <button
+        cssClasses={["app-item"]}
+        onClicked={() => {
+          launchCmd(app);
+          hide();
+        }}
+      >
+        <box>
+          {appIcon}
+          {fullAppText}
+        </box>
+      </button>
+    );
+  };
+
+  const list = searchTxt((txt) => apps.fuzzy_query(txt).slice(0, 6));
   const onEnter = () => {
-    launchCmd(apps.fuzzy_query(text.get())?.[0]);
+    launchCmd(list.get()[0]);
     hide();
   };
-  return (
-    <window
-      name="launcher"
-      anchor={Astal.WindowAnchor.TOP}
-      exclusivity={Astal.Exclusivity.IGNORE}
-      keymode={Astal.Keymode.ON_DEMAND}
-      application={App}
-      onKeyPressed={(_, keyval) => {
-        if (keyval === Gdk.KEY_Escape) hide();
-      }}
+
+  const txtEntry = (
+    <entry
+      placeholderText={"Search..."}
+      onNotifyText={(self) => searchTxt.set(self.text)}
+      onActivate={onEnter}
+      setup={(self) =>
+        hook(self, App, "window-toggled", (_, win) => {
+          if (win.name === "launcher") self.text = "";
+        })
+      }
+    />
+  );
+
+  const placeHolder = (
+    <box
+      halign={Gtk.Align.CENTER}
+      cssClasses={["not-found"]}
+      vertical
+      visible={list.as((l) => l.length === 0)}
     >
-      <box>
-        <button onClicked={hide} hexpand widthRequest={width((w) => w / 2)} />
-        <box hexpand={false} vertical>
-          <button heightRequest={100} onClicked={hide} />
-          <box widthRequest={500} cssClasses={["AppLauncher"]} vertical>
-            <entry
-              placeholderText="Search..."
-              onNotifyText={(self) => text.set(self.text)}
-              onActivate={onEnter}
-            />
-            <box spacing={6} vertical>
-              {list.as((list) => list.map((app) => <SingleApp app={app} />))}
-            </box>
-            <box
-              halign={Gtk.Align.CENTER}
-              cssClasses={["not-found"]}
-              vertical
-              visible={list.as((l) => l.length === 0)}
-            >
-              <image iconName="system-search-symbolic" />
-              <label label="No Match Found" />
-            </box>
-          </box>
-          <button vexpand onClicked={hide} />
+      <image iconName={"system-search-symbolic"} />
+      <label label={"No Match Found"} />
+    </box>
+  );
+
+  return (
+    <DropWindow name={"launcher"} application={App} marginRequest={80}>
+      <box widthRequest={500} cssClasses={["app-launcher"]} vertical>
+        {txtEntry}
+        <box spacing={6} vertical>
+          {list.as((l) => l.map((app) => <AppItem app={app} />))}
         </box>
-        <button widthRequest={width((w) => w / 2)} hexpand onClicked={hide} />
+        {placeHolder}
       </box>
-    </window>
+    </DropWindow>
   );
 };
