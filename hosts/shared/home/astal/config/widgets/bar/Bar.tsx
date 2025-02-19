@@ -1,7 +1,7 @@
 import { App, Astal, Gdk, Gtk } from "astal/gtk4";
 import { Launcher } from "./buttons/Launcher";
 import { Workspaces } from "./buttons/Workspaces";
-import { Overview } from "./buttons/Overview";
+import { Taskbar } from "./buttons/Taskbar";
 import { Notifications } from "./buttons/Notifications";
 import { DateTime } from "./buttons/DateTime";
 import { Media } from "./buttons/Media";
@@ -25,18 +25,18 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
       application={App}
     >
       <centerbox>
-        <box hexpand={true} halign={Gtk.Align.START}>
+        <box hexpand={true}>
           <Launcher />
           <Workspaces />
-          <Overview />
+          <Taskbar />
           <Expander />
+          <Notifications />
         </box>
         <box halign={Gtk.Align.CENTER}>
-          <Notifications />
           <DateTime />
-          <Media />
         </box>
-        <box hexpand={true} halign={Gtk.Align.END}>
+        <box hexpand={true}>
+          <Media />
           <Expander />
           <SysTray />
           <ColourPicker />

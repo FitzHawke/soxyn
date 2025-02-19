@@ -13,21 +13,20 @@ export const BarButton = ({
 }: BarButtonProps) => {
   return (
     <button
-      child={<box>{child}</box>}
       setup={(self) => {
         let open = false;
         self.cssClasses = ["panel-button"];
         if (window) self.add_css_class(window);
 
-        hook(self, App, (_, win, visible) => {
-          if (win !== window) return;
+        hook(self, App, "window-toggled", (_, win) => {
+          if (win.name !== window) return;
 
-          if (open && !visible) {
+          if (open && !win.visible) {
             open = false;
             self.remove_css_class("active");
           }
 
-          if (visible) {
+          if (win.visible) {
             open = true;
             self.add_css_class("active");
           }
@@ -36,6 +35,8 @@ export const BarButton = ({
         if (setup) setup(self);
       }}
       {...rest}
-    />
+    >
+      {child}
+    </button>
   );
 };
