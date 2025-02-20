@@ -13,12 +13,11 @@
 
   boot = {
     # switch kernel
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       # potentially fixes a lockup on first-gen ryzen
-      "processor.max_cstate=5"
+      # "processor.max_cstate=5"
     ];
-    kernelModules = ["rtw88"];
   };
 
   services = {

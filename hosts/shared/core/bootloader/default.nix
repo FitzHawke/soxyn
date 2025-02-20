@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
     pkgs.sbctl
@@ -40,11 +37,6 @@
       # might make boot visually smoother
       "fbcon=nodefer"
 
-      # enable kernal lockdown and which level
-      # security boost around userland interactions with the kernel
-      # integrity | confidentiality
-      # "lockdown=confidentiality"
-
       # signature validation for modules
       "module.sig_enforce"
 
@@ -54,10 +46,6 @@
       # disable merging of slabs with similar size
       # security at the expense of slight bit of kernel memory
       "slab_nomerge"
-
-      # Enables sanity checks (F) and redzoning (Z)
-      # security costing a slight bit of performance
-      "slub_debug=FZ"
 
       ###############
       # Silent Boot
@@ -78,14 +66,6 @@
       # "loglevel=7"
 
       # "logo.nologo"
-
-      # changing the state of poisoning on the buddy allocator
-      # on | **off**
-      # possibly small security boost. mostly for debug I think
-      # "page_poison=on"
-
-      # Ignore sysrq setting
-      # "sysrq_always_enabled=1"
     ];
 
     loader = {

@@ -1,6 +1,10 @@
-{pkgs, config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   hardware = {
-  enableRedistributableFirmware = true;
+    enableRedistributableFirmware = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -9,7 +13,7 @@
 
   boot = {
     # switch kernel
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   services = {
@@ -22,17 +26,17 @@
 
   fileSystems."/".options = ["autodefrag" "compress=zstd" "discard=async"];
   fileSystems."/mnt/hylia" = {
-      device = "will@ruto.home.arpa:/mnt/hylia";
-      fsType = "sshfs";
-      options = [
-        "allow_other"
-        "idmap=user"
-        "_netdev"
-        "x-systemd.automount"
-        "identityFile=/etc/ssh/ssh_host_ed25519_key"
-        "ServerAliveInterval=15"
-        "reconnect"
-        "noatime"
-      ];
-    };
+    device = "will@ruto.home.arpa:/mnt/hylia";
+    fsType = "sshfs";
+    options = [
+      "allow_other"
+      "idmap=user"
+      "_netdev"
+      "x-systemd.automount"
+      "identityFile=/etc/ssh/ssh_host_ed25519_key"
+      "ServerAliveInterval=15"
+      "reconnect"
+      "noatime"
+    ];
+  };
 }
