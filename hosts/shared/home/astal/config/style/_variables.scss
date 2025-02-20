@@ -1,0 +1,46 @@
+@use "sass:color";
+
+$bg: #171717;
+$fg: #eeeeee;
+$primary-bg: #51a4e7;
+$primary-fg: #141414;
+$error-bg: #e55f86;
+$error-fg: #141414;
+
+$padding: 7pt;
+$spacing: 12pt;
+$radius: 11px;
+$transition: 200ms;
+
+$widget-color: #eeeeee;
+$widget-opacity: 94;
+
+$widget-bg: color.adjust($widget-color, $alpha: -0.94);
+$hover-bg: color.adjust($widget-color, $alpha: -0.85);
+$hover-fg: color.adjust($fg, $lightness: +8%);
+
+$border-base-color: #eeeeee;
+$border-opacity: 96;
+
+$border-width: 1px;
+$border-color: color.adjust($border-base-color, $alpha: -0.95);
+
+$border: $border-width solid $border-color;
+
+$active-gradient: linear-gradient(
+    to right,
+    $primary-bg,
+    color.adjust($primary-bg, $lightness: -4%)
+);
+
+$shadow-color: rgba(0, 0, 0, 0.6);
+$text-shadow: 2pt 2pt 2pt $shadow-color;
+
+$popover-border-color: color.adjust($border-base-color, $alpha: -0.95);
+
+$popover-padding: $padding * 1.6;
+
+$font-size: 12pt;
+$font-name: Ubuntu Nerd Font;
+
+$bar-bg: color.adjust($bg, $alpha: -0.5);

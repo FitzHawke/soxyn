@@ -6,7 +6,7 @@ export const SysTray = () => {
 
   const SysTrayItem = (item: Tray.TrayItem) => (
     <menubutton
-      cssClasses={["tray-item"]}
+      cssClasses={["tray-item", "bar-button"]}
       tooltipMarkup={bind(item, "tooltipMarkup")}
       menuModel={bind(item, "menuModel")}
       setup={(self) => {

@@ -15,7 +15,7 @@ export const BarButton = ({
     <button
       setup={(self) => {
         let open = false;
-        self.cssClasses = ["panel-button"];
+        self.add_css_class("bar-button");
         if (window) self.add_css_class(window);
 
         hook(self, App, "window-toggled", (_, win) => {

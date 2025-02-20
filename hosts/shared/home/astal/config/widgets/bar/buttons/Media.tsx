@@ -57,5 +57,5 @@ export const Media = () => {
     );
   });
 
-  return <box cssClasses={["media", "panel-button"]}>{playctl}</box>;
+  return <box cssClasses={["media", "bar-button"]}>{playctl}</box>;
 };
