@@ -1,20 +1,9 @@
-{inputs, ...}: let
-  nur-modules = import inputs.nur {
-    nurpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-  };
-in {
+{...}: {
   programs.firefox = {
     enable = true;
     profiles = {
       will = {
         id = 0;
-        extensions = with nur-modules.repos.rycee.firefox-addons; [
-          bitwarden
-          darkreader
-          reddit-enhancement-suite
-          ublock-origin
-        ];
 
         settings = {
           "media.ffmpeg.vaapi.enabled" = true;
