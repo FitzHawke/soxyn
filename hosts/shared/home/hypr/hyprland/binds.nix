@@ -51,19 +51,19 @@
 
       # utility
       # terminal
-      "$mod, Return, exec, foot"
+      "$mod, Return, exec, uwsm app -- foot"
       # logout menu
       "$mod, Escape, exec, agsoxynleg -t powermenu"
       # lock screen
       "$mod SHIFT, L, exec, hyprlock"
       # calculator
-      ", XF86Calculator, exec, gnome-calculator"
+      ", XF86Calculator, exec, uwsm app -- gnome-calculator"
       # settings
-      "$mod, U, exec, XDG_CURRENT_DESKTOP=gnome gnome-control-center"
+      "$mod, U, exec, XDG_CURRENT_DESKTOP=gnome uwsm app -- gnome-control-center"
       # browser
-      "$mod, B, exec, firefox"
+      "$mod, B, exec, uwsm app -- firefox"
       # file manager
-      "$mod, E, exec, nautilus"
+      "$mod, E, exec, uwsm app -- nautilus"
 
       # move focus
       "$mod, left, movefocus, l"

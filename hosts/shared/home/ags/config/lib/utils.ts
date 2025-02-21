@@ -87,7 +87,7 @@ export function launchApp(app: Application) {
     .filter((str) => !str.startsWith("%") && !str.startsWith("@"))
     .join(" ");
 
-  bash(`${exe} &`);
+  bash(`uwsm app -- ${exe}`);
   app.frequency += 1;
 }
 
@@ -101,7 +101,7 @@ export function createSurfaceFromWidget(widget: Gtk.Widget) {
   const surface = new cairo.ImageSurface(
     cairo.Format.ARGB32,
     alloc.width,
-    alloc.height
+    alloc.height,
   );
   const cr = new cairo.Context(surface);
   cr.setSourceRGBA(255, 255, 255, 0);
