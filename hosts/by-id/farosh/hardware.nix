@@ -48,19 +48,19 @@
       fsType = "btrfs";
       options = ["autodefrag" "compress=zstd"];
     };
-    "/mnt/hylia" = {
-      device = "will@ruto.home.arpa:/mnt/hylia";
-      fsType = "sshfs";
-      options = [
-        "allow_other"
-        "idmap=user"
-        "_netdev"
-        "x-systemd.automount"
-        "identityFile=/etc/ssh/ssh_host_ed25519_key"
-        "ServerAliveInterval=15"
-        "reconnect"
-        "noatime"
-      ];
-    };
+    # "/mnt/hylia" = {
+    #   device = "will@ruto.home.arpa:/mnt/hylia";
+    #   fsType = "sshfs";
+    #   options = [
+    #     "allow_other"
+    #     "idmap=user"
+    #     "_netdev"
+    #     "x-systemd.automount"
+    #     "identityFile=/etc/ssh/ssh_host_ed25519_key"
+    #     "ServerAliveInterval=15"
+    #     "reconnect"
+    #     "noatime"
+    #   ];
+    # };
   };
 }
