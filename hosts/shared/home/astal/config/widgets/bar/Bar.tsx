@@ -7,9 +7,8 @@ import { DateTime } from "./buttons/DateTime";
 import { Media } from "./buttons/Media";
 import { SysTray } from "./buttons/SysTray";
 import { ColourPicker } from "./buttons/ColourPicker";
-import { System } from "./buttons/System";
 import { PowerMenu } from "./buttons/PowerMenu";
-import { BatteryBar } from "./buttons/BatteryBar";
+import { SystemIndicators } from "./buttons/SystemIndicators";
 
 export function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -40,8 +39,7 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
           <Expander />
           <SysTray />
           <ColourPicker />
-          <System />
-          <BatteryBar />
+          <SystemIndicators />
           <PowerMenu />
         </box>
       </centerbox>
