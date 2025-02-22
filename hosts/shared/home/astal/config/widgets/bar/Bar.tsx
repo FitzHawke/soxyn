@@ -25,22 +25,20 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
     >
       <centerbox>
         <box hexpand={true}>
-          <Launcher />
-          <Workspaces />
-          <Taskbar />
-          <Expander />
-          <Notifications />
+          {Launcher()}
+          {Workspaces()}
+          {Taskbar()}
+          {Expander()}
+          {Notifications()}
         </box>
-        <box halign={Gtk.Align.CENTER}>
-          <DateTime />
-        </box>
+        <box halign={Gtk.Align.CENTER}>{DateTime()}</box>
         <box hexpand={true}>
-          <Media />
-          <Expander />
-          <SysTray />
-          <ColourPicker />
-          <SystemIndicators />
-          <PowerMenu />
+          {Media()}
+          {Expander()}
+          {SysTray()}
+          {ColourPicker()}
+          {SystemIndicators()}
+          {PowerMenu()}
         </box>
       </centerbox>
     </window>

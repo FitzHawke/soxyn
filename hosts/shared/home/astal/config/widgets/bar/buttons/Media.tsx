@@ -1,10 +1,12 @@
 import { bind, timeout, Variable } from "astal";
 import { Gtk, hook } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
+import { BarButton } from "../BarButton";
 
 export const Media = () => {
   const mpris = Mpris.get_default();
-  const playctl = bind(mpris, "players").as((ps) => {
+
+  const mplayer = bind(mpris, "players").as((ps) => {
     const player = ps[0];
     if (!player) return <box />;
 
@@ -40,7 +42,8 @@ export const Media = () => {
     );
 
     return (
-      <button
+      <BarButton
+        cssClasses={["media"]}
         onClicked={() => player.play_pause()}
         onScroll={(_, _dx, dy) => {
           if (dy > 0) player.next();
@@ -53,9 +56,9 @@ export const Media = () => {
           {ico}
           {rev}
         </box>
-      </button>
+      </BarButton>
     );
   });
 
-  return <box cssClasses={["media", "bar-button"]}>{playctl}</box>;
+  return mplayer;
 };

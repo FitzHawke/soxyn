@@ -13,6 +13,7 @@ export const BarButton = ({
 }: BarButtonProps) => {
   return (
     <button
+      focusable={false}
       setup={(self) => {
         let open = false;
         self.add_css_class("bar-button");
