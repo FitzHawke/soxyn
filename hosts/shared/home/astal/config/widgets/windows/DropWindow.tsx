@@ -14,7 +14,11 @@ const Layout = (name: string, child: Child, marginRequest: number) => (
         vertical={true}
         children={[
           Padding(name, { vexpand: false, heightRequest: marginRequest }),
-          WindowRevealer(name, child, Gtk.RevealerTransitionType.SLIDE_DOWN),
+          WindowRevealer({
+            name,
+            child,
+            transitionType: Gtk.RevealerTransitionType.SLIDE_DOWN,
+          }),
           Padding(name),
         ]}
       />,

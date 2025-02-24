@@ -3,6 +3,7 @@ import { BoxProps, RevealerProps, WindowProps } from "astal/gtk4/widget";
 
 export type Child = WindowProps["child"];
 type Transition = RevealerProps["transitionType"];
+type WindowRevealerProps = RevealerProps & {};
 
 export const Padding = (
   name: string,
@@ -24,16 +25,17 @@ export const Padding = (
   />
 );
 
-export const WindowRevealer = (
-  name: string,
-  child: Child,
-  transition: Transition,
-) => (
+export const WindowRevealer = ({
+  name,
+  child,
+  transitionType,
+  ...props
+}: RevealerProps) => (
   <box
     cssClasses={["pad1"]}
     child={
       <revealer
-        transitionType={transition}
+        transitionType={transitionType}
         child={<box cssClasses={["window-content"]} child={child} />}
         transitionDuration={200}
         setup={(self) =>
@@ -41,6 +43,7 @@ export const WindowRevealer = (
             self.revealChild = wname.name === name;
           })
         }
+        {...props}
       />
     }
   />

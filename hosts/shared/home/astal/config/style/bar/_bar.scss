@@ -1,5 +1,6 @@
 @use "../variables" as *;
 @use "../mixins/button";
+@use "../mixins/spacing";
 @use "sass:color";
 
 $bar-spacing: $spacing * 0.3;
@@ -76,5 +77,22 @@ window.bar {
         min-height: 4pt;
         min-width: 6pt;
         margin: 2pt;
+    }
+
+    .quicksettings > box > box,
+    image {
+        @include spacing.spacing();
+    }
+
+    .quicksettings:not(.active):not(:active) {
+        .bluetooth {
+            color: $primary-bg;
+
+            label {
+                font-size: $font-size * 0.7;
+                color: $fg;
+                text-shadow: $text-shadow;
+            }
+        }
     }
 }

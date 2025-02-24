@@ -14,7 +14,7 @@ export const PowerMenu = () => {
 
   return (
     <ModalWindow name={"powermenu"} application={App}>
-      <box cssClasses={["line", "powermenu", "horizontal"]}>
+      <box cssClasses={["powermenu"]}>
         {Object.entries(actions).map((a) => (
           <SysButton action={a[1]} />
         ))}

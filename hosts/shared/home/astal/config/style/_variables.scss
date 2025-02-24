@@ -39,6 +39,7 @@ $text-shadow: 2pt 2pt 2pt $shadow-color;
 $popover-border-color: color.adjust($border-base-color, $alpha: -0.95);
 
 $popover-padding: $padding * 1.6;
+$popover-radius: $radius + $popover-padding;
 
 $font-size: 12pt;
 $font-name: Ubuntu Nerd Font;

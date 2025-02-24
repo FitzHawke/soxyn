@@ -11,11 +11,17 @@ export const Confirmation = () => {
           <label cssClasses={["title"]} label={bind(currentLabel)} />
           <label cssClasses={["desc"]} label={"Are you sure?"} />
         </box>
-        <box cssClasses={["buttons", "horizontal"]} vexpand homogeneous>
+        <box cssClasses={["buttons"]} vexpand homogeneous>
           <button onClicked={() => App.toggle_window("confirmation")}>
             <label label={"No"} />
           </button>
-          <button onClicked={() => exec(bind(currentCommand).get())}>
+          <button
+            onClicked={() => {
+              exec(`bash -c ${bind(currentCommand).get()}`);
+              currentLabel.set("");
+              currentCommand.set("");
+            }}
+          >
             <label label={"Yes"} />
           </button>
         </box>

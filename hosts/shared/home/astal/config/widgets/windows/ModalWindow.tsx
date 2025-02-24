@@ -8,9 +8,15 @@ const Layout = (name: string, child: Child) => (
       Padding(name),
       <box
         vertical={true}
+        halign={Gtk.Align.CENTER}
         children={[
           Padding(name),
-          WindowRevealer(name, child, Gtk.RevealerTransitionType.CROSSFADE),
+          WindowRevealer({
+            name,
+            child,
+            transitionType: Gtk.RevealerTransitionType.CROSSFADE,
+            valign: Gtk.Align.CENTER,
+          }),
           Padding(name),
         ]}
       />,
