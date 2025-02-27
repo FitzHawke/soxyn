@@ -18,9 +18,6 @@ export const Taskbar = () => {
     const client = hypr.get_client(address);
     if (!client || client.class === "") return DummyItem(address);
 
-    // Jank icon name detection. Maybe replace with a homemade map of {hyprland class -> icon name}
-    // const app = apps.list.find((app) => app.exact_match(client.class).name);
-
     const btn = (
       <BarButton
         tooltipText={bind(client, "title")}

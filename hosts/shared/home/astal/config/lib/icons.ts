@@ -15,14 +15,14 @@ const iconMap: IconMapType = {
   code: "org.gnome.TextEditor-symbolic",
 
   // socials
-  discord: "cus-discord-symbolic",
-  legcord: "cus-discord-symbolic",
-  Element: "cus-element-symbolic",
+  discord: "discord-tray",
+  legcord: "discord-tray",
+  Element: "element-desktop-tray",
   "so.libdb.dissent": "so.libdb.dissent-symbolic",
 
   // gaming
-  steam: "cus-steam-symbolic",
-  "net.lutris.Lutris": "applications-games-symbolic",
+  steam: "steam_tray_mono",
+  "net.lutris.Lutris": "lutris-panel",
   "onion.torzu_emu.torzu": "applications-games-symbolic",
   Ryujinx: "applications-games-symbolic",
 
@@ -30,10 +30,10 @@ const iconMap: IconMapType = {
   "io.github.quodlibet.QuodLibet": "io.github.quodlibet.QuodLibet-symbolic",
   "io.github.quodlibet.ExFalso": "io.github.quodlibet.ExFalso-symbolic",
   "org.gnome.Loupe": "org.gnome.Loupe-symbolic",
-  "io.bassi.amberol": "io.bassi.Amberol-symbolic",
+  "io.bassi.Amberol": "io.bassi.Amberol-symbolic",
   "io.github.celluloid_player.Celluloid":
     "io.github.celluloid_player.Celluloid-symbolic",
-  spotify: "applications-games-symbolic",
+  spotify: "spotify-indicator",
   "Gimp-2.10": "applications-graphics-symbolic",
 
   // office
@@ -58,7 +58,7 @@ const iconMap: IconMapType = {
   "org.pulseaudio.pavucontrol": "multimedia-volume-control-symbolic",
   "org.gnome.FileRoller": "org.gnome.FileRoller-symbolic",
   "org.gnome.Settings": "org.gnome.Settings-symbolic",
-  Bitwarden: "lock-symbolic",
+  Bitwarden: "bitwarden-tray",
 };
 
 export const getClientIcon = (name: string): Gio.Icon => {
