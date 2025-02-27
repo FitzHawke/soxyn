@@ -4,7 +4,7 @@ import { App, Gtk, hook } from "astal/gtk4";
 import Apps from "gi://AstalApps";
 
 export const Launcher = () => {
-  const uwsmLaunch = false;
+  const uwsmLaunch = true;
   const apps = new Apps.Apps();
   const searchTxt = Variable("");
 
