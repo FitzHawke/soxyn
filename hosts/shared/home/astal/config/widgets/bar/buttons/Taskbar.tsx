@@ -3,6 +3,7 @@ import Apps from "gi://AstalApps";
 import { BarButton } from "../BarButton";
 import { Gtk, hook } from "astal/gtk4";
 import { bind } from "astal";
+import { getClientIcon } from "@lib/icons";
 
 export const Taskbar = () => {
   const hypr = Hyprland.get_default();
@@ -18,14 +19,14 @@ export const Taskbar = () => {
     if (!client || client.class === "") return DummyItem(address);
 
     // Jank icon name detection. Maybe replace with a homemade map of {hyprland class -> icon name}
-    const app = apps.list.find((app) => app.exact_match(client.class).name);
+    // const app = apps.list.find((app) => app.exact_match(client.class).name);
 
     const btn = (
       <BarButton
         tooltipText={bind(client, "title")}
         onClicked={() => setFocus(address)}
       >
-        <image iconName={app?.iconName} />
+        <image gicon={getClientIcon(client.class)} />
       </BarButton>
     );
 
