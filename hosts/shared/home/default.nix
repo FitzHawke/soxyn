@@ -24,6 +24,7 @@
     ./games.nix
 
     ./ags
+    # ./astal
     ./bottom
     ./discord
     ./firefox
@@ -39,5 +40,6 @@
     ./tools
     ./vscode
     ./zathura
+    ./zed
   ];
 }

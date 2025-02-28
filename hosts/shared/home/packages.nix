@@ -11,7 +11,6 @@
     jq # cli json parsing
     newsflash # RSS reader
     quodlibet-full # gui music
-    zed-editor # text/code editor
 
     # cli
     aoc-cli # advent of code cli util
