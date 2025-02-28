@@ -1,6 +1,6 @@
-import { ModalWindow } from "@widgets/windows/ModalWindow";
 import { Act, confirmAction, actions } from "./actions";
 import { App } from "astal/gtk4";
+import { WindowFrame } from "@widgets/windows/WindowFramework";
 
 export const PowerMenu = () => {
   const SysButton = ({ action }: { action: Act }) => (
@@ -13,12 +13,16 @@ export const PowerMenu = () => {
   );
 
   return (
-    <ModalWindow name={"powermenu"} application={App}>
+    <WindowFrame
+      name={"powermenu"}
+      application={App}
+      cssClasses={["powermenu"]}
+    >
       <box cssClasses={["powermenu"]}>
         {Object.entries(actions).map((a) => (
           <SysButton action={a[1]} />
         ))}
       </box>
-    </ModalWindow>
+    </WindowFrame>
   );
 };

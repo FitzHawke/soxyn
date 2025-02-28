@@ -1,11 +1,15 @@
-import { ModalWindow } from "@widgets/windows/ModalWindow";
 import { currentCommand, currentLabel } from "./actions";
 import { bind, exec } from "astal";
 import { App } from "astal/gtk4";
+import { WindowFrame } from "@widgets/windows/WindowFramework";
 
 export const Confirmation = () => {
   return (
-    <ModalWindow name={"confirmation"} application={App}>
+    <WindowFrame
+      name={"confirmation"}
+      application={App}
+      cssClasses={["confirmation"]}
+    >
       <box vertical cssClasses={["confirmation"]}>
         <box cssClasses={["text-box"]} vertical>
           <label cssClasses={["title"]} label={bind(currentLabel)} />
@@ -26,6 +30,6 @@ export const Confirmation = () => {
           </button>
         </box>
       </box>
-    </ModalWindow>
+    </WindowFrame>
   );
 };

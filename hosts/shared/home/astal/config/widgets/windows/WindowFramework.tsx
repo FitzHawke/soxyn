@@ -1,31 +1,49 @@
-import { App, Astal, Gdk, hook } from "astal/gtk4";
+import { App, Astal, Gdk, Gtk, hook } from "astal/gtk4";
 import { BoxProps, RevealerProps, WindowProps } from "astal/gtk4/widget";
 
-export type Child = WindowProps["child"];
-type Transition = RevealerProps["transitionType"];
-type WindowRevealerProps = RevealerProps & {};
+type PaddingProps = BoxProps & {
+  winName: string;
+};
 
-export const Padding = (
-  name: string,
-  {
-    cssClasses = [""],
-    hexpand = true,
-    vexpand = true,
-    ...props
-  }: BoxProps = {},
-) => (
+// Window Location Code
+// -1 | 0 | 1
+// top | mid | bottom
+// left | mid | right
+type WinLocCode = -1 | 0 | 1;
+
+type LayoutProps = BoxProps & {
+  winName: string;
+  marginRequest: number;
+  hLoc: WinLocCode;
+  vLoc: WinLocCode;
+};
+
+type FrameProps = WindowProps & {
+  marginRequest?: number;
+  hLoc?: WinLocCode;
+  vLoc?: WinLocCode;
+  transition?: RevealerProps["transitionType"];
+};
+
+const Padding = ({
+  winName,
+  cssClasses = [""],
+  hexpand = true,
+  vexpand = true,
+  ...props
+}: PaddingProps) => (
   <box
     hexpand={hexpand}
     vexpand={vexpand}
     canFocus={false}
     canTarget={true}
-    child={<box cssClasses={cssClasses} />}
-    onButtonReleased={() => App.toggle_window(name)}
+    cssClasses={cssClasses}
+    onButtonReleased={() => App.toggle_window(winName)}
     {...props}
   />
 );
 
-export const WindowRevealer = ({
+const WindowRevealer = ({
   name,
   child,
   transitionType,
@@ -49,28 +67,80 @@ export const WindowRevealer = ({
   />
 );
 
-const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
+const WindowLayout = ({
+  winName,
+  child,
+  marginRequest,
+  hLoc,
+  vLoc,
+}: LayoutProps) => (
+  <box>
+    <Padding
+      winName={winName}
+      hexpand={hLoc !== -1}
+      widthRequest={hLoc === -1 ? marginRequest : 0}
+    />
+    <box vertical={true} halign={hLoc === 0 ? Gtk.Align.CENTER : undefined}>
+      <Padding
+        winName={winName}
+        vexpand={vLoc !== -1}
+        heightRequest={vLoc === -1 ? marginRequest : 0}
+      />
+      {child}
+      <Padding
+        winName={winName}
+        vexpand={vLoc !== 1}
+        heightRequest={vLoc === 1 ? marginRequest : 0}
+      />
+    </box>
+    <Padding
+      winName={winName}
+      hexpand={hLoc !== 1}
+      widthRequest={hLoc === 1 ? marginRequest : 0}
+    />
+    ,
+  </box>
+);
 
 export const WindowFrame = ({
   name,
   child,
   exclusivity = Astal.Exclusivity.IGNORE,
-  cssClasses,
+  marginRequest = 0,
+  hLoc = 0,
+  vLoc = 0,
+  transition = Gtk.RevealerTransitionType.CROSSFADE,
   ...props
-}: WindowProps) => (
-  <window
-    name={name}
-    cssClasses={cssClasses}
-    onKeyPressed={(_, keyval) => {
-      if (keyval === Gdk.KEY_Escape) App.get_window(String(name))?.hide();
-    }}
-    visible={false}
-    exclusivity={exclusivity}
-    keymode={Astal.Keymode.ON_DEMAND}
-    layer={Astal.Layer.TOP}
-    anchor={TOP | BOTTOM | LEFT | RIGHT}
-    {...props}
-  >
-    {child}
-  </window>
-);
+}: FrameProps) => {
+  const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
+
+  return (
+    <window
+      name={name}
+      onKeyPressed={(_, keyval) => {
+        if (keyval === Gdk.KEY_Escape) App.get_window(String(name))?.hide();
+      }}
+      visible={false}
+      exclusivity={exclusivity}
+      keymode={Astal.Keymode.ON_DEMAND}
+      layer={Astal.Layer.TOP}
+      anchor={TOP | BOTTOM | LEFT | RIGHT}
+      {...props}
+    >
+      <WindowLayout
+        winName={String(name)}
+        marginRequest={marginRequest}
+        vLoc={vLoc}
+        hLoc={hLoc}
+      >
+        <WindowRevealer
+          name={name}
+          transitionType={transition}
+          valign={vLoc === 0 ? Gtk.Align.CENTER : undefined}
+        >
+          {child}
+        </WindowRevealer>
+      </WindowLayout>
+    </window>
+  );
+};

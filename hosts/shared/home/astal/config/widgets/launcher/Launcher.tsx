@@ -1,4 +1,4 @@
-import { DropWindow } from "@widgets/windows/DropWindow";
+import { WindowFrame } from "@widgets/windows/WindowFramework";
 import { subprocess, Variable } from "astal";
 import { App, Gtk, hook } from "astal/gtk4";
 import Apps from "gi://AstalApps";
@@ -110,7 +110,15 @@ export const Launcher = () => {
   );
 
   return (
-    <DropWindow name={"launcher"} application={App} marginRequest={80}>
+    <WindowFrame
+      name={"launcher"}
+      application={App}
+      marginRequest={80}
+      cssClasses={["launcher"]}
+      vLoc={-1}
+      hLoc={0}
+      transition={Gtk.RevealerTransitionType.SLIDE_DOWN}
+    >
       <box widthRequest={500} cssClasses={["app-launcher"]} vertical>
         {txtEntry}
         <box spacing={6} vertical>
@@ -118,6 +126,6 @@ export const Launcher = () => {
         </box>
         {placeHolder}
       </box>
-    </DropWindow>
+    </WindowFrame>
   );
 };
