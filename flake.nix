@@ -42,8 +42,8 @@
             inputs'.agenix.packages.default
 
             # packages for ags development
-            nodePackages.typescript
-            nodePackages.typescript-language-server
+            typescript
+            typescript-language-server
             (inputs'.ags.packages.default.override {
               extraPackages = with inputs'.ags.packages; [
                 apps
