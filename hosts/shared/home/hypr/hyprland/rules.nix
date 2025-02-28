@@ -24,6 +24,9 @@
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
+      # idle inhibit fullscreen anything
+      "idleinhibit fullscreen, fullscreen:1"
+
       # dim around popups
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
