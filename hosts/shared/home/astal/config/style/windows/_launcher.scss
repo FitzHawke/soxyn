@@ -1,0 +1,88 @@
+@use "../variables" as *;
+@use "../mixins/floating-widget";
+@use "../mixins/spacing";
+@use "../mixins/button";
+@use "../mixins/unset";
+@use "sass:color";
+
+window.launcher .app-launcher {
+    @include floating-widget.floating-widget();
+
+    entry {
+        @include button.button();
+        padding: $padding;
+        margin: $spacing;
+
+        selection {
+            color: color.mix($fg, $bg, 50%);
+            background-color: transparent;
+        }
+
+        label,
+        image {
+            color: $fg;
+        }
+    }
+
+    image.spinner {
+        color: $primary-bg;
+        margin-right: $spacing;
+    }
+
+    separator {
+        margin: 4pt 0;
+        background-color: $popover-border-color;
+    }
+
+    button.app-item {
+        @include button.button();
+
+        > box {
+            @include spacing.spacing();
+        }
+
+        transition: $transition;
+        padding: $padding;
+
+        label {
+            transition: $transition;
+
+            &.title {
+                color: $fg;
+            }
+
+            &.description {
+                color: transparentize($fg, 0.3);
+            }
+        }
+
+        image {
+            transition: $transition;
+        }
+
+        &:hover,
+        &:focus {
+            .title {
+                color: $primary-bg;
+            }
+
+            .description {
+                color: transparentize($primary-bg, 0.4);
+            }
+
+            image {
+                -gtk-icon-shadow: 2px 2px $primary-bg;
+            }
+        }
+
+        &:active {
+            background-color: transparentize($primary-bg, 0.5);
+            border-radius: $radius;
+            box-shadow: inset 0 0 0 $border-width $border-color;
+
+            .title {
+                color: $fg;
+            }
+        }
+    }
+}
