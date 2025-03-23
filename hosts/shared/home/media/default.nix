@@ -4,6 +4,7 @@
     celluloid
     chatterino2
     loupe
+    shortwave
     playerctl
     pavucontrol
     pulsemixer
