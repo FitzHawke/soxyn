@@ -18,7 +18,8 @@
     gamescope
     lutris
     mangohud
-    ryujinx
+    ryubing
+    torzu
     winetricks
     wineWowPackages.wayland
   ];
