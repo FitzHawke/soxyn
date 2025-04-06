@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     apostrophe
+    errands
     evolution
     file-roller
     gnome-calculator
