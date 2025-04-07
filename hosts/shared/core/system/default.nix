@@ -37,7 +37,8 @@
     git
     steam-run
     appimage-run
-    # (writeScriptBin "sudo" ''exec doas "$@"'')
+    hunspellDicts.en_US
+    hunspellDicts.en_CA
   ];
 
   time = {
