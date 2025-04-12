@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     apostrophe
+    curtail
     errands
     evolution
     file-roller
