@@ -2,7 +2,6 @@
   home.packages = with pkgs; [
     amberol
     celluloid
-    chatterino2
     loupe
     shortwave
     playerctl
