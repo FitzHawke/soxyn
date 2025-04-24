@@ -72,7 +72,7 @@
       systemd-boot.enable = true;
       systemd-boot.configurationLimit = 15;
       # dont allow editing boot commands while booting
-      systemd-boot.editor = false;
+      systemd-boot.editor = true;
 
       efi.canTouchEfiVariables = true;
       timeout = 2;
