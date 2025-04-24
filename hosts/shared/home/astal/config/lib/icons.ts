@@ -4,6 +4,7 @@ type IconMapType = { [key: string]: string };
 
 const fallback = "application-x-executable-symbolic";
 
+// hyprland client class -> name of icon
 const iconMap: IconMapType = {
   // browser
   firefox: "firefox-symbolic",
@@ -27,6 +28,7 @@ const iconMap: IconMapType = {
   Ryujinx: "applications-games-symbolic",
 
   // media
+  "de.haeckerfelix.Shortwave": "de.haeckerfelix.Shortwave-symbolic",
   "io.github.quodlibet.QuodLibet": "io.github.quodlibet.QuodLibet-symbolic",
   "io.github.quodlibet.ExFalso": "io.github.quodlibet.ExFalso-symbolic",
   "org.gnome.Loupe": "org.gnome.Loupe-symbolic",
@@ -37,6 +39,10 @@ const iconMap: IconMapType = {
   "Gimp-2.10": "applications-graphics-symbolic",
 
   // office
+  "org.gnome.gitlab.somas.Apostrophe":
+    "org.gnome.gitlab.somas.Apostrophe-symbolic",
+  "com.github.huluti.Curtail": "com.github.huluti.Curtail-symbolic",
+  "io.github.mrvladus.List": "io.github.mrvladus.List-symbolic",
   "libreoffice-imprerss": "libreoffice-impress-symbolic",
   "libreoffice-calc": "libreoffice-calc-symbolic",
   "libreoffice-base": "libreoffice-base-symbolic",
