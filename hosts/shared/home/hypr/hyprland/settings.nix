@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "uwsm finalize"
-      "hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 24"
+      "hyprctl setcursor Bibata-Modern-Classic-Hyprcursor 16"
     ];
 
     general = {

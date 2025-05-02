@@ -32,16 +32,16 @@ in {
 
   # cursor theme
   home.pointerCursor = {
-    package = pkgs.catppuccin-cursors.mochaDark;
-    name = "catppuccin-mocha-dark-cursors";
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
     gtk.enable = true;
     x11.enable = true;
-    size = 24;
+    size = 16;
   };
 
-  home.sessionVariables = {
-    XCURSOR_SIZE = "24";
-  };
+  # home.sessionVariables = {
+  #   XCURSOR_SIZE = "16";
+  # };
 
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [
