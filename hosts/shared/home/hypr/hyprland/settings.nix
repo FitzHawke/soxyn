@@ -9,8 +9,6 @@
       gaps_in = 5;
       gaps_out = 10;
       border_size = 2;
-      "col.active_border" = "rgb(89b4fa) rgb(cba6f7) 270deg";
-      "col.inactive_border" = "rgb(11111b) rgb(b4befe) 270deg";
     };
 
     decoration = {
@@ -26,7 +24,6 @@
 
       shadow = {
         range = 50;
-        color = "rgba(00000099)";
         offset = "0 5";
       };
     };
@@ -49,11 +46,6 @@
     gestures = {
       workspace_swipe = true;
       workspace_swipe_forever = true;
-    };
-
-    group = {
-      "col.border_active" = "rgb(f5c2e7)";
-      "col.border_inactive" = "rgb(313244)";
     };
 
     misc = {

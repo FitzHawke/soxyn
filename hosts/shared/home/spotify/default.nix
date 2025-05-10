@@ -13,9 +13,6 @@ in {
       newReleases
     ];
 
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "mocha";
-
     enabledExtensions = with spicePkgs.extensions; [
       autoSkipVideo
       shuffle

@@ -74,17 +74,5 @@
 
   programs.lazygit = {
     enable = true;
-    settings.gui.theme = {
-      # https://github.com/catppuccin/lazygit/blob/main/themes/mocha.yml
-      lightTheme = false;
-      activeBorderColor = ["#A6E3A1" "bold"];
-      inactiveBorderColor = ["#89B4FA"];
-      optionsTextColor = ["#CDD6F4"];
-      selectedLineBgColor = ["#313244"];
-      selectedRangeBgColor = ["#313244"];
-      cherryPickedCommitBgColor = ["#94E2D5"];
-      cherryPickedCommitFgColor = ["#89B4FA"];
-      unstagedChangesColor = ["red"];
-    };
   };
 }

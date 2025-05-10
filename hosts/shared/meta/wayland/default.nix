@@ -4,10 +4,11 @@
   ...
 }: {
   imports = [
-    ./fonts.nix
+    # ./fonts.nix
     ./services.nix
     ./pipewire.nix
     ./hyprland.nix
+    ./stylix.nix
   ];
 
   environment = {

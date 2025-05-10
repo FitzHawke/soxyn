@@ -11,6 +11,7 @@
   agenix = inputs.agenix.nixosModules.default;
   hw = inputs.nixos-hardware.nixosModules;
   hmModule = inputs.home-manager.nixosModules.home-manager;
+  stylix = inputs.stylix.nixosModules.stylix;
 
   shared = [agenix core users];
 
@@ -40,9 +41,9 @@ in {
         hw.common-cpu-intel
         hw.common-pc-laptop
         gamemode
-        # hyprland
         wayland
         hmModule
+        stylix
         {inherit home-manager;}
       ]
       ++ shared;
@@ -62,9 +63,9 @@ in {
         hw.common-cpu-amd
         hw.common-gpu-amd
         gamemode
-        # hyprland
         wayland
         hmModule
+        stylix
         {inherit home-manager;}
       ]
       ++ shared;
@@ -74,17 +75,16 @@ in {
   # generic image WIP
   korok = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    modules =
-      [
-        {networking.hostName = "farosh";}
-        ./by-id/korok/hardware-configuration.nix
-        ./by-id/korok/hardware.nix
-        ./by-id/korok/users.nix
-        wayland
-        hmModule
-        core
-        {inherit home-manager;}
-      ];
+    modules = [
+      {networking.hostName = "farosh";}
+      ./by-id/korok/hardware-configuration.nix
+      ./by-id/korok/hardware.nix
+      ./by-id/korok/users.nix
+      wayland
+      hmModule
+      core
+      {inherit home-manager;}
+    ];
     specialArgs = {inherit inputs;};
   };
 
@@ -121,6 +121,6 @@ in {
       ++ shared;
     specialArgs = {inherit inputs;};
   };
-  
+
   # valoo, bokoblin and hinox will be future projects :)
 }

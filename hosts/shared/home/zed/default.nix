@@ -28,19 +28,10 @@
         inline_completion_provider = "none";
       };
 
-      ui_font_size = 16;
-      buffer_font_size = 12;
       hourFormat = "hour24";
       autoUpdate = false;
 
-      theme = {
-        mode = "system";
-        light = "One Light";
-        dark = "Catppuccin Mocha";
-      };
-
       autosave = "on_focus_change";
-      buffer_font_family = "Iosevka Nerd Font Mono";
       load_direnv = "shell_hook";
 
       node = {
@@ -65,6 +56,11 @@
           };
           initialization_options = {
             diagnosticSeverity = "Information";
+          };
+        };
+        rust-analyser = {
+          binary = {
+            path_lookup = true;
           };
         };
       };

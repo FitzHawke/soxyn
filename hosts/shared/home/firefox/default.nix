@@ -21,4 +21,6 @@
       };
     };
   };
+
+  stylix.targets.firefox.profileNames = ["will"];
 }

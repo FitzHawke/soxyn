@@ -40,13 +40,14 @@
     "image/jpeg" = imageViewer;
     "image/jpg" = imageViewer;
     "image/png" = imageViewer;
-    "image/svg" = imageViewer;
+    "image/svg+xml" = imageViewer;
 
     # video
     "video/*" = videoPlayer;
     "video/avi" = videoPlayer;
     "video/mkv" = videoPlayer;
     "video/mp4" = videoPlayer;
+    "video/mpeg" = videoPlayer;
 
     # other
     "text/*" = ["org.gnome.TextEditor.desktop"];
@@ -92,16 +93,6 @@ in {
       enable = true;
       config = {
         pager = "less -FR";
-        theme = "Catppuccin-mocha";
-      };
-      themes.Catppuccin-mocha = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          hash = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-        };
-        file = "Catppuccin-mocha.tmTheme";
       };
     };
   };
