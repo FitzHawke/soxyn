@@ -26,14 +26,11 @@
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QT_STYLE_OVERRIDE = "kvantum";
       MOZ_ENABLE_WAYLAND = "1";
-      # WLR_BACKEND = "vulkan";
-      # WLR_RENDERER = "vulkan";
       WLR_NO_HARDWARE_CURSORS = "1";
       XDG_SESSION_TYPE = "wayland";
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
     };
-    systemPackages = [inputs.umu.packages.${pkgs.system}.default];
   };
 
   xdg.portal = {

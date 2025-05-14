@@ -100,9 +100,5 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    umu = {
-      url = "github:Open-Wine-Components/umu-launcher?dir=packaging/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 }

@@ -434,8 +434,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "spicetify": "spicetify",
-        "stylix": "stylix",
-        "umu": "umu"
+        "stylix": "stylix"
       }
     },
     "spicetify": {
@@ -659,28 +658,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "umu": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "packaging/nix",
-        "lastModified": 1746127435,
-        "narHash": "sha256-ufyI5bnA0Ctg7amyirc3dKJGXqiV+1Fu9u0vHa+/tI4=",
-        "owner": "Open-Wine-Components",
-        "repo": "umu-launcher",
-        "rev": "80bf9143f1a73a10bc60fc4ca6558a2f4461a335",
-        "type": "github"
-      },
-      "original": {
-        "dir": "packaging/nix",
-        "owner": "Open-Wine-Components",
-        "repo": "umu-launcher",
         "type": "github"
       }
     }
