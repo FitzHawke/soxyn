@@ -1,13 +1,10 @@
 {
-  inputs,
   pkgs,
   lib,
   config,
   ...
 }: let
-  agsoxynleg = pkgs.callPackage ./config {
-    inherit inputs;
-  };
+  agsoxynleg = pkgs.callPackage ./config {};
 in {
   home.packages = with pkgs; [
     agsoxynleg

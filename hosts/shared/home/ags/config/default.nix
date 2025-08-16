@@ -1,14 +1,11 @@
 {
-  inputs,
   writeShellScript,
-  system,
   stdenv,
   esbuild,
   dart-sass,
   fd,
   fzf,
   brightnessctl,
-  accountsservice,
   slurp,
   wf-recorder,
   wl-clipboard,
@@ -19,13 +16,15 @@
   pavucontrol,
   networkmanager,
   gtk3,
+  libdbusmenu-gtk3,
   which,
+  ags_1,
 }: let
   name = "agsoxynleg";
 
-  ags = inputs.ags-old.packages.${system}.default.override {
-    extraPackages = [accountsservice];
-  };
+  ags = ags_1.overrideAttrs (old: {
+    buildInputs = old.buildInputs ++ [libdbusmenu-gtk3];
+  });
 
   dependencies = [
     which
