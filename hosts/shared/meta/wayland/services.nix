@@ -9,7 +9,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.greetd}/bin/agreety --cmd '${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop'";
+          command = "${pkgs.greetd}/bin/agreety --cmd '${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop'";
         };
       };
     };
