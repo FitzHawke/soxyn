@@ -54,7 +54,7 @@
       checkReversePath = "loose";
       # if your minecraft server is not worky
       # this is probably why
-      allowedTCPPorts = [443 80 22];
+      allowedTCPPorts = [443 80 22 9090];
       allowedUDPPorts = [443 80];
       allowPing = false;
     };

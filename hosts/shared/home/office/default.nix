@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     apostrophe
+    calibre
     curtail
     errands
     evolution
