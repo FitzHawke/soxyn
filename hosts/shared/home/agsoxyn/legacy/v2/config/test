@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+systemctl --user stop agsoxyn-leg
+ags run --gtk4 ./app.ts
+systemctl --user start agsoxyn-leg

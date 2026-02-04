@@ -1,0 +1,122 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+@use "sass:color";
+
+$bg: #171717;
+$fg: #eeeeee;
+$primary-bg: #51a4e7;
+$primary-fg: #141414;
+$error-bg: #e55f86;
+$error-fg: #141414;
+
+$padding: 7pt;
+$spacing: 12pt;
+$radius: 11px;
+$transition: 200ms;
+
+$widget-color: #eeeeee;
+$widget-opacity: 94;
+
+$widget-bg: color.adjust($widget-color, $alpha: -0.94);
+$hover-bg: color.adjust($widget-color, $alpha: -0.85);
+$hover-fg: color.adjust($fg, $lightness: +8%);
+
+$border-base-color: #eeeeee;
+$border-opacity: 96;
+
+$border-width: 1px;
+$border-color: color.adjust($border-base-color, $alpha: -0.95);
+
+$border: $border-width solid $border-color;
+
+$active-gradient: linear-gradient(
+  to right,
+  $primary-bg,
+  color.adjust($primary-bg, $lightness: -4%)
+);
+
+$shadow-color: rgba(0, 0, 0, 0.6);
+$text-shadow: 2pt 2pt 2pt $shadow-color;
+
+$popover-border-color: color.adjust($border-base-color, $alpha: -0.95);
+
+$popover-padding: $padding * 1.6;
+$popover-radius: $radius + $popover-padding;
+
+$font-size: 12pt;
+$font-name: Ubuntu Nerd Font;
+
+$bar-bg: color.adjust($bg, $alpha: -0.5);
+
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #{"@theme_bg_color"};
+
+window#bar {
+  background: transparent;
+  color: $fg-color;
+  font-weight: bold;
+
+  > box {
+    background: $bg-color;
+    border-radius: 10px;
+    margin: 8px;
+  }
+
+  button {
+    border-radius: 8px;
+    margin: 2px;
+    min-height: 0;
+    padding: 4px 8px;
+  }
+}
+
+window#launcher {
+  background: transparent;
+  color: $fg-color;
+
+  box#launcher-content {
+    background: $bg-color;
+    min-width: 400px;
+    border-radius: 12px;
+    padding: 6px;
+  }
+}
+
+.workspaces {
+  label {
+    font-size: 0;
+    min-width: 5pt;
+    min-height: 5pt;
+    border-radius: $radius * 0.6;
+    box-shadow: inset 0 0 0 $border-width $border-color;
+    margin: 0 $padding * 0.5;
+    transition: $transition * 0.5;
+    background-color: color.adjust($fg, $alpha: -0.8);
+
+    &.occupied {
+      background-color: color.adjust($fg, $alpha: -0.2);
+      min-width: 7pt;
+      min-height: 7pt;
+    }
+
+    &.active {
+      background-image: $active-gradient;
+      min-width: 20pt;
+      min-height: 12pt;
+    }
+  }
+
+  &.active,
+  &:active {
+    label {
+      background-color: color.adjust($primary-fg, $alpha: -0.3);
+
+      &.occupied {
+        background-color: color.adjust($primary-fg, $alpha: -0.15);
+      }
+
+      &.active {
+        background-color: $primary-fg;
+      }
+    }
+  }
+}

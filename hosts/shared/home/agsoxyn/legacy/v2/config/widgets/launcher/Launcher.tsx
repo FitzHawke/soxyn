@@ -1,5 +1,6 @@
 import { WindowFrame } from "@widgets/windows/WindowFramework";
-import { subprocess, Variable } from "astal";
+import { Variable } from "astal";
+import { subprocess } from "ags/process";
 import { App, Gtk, hook } from "astal/gtk4";
 import Apps from "gi://AstalApps";
 

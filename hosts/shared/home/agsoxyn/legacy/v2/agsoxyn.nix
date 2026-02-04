@@ -1,6 +1,6 @@
 {
   inputs,
-  system,
+  stdenv,
   pkgs,
   ...
 }: let
@@ -13,8 +13,9 @@ in
     gtk4 = true;
 
     extraPackages =
-      (with inputs.ags.packages.${system}; [
+      (with inputs.ags.packages.${stdenv.hostPlatform.system}; [
         apps
+        astal4
         battery
         bluetooth
         hyprland

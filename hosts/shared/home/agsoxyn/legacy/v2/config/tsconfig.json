@@ -1,19 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "experimentalDecorators": true,
+    "baseUrl": ".",
     "jsx": "react-jsx",
-    "jsxImportSource": "astal/gtk4",
+    "jsxImportSource": "ags/gtk4",
     "module": "ES2022",
     "moduleResolution": "Bundler",
-    "strict": true,
-    "target": "ES2022",
-    "baseUrl": ".",
     "paths": {
       "@assets/*": ["./assets/*"],
       "@lib/*": ["./lib/*"],
       "@styles/*": ["style/*"],
       "@widgets/*": ["./widgets/*"]
-    }
+    },
+    "strict": true,
+    "target": "ES2020"
   }
 }

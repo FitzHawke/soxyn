@@ -1,4 +1,6 @@
-import { App, Astal, Gdk, Gtk } from "astal/gtk4";
+import app from "ags/gtk4/app";
+import { Astal, Gtk, Gdk } from "ags/gtk4";
+import { onCleanup } from "ags";
 import { Launcher } from "./buttons/Launcher";
 import { Workspaces } from "./buttons/Workspaces";
 import { Taskbar } from "./buttons/Taskbar";
@@ -10,18 +12,23 @@ import { ColourPicker } from "./buttons/ColourPicker";
 import { PowerMenu } from "./buttons/PowerMenu";
 import { SystemIndicators } from "./buttons/SystemIndicators";
 
-export function Bar(gdkmonitor: Gdk.Monitor) {
+export function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
+  let win: Astal.Window;
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
   const Expander = () => <box hexpand={true} />;
 
+  onCleanup(() => win.destroy());
+
   return (
     <window
+      $={(self) => (win = self)}
       visible
       cssClasses={["bar"]}
+      name={`bar-${gdkmonitor.connector}`}
       gdkmonitor={gdkmonitor}
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       anchor={TOP | LEFT | RIGHT}
-      application={App}
+      application={app}
     >
       <centerbox>
         <box hexpand={true}>

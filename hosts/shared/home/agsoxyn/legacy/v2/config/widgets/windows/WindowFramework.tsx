@@ -1,5 +1,5 @@
-import { App, Astal, Gdk, Gtk, hook } from "astal/gtk4";
-import { BoxProps, RevealerProps, WindowProps } from "astal/gtk4/widget";
+import { App, Astal, Gdk, Gtk, hook } from "ags/gtk4";
+import { BoxProps, RevealerProps, WindowProps } from "ags/gtk4/widget";
 
 type PaddingProps = BoxProps & {
   winName: string;
