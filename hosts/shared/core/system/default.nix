@@ -9,7 +9,7 @@
       packages = with pkgs; [dconf gcr udisks2];
       enable = true;
     };
-    udev.packages = with pkgs; [gnome-settings-daemon android-udev-rules];
+    udev.packages = with pkgs; [gnome-settings-daemon];
     journald.extraConfig = ''
       SystemMaxUse=50M
       RuntimeMaxUse=10M
@@ -20,6 +20,9 @@
   programs = {
     dconf.enable = true;
     bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
+
+    # allow users to mount fuse filesystems with allow_other
+    fuse.userAllowOther = true;
   };
 
   # compress half of the ram to use as swap
@@ -35,10 +38,10 @@
 
   environment.systemPackages = with pkgs; [
     git
-    steam-run
     appimage-run
     hunspellDicts.en_US
     hunspellDicts.en_CA
+    android-tools
   ];
 
   time = {
@@ -74,13 +77,5 @@
     tmpfiles.rules = [
       "D /nix/var/nix/profiles/per-user/root 755 root root - -"
     ];
-  };
-
-  programs = {
-    # allow users to mount fuse filesystems with allow_other
-    fuse.userAllowOther = true;
-
-    # manage android devices via command line
-    adb.enable = true;
   };
 }
