@@ -7,33 +7,33 @@
       "workspaces, 1, 2, default, slide"
     ];
 
-    windowrulev2 = [
+    windowrule = [
       # only shadow floating windows
-      "noshadow, floating:0"
+      "no_shadow on, match:float off"
 
       # firefox PiP default floating and sticky
-      "float, title:^(Picture-in-Picture)$"
-      "pin, title:^(Picture-in-Picture)$"
+      "float on, match:title ^(Picture-in-Picture)$"
+      "pin on, match:title ^(Picture-in-Picture)$"
 
       # throw sharing indicators away
-      "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-      "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
+      "workspace special silent, match:title ^(Firefox — Sharing Indicator)$"
+      "workspace special silent, match:title ^(.*is sharing (your screen|a window)\.)$"
 
       # idle inhibit while watching videos
-      "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
-      "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
-      "idleinhibit fullscreen, class:^(firefox)$"
+      "idle_inhibit focus, match:class ^(mpv|.+exe|celluloid)$"
+      "idle_inhibit focus, match:class ^(firefox)$, match:title ^(.*YouTube.*)$"
+      "idle_inhibit fullscreen, match:class ^(firefox)$"
 
       # idle inhibit fullscreen anything
-      "idleinhibit fullscreen, fullscreen:1"
+      "idle_inhibit fullscreen, match:fullscreen_state_client 2"
 
       # dim around popups
-      "dimaround, class:^(gcr-prompter)$"
-      "dimaround, class:^(xdg-desktop-portal-gtk)$"
-      "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+      "dim_around on, match:class ^(gcr-prompter)$"
+      "dim_around on, match:class ^(xdg-desktop-portal-gtk)$"
+      "dim_around on, match:class ^(polkit-gnome-authentication-agent-1)$"
 
       # no rounding on xwayland
-      "rounding 0, xwayland:1, floating:1"
+      "rounding 0, match:xwayland true, match:float on"
     ];
   };
 }
