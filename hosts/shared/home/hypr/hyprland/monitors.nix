@@ -10,8 +10,10 @@
     enable = true;
     settings = {
       splash = false;
-      preload = lib.map (m: "${m.wallpaper}") (config.monitors);
-      wallpaper = lib.map (m: "${m.name},${m.wallpaper}") (config.monitors);
+      wallpaper = lib.map (m: {
+        monitor = "${m.name}";
+        path = "${m.wallpaper}";
+      }) (config.monitors);
     };
   };
 
