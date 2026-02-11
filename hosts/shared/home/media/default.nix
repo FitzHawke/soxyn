@@ -7,7 +7,6 @@
     playerctl
     pavucontrol
     pulsemixer
-    vdhcoapp
   ];
   programs = {
     obs-studio = {

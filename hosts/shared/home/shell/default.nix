@@ -189,7 +189,7 @@
         grep = "${getExe ripgrep}";
         fzf = "${getExe skim}";
         MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-        du = "${getExe du-dust}";
+        du = "${getExe dust}";
         ps = "${getExe procs}";
         m = "mkdir -p";
         l = "ls -lF --time-style=long-iso --icons";

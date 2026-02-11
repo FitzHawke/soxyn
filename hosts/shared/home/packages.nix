@@ -2,12 +2,11 @@
   home.packages = with pkgs; [
     # gui
     anki-bin # flashcards
-    bitwarden # password manager
+    bitwarden-desktop # password manager
     chromium # backup browser
     element-desktop # matrix chat app
     foliate # ebook reader gui
     gimp # image editing
-    jellyfin-media-player # gui for connecting with jellyfin servers
     jq # cli json parsing
     newsflash # RSS reader
     quodlibet-full # gui music
@@ -27,6 +26,7 @@
     ripgrep # rusty grep
     rsync # folder syncing
     sd # sed alt in rust with easy syntax
+    sqlite # lightweight db
     unar # archive manager
     unzip # zip archive manager
     xh # http requests

@@ -47,6 +47,7 @@
             (inputs'.ags.packages.default.override {
               extraPackages = with inputs'.ags.packages; [
                 apps
+                astal4
                 battery
                 bluetooth
                 hyprland

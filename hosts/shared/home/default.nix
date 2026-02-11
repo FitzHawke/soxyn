@@ -13,7 +13,7 @@
     nix = {
       gc = {
         automatic = true;
-        frequency = "daily";
+        dates = "daily";
         options = "--delete-older-than 3d";
       };
     };
@@ -23,8 +23,7 @@
     ./packages.nix
     ./games.nix
 
-    ./ags
-    # ./astal
+    ./agsoxyn
     ./bottom
     ./discord
     ./firefox
