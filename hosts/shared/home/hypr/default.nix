@@ -1,23 +1,31 @@
-{osConfig, ...}: {
+{
+  osConfig,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hyprland
     ./hypridle.nix
     ./hyprlock.nix
   ];
 
-  services.wlsunset = {
-    enable = true;
-    # these values end up in systemd startup script so we read them from the environment
-    latitude = "\$WL_LATITUDE";
-    longitude = "\$WL_LONGITUDE";
-    temperature = {
-      day = 6200;
-      night = 3750;
+  # wlsenset module doesn't like env vars anymore :(
+  # so we just write our own sysd file for it now
+  # with env file from agenix for WL_LATITUDE and WL_LONGITUDE
+  systemd.user.services.wlsunset = {
+    Unit = {
+      Description = "Day/night gamma adjustments for Wayland compositors.";
+      After = [config.wayland.systemd.target];
+      PartOf = [config.wayland.systemd.target];
     };
-  };
-
-  # add env file from agenix with WL_LATITUDE and WL_LONGITUDE
-  systemd.user.services.wlsunset.Service = {
-    EnvironmentFile = "${osConfig.age.secrets.wl-loc.path}";
+    Service = {
+      ExecStart = "${lib.getExe pkgs.wlsunset} -t3750 -T6200 -g1.00000 -L $WL_LONGITUDE -l $WL_LATITUDE";
+      EnvironmentFile = "${osConfig.age.secrets.wl-loc.path}";
+    };
+    Install = {
+      WantedBy = [config.wayland.systemd.target];
+    };
   };
 }
