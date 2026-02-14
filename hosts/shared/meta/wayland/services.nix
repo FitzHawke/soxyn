@@ -14,12 +14,9 @@
       };
     };
 
-    logind = {
+    logind.settings.Login = {
       lidSwitch = "suspend-then-hibernate";
       lidSwitchExternalPower = "lock";
-      extraConfig = ''
-        HandlePowerKey=suspend
-      '';
     };
 
     # printing setup for modern printers (ipp)

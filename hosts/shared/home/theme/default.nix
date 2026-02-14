@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  stylix.iconTheme = {
+  stylix.icons = {
     enable = true;
     package = pkgs.papirus-icon-theme;
     light = "Papirus";

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # ./fonts.nix
     ./services.nix
@@ -58,4 +54,8 @@
       pkgs.proton-ge-bin.steamcompattool
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    steam-run
+  ];
 }
