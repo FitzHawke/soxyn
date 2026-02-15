@@ -25,6 +25,7 @@
     protectKernelImage = true;
     lockKernelModules = false;
     rtkit.enable = true;
+    polkit.enable = true;
     apparmor = {
       enable = true;
       killUnconfinedConfinables = true;

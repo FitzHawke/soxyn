@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
     pkgs.sbctl
@@ -77,6 +81,15 @@
       efi.canTouchEfiVariables = true;
       timeout = 2;
     };
+
+    # Loopback for virtual camera through OBS
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
+
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
   };
   console.earlySetup = true;
 }
