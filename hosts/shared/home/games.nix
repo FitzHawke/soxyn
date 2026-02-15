@@ -21,6 +21,6 @@
     ryubing
     umu-launcher
     winetricks
-    wineWowPackages.wayland
+    wineWow64Packages.wayland
   ];
 }
