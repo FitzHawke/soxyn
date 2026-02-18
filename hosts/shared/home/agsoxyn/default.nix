@@ -27,7 +27,7 @@ in {
 
     Service = {
       ExecStart = "${lib.getExe agsoxyn}";
-      ExecStop = "${lib.getExe agsoxyn} -q";
+      ExecStop = "${lib.getExe agsoxyn} quit";
       Restart = "always";
       RestartSec = "10";
     };

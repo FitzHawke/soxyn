@@ -8,6 +8,18 @@ app.start({
   css: style,
   gtkTheme: "Adwaita",
   instanceName: "agsoxyn",
+
+  requestHandler(argv: string[]) {
+    const [cmd, ...rest] = argv
+    if (cmd == "quit") {
+      app.quit()
+    } else if (cmd == "launcher") {
+      app.toggle_window("launcher")
+    } else if (cmd == "powermenu") {
+      app.toggle_window("powermenu")
+    }
+  },
+
   main() {
     const monitors = createBinding(app, "monitors")
 
