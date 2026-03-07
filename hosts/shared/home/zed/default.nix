@@ -5,6 +5,9 @@
 }: {
   programs.zed-editor = {
     enable = true;
+    extraPackages = with pkgs; [
+      ruff
+    ];
     extensions = [
       # https://github.com/zed-industries/zed/tree/main/extensions
       "emmet"
@@ -33,6 +36,8 @@
 
       autosave = "on_focus_change";
       load_direnv = "shell_hook";
+
+      soft_wrap = "editor_width";
 
       node = {
         path = lib.getExe pkgs.nodePackages_latest.nodejs;
