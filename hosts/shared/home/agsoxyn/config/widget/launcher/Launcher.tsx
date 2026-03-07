@@ -3,6 +3,7 @@ import { Astal, Gtk, Gdk } from "ags/gtk4"
 import AstalApps from "gi://AstalApps"
 import Graphene from "gi://Graphene"
 import { For, createState } from "ags"
+import app from "ags/gtk4/app"
 
 export const Launcher = () => {
   const uwsmLaunch = true
@@ -148,6 +149,7 @@ export const Launcher = () => {
       cssClasses={["launcher"]}
       $={(ref) => (win = ref)}
       name="launcher"
+      application={app}
       anchor={TOP | BOTTOM | LEFT | RIGHT}
       exclusivity={Astal.Exclusivity.IGNORE}
       keymode={Astal.Keymode.EXCLUSIVE}

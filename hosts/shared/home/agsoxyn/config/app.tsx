@@ -15,8 +15,10 @@ app.start({
       app.quit()
     } else if (cmd == "launcher") {
       app.toggle_window("launcher")
+      return
     } else if (cmd == "powermenu") {
       app.toggle_window("powermenu")
+      return
     }
   },
 

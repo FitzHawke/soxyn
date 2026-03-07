@@ -11,6 +11,7 @@ in
     pname = name;
     meta.mainProgram = name;
     inherit src name;
+    version = "0.0.0";
 
     nativeBuildInputs = with pkgs; [
       wrapGAppsHook4
