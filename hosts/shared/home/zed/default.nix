@@ -40,8 +40,8 @@
       soft_wrap = "editor_width";
 
       node = {
-        path = lib.getExe pkgs.nodePackages_latest.nodejs;
-        npm_path = lib.getExe' pkgs.nodePackages_latest.nodejs "npm";
+        path = lib.getExe pkgs.nodejs;
+        npm_path = lib.getExe' pkgs.nodejs "npm";
       };
 
       lsp = {
