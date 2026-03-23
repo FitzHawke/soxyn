@@ -100,6 +100,7 @@ in {
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = true;
       documents = "${config.home.homeDirectory}/documents";
       download = "${config.home.homeDirectory}/downloads";
       videos = "${config.home.homeDirectory}/media/videos";
